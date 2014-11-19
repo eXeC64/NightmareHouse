@@ -1,0 +1,14 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models/Humans/female/Group01/kanisha_cylmap"
+
+	"$bumpmap" "models/Humans/female/Group01/kanisha_cylmap_normal"
+	"$surfaceprop" "flesh"
+	"$model" "1"
+	"$halflambert" "1"
+	"$phong" "1"
+	"$phongboost" "85"
+	"$phongexponent" 99
+	//"$phongalbedotint" "1"							
+	"$phongfresnelranges"	"[.1 .1 1]"
+}

@@ -1,0 +1,6 @@
+"DecalModulate"
+{
+	"$decal" 1
+	"$basetexture" "dd_atlantis/decals/bloodsplatter6"
+	"$decalscale" 0.25
+}

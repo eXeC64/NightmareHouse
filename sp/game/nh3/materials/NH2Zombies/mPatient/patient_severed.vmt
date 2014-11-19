@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/NH2Zombies/mPatient/patient_severed"
+	"$halflambert" 1
+}

@@ -1,0 +1,40 @@
+"vertexlitgeneric"
+{
+	"$basetexture" "models/nh2_gmn/dummy_exterior"
+	$envmap		env_cubemap
+	$basealphaenvmapmask	1
+	"$halflambert" 1
+	"$model" "1"
+
+	// Flesh Interior Pass
+	"$FleshInteriorEnabled"		"1" // Enables effect
+	"$FleshInteriorTexture"		"models/nh2_gmn/dummy_interior" // Mask in alpha
+	"$FleshNormalTexture"		"models/nh2_gmn/dummy_interior"
+	"$FleshBorderTexture1D"		"models/Alyx/alyx_flesh_border"
+	"$FleshInteriorNoiseTexture"	"Engine/noise-blur-256x256"
+	"$FleshSubsurfaceTexture"	"models/Alyx/alyx_flesh_subsurface" //I still have no idea what that does
+	"$FleshCubeTexture"		"env_cubemap"
+	"$FleshBorderNoiseScale"	"3" // Flesh Noise UV scalar for border
+	"$FleshBorderWidth"		"0.2" // Width of flesh border
+	"$FleshBorderSoftness"		"0.5" // Border softness must be greater than 0.0 and up tp 0.5
+	"$FleshBorderTint"		"[.2 .2 .4]" // Tint / brighten the border 1D texture
+	"$FleshGlossBrightness"		"1.0" // Change the brightness of the glossy layer
+	"$FleshDebugForceFleshOn"	"0" // DEBUG: This will force on full flesh for testing
+	"$FleshScrollSpeed"		"1.0" //Buggery if I know what this does either
+
+	"$Time"				"0.0"
+
+	"Proxies"
+	{
+		"FleshInterior"
+		{
+		}
+		"MaterialModify"
+		{
+		}
+		"CurrentTime"
+		{
+			"resultVar" "$time"
+		}
+	}
+}

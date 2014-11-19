@@ -1,0 +1,134 @@
+"nh_guard.Charge"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.9"
+	"pitch"			"90, 110"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/nh_guard/nhguard_charge1.wav"
+		// "wave"	"npc/nh_guard/nhguard_charge2.wav"
+		"wave"	"npc/nh_guard/nhguard_alert6.wav"	
+	}
+}
+
+// play when zombine holds grenade
+
+"nh_guard.ReadyGrenade"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.9"
+	"pitch"			"95, 104"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/zombine/zombine_readygrenade1.wav"
+		"wave"	"npc/zombine/zombine_readygrenade2.wav"	
+	}
+}
+
+// play scuffright/scuffleft when zombine charges
+
+"nh_guard.ScuffRight"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"0.95"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_65db"
+
+	"rndwave"
+	{
+		"wave"	"npc/zombine/gear1.wav"
+		"wave"	"npc/zombine/gear2.wav"
+	}
+}
+
+"nh_guard.ScuffLeft"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"0.95"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_65db"
+
+	"rndwave"
+	{
+
+		"wave"	"npc/zombie/foot_slide1.wav"
+		"wave"	"npc/zombine/gear3.wav"
+	}
+}
+
+
+"nh_guard.Pain"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"1.0"
+	"pitch"			"95, 104"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/nh_guard/nhguard_pain1.wav"
+		"wave"	"npc/nh_guard/nhguard_pain2.wav"
+		"wave"	"npc/nh_guard/nhguard_pain3.wav"
+		"wave"	"npc/nh_guard/nhguard_pain4.wav"
+	}
+}
+
+"nh_guard.Alert"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.80"
+	"pitch"			"95, 104"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/nh_guard/nhguard_alert1.wav"
+		"wave"	"npc/nh_guard/nhguard_alert3.wav"
+		"wave"	"npc/nh_guard/nhguard_alert4.wav"
+		"wave"	"npc/nh_guard/nhguard_alert5.wav"
+		"wave"	"npc/nh_guard/nhguard_alert7.wav"
+	}
+}
+
+"nh_guard.Idle"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.75"
+	"pitch"		"92, 105"
+
+	"soundlevel"	"SNDLVL_65db"
+
+	"rndwave"
+	{
+		"wave"	"npc/nh_guard/nhguard_alert2.wav"
+		"wave"	"npc/nh_guard/nhguard_idle1.wav"
+		"wave"	"npc/nh_guard/nhguard_idle2.wav"
+		"wave"	"npc/nh_guard/nhguard_idle3.wav"
+		"wave"	"npc/nh_guard/nhguard_idle4.wav"
+	}
+}
+
+"nh_guard.Die"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.95"
+	"pitch"			"90, 110"
+
+	"soundlevel"	"SNDLVL_NORM"
+	"rndwave"
+	{
+		"wave"	"npc/nh_guard/nhguard_die1.wav"
+		"wave"	"npc/nh_guard/nhguard_die2.wav"
+	}
+}
+

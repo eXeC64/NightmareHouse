@@ -1,0 +1,13 @@
+"Unlitgeneric"
+{
+	"$basetexture" "mad/romerologs"
+   "Proxies"
+   {
+      "ToggleTexture"
+      {
+         "toggleTextureVar" "$baseTexture"
+                     "toggleTextureFrameNumVar" "$frame"
+                     "toggleTextureShouldWrap" "0"
+      }
+   }
+}

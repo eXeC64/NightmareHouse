@@ -1,0 +1,11 @@
+VertexLitGeneric
+{
+	$basetexture		models/hospitalprops/MRIScanner
+	$bumpmap		models/hospitalprops/MRIScanner_bump
+	$model			1
+
+	$detail			detail\metal_detail_01
+	$detailscale		4.283
+	$detailblendfactor	.65
+	$detailblendmode	0
+}

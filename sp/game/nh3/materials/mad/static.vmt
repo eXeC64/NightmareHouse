@@ -1,0 +1,13 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "mad/static"
+   "Proxies"
+   {
+      "AnimatedTexture"
+      {
+         "animatedtexturevar" "$basetexture"
+         "animatedtextureframenumvar" "$frame"
+         "animatedtextureframerate" 30
+      }
+   }
+}

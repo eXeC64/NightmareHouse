@@ -1,0 +1,7 @@
+VertexLitGeneric
+{
+	$baseTexture models\NH2Zombies\Friendly\friendly_sheet
+	$bumpmap models\NH2Zombies\Friendly\friendly_sheet_bump
+	$halflambert 1
+	$model 1
+}

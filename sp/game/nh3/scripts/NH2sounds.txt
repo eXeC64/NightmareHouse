@@ -1,0 +1,8 @@
+"NH2Intro"
+{
+	"channel"	"CHAN_VOICE"
+	"volume"	"1.0"
+	"pitch"		"PITCH_NORM"
+	"soundlevel"	"SNDLVL_NONE"	
+	"wave"		"nh2\Nh2intro.wav"
+}

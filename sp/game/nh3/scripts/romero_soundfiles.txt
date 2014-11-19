@@ -1,0 +1,800 @@
+"Romero_ee1"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\Romero_ee1.wav"
+}
+"romero_iherdeveryword"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\romero_iherdeveryword.wav"
+}
+"romero_imsorryforeverything"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_imsorryforeverything.wav"
+}
+"romero_journyendshere"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\romero_journyendshere.wav"
+}
+"romero_noahhhahhh"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_noahhhahhh.wav"
+}
+"romero_nonoahhhh"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_nonoahhhh.wav"
+}
+"romero_nonoletmenoahh"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_nonoletmenoahh.wav"
+}
+"romero_nononooo"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_nononooo.wav"
+}
+"romero_ohemmaiplease"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_ohemmaiplease.wav"
+}
+"romero_ohshitemily"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_ohshitemily.wav"
+}
+"romero_radioroomhint_canisclosed"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_radioroomhint_canisclosed.wav"
+}
+"romero_radioroomhint_canisclosed_work"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_radioroomhint_canisclosed_work.wav"
+}
+"romero_radioroomhint_itsempty"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_radioroomhint_itsempty.wav"
+}
+"romero_radioroomhint_needtodisable"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_radioroomhint_needtodisable.wav"
+}
+"romero_radioroomhint_trytobreak"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_radioroomhint_trytobreak.wav"
+}
+"romero_radioroomhint_trytofindgas"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_radioroomhint_trytofindgas.wav"
+}
+"romero_shesentyou"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_shesentyou.wav"
+}
+"romero_thisisthecore"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_thisisthecore.wav"
+}
+"Romero1"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\Romero1.wav"
+}
+"Romero2"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\Romero2.wav"
+}
+"Romero3"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\Romero3.wav"
+}
+"romeroradiovoice1"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romeroradiovoice1.wav"
+}
+"romeroradiovoice2"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romeroradiovoice2.wav"
+}
+"romeroradiovoice3"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romeroradiovoice3.wav"
+}
+"romeroradiovoice4"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romeroradiovoice4.wav"
+}
+"romeroradiovoice5"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romeroradiovoice5.wav"
+}
+"romeroradiovoice5_ee"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romeroradiovoice5_ee.wav"
+}
+"romeroradiovoice5_hint"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romeroradiovoice5_hint.wav"
+}
+"romeroradiovoice5_hint2"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romeroradiovoice5_hint2.wav"
+}
+"romeroradiovoice6"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romeroradiovoice6.wav"
+}
+"romeroradiovoice6_b"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romeroradiovoice6_b.wav"
+}
+"romeroradiovoice7"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romeroradiovoice7.wav"
+}
+"romeroradiovoice8"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romeroradiovoice8.wav"
+}
+"romero_alrightyouaskedforit"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_alrightyouaskedforit.wav"
+}
+"romero_cutitout"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_cutitout.wav"
+}
+"romero_goddammit"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_goddammit.wav"
+}
+"romero_havefunzombie"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_havefunzombie.wav"
+}
+"romero_heywatchit"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_heywatchit.wav"
+}
+"romero_ifyoudontstopthis"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_ifyoudontstopthis.wav"
+}
+"romero_ifyoullbreakthecore"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_ifyoullbreakthecore.wav"
+}
+"romero_isweartogod"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_isweartogod.wav"
+}
+"romero_isweartogodifyoudont"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_isweartogodifyoudont.wav"
+}
+"romero_no"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_no.wav"
+}
+"romero_stopit"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_stopit.wav"
+}
+"romero_stopitimserious"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_stopitimserious.wav"
+}
+"romero_whatareyoudoing"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_whatareyoudoing.wav"
+}
+"romero_wouldyoukindlystop"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_wouldyoukindlystop.wav"
+}
+"romero_yeahgoaheadandbreak"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_yeahgoaheadandbreak.wav"
+}
+"romero_youhavnthaveenoughyet"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_youhavnthaveenoughyet.wav"
+}
+"romero_yournotevenhelping"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\Bossfight\romero_yournotevenhelping.wav"
+}
+"romero_areyouhavingfun"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_areyouhavingfun.wav"
+}
+"romero_bulletsainteffective"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_bulletsainteffective.wav"
+}
+"romero_coreisonlythingstoppingher"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_coreisonlythingstoppingher.wav"
+}
+"romero_dontthinksheshelpingyou"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_dontthinksheshelpingyou.wav"
+}
+"romero_dontthinksheshelpingyou2"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_dontthinksheshelpingyou2.wav"
+}
+"romero_donttouchthat"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_donttouchthat.wav"
+}
+"romero_getawayfrombeams"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_getawayfrombeams.wav"
+}
+"romero_goingtokickyourass"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_goingtokickyourass.wav"
+}
+"romero_goodnight"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_goodnight.wav"
+}
+"romero_gottapee"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_gottapee.wav"
+}
+"romero_gottapee2"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_gottapee2.wav"
+}
+"romero_howyoulikeit"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_howyoulikeit.wav"
+}
+"romero_icandothisallday"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_icandothisallday.wav"
+}
+"romero_imnotabadperson"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_imnotabadperson.wav"
+}
+"romero_itsbulletproof"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_itsbulletproof.wav"
+}
+"romero_itsbulletproof2"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_itsbulletproof2.wav"
+}
+"romero_iwanttoseehersaves"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_iwanttoseehersaves.wav"
+}
+"romero_iwishihadpopcorn"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_iwishihadpopcorn.wav"
+}
+"romero_onceshesdonewithyou"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_onceshesdonewithyou.wav"
+}
+"romero_princessisinanothercastle"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_princessisinanothercastle.wav"
+}
+"romero_sendyouintoyourhead"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_sendyouintoyourhead.wav"
+}
+"romero_shecantbehere"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_shecantbehere.wav"
+}
+"romero_shesusingyoutogettome"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_shesusingyoutogettome.wav"
+}
+"romero_shieldoff"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_shieldoff.wav"
+}
+"romero_stilltalkingwhenthereissciencetodo"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_stilltalkingwhenthereissciencetodo.wav"
+}
+"romero_swatdidntstoppedme"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_swatdidntstoppedme.wav"
+}
+"romero_thanksdestroyingradio"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_thanksdestroyingradio.wav"
+}
+"romero_thiscantbe"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_thiscantbe.wav"
+}
+"romero_usingpulseemitters"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_usingpulseemitters.wav"
+}
+"romero_whatthehellsupoortbeams"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_whatthehellsupoortbeams.wav"
+}
+"romero_woops"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_woops.wav"
+}
+"romero_wowyouhavenoidea"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_wowyouhavenoidea.wav"
+}
+"romero_yeahkeepshootingit"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_yeahkeepshootingit.wav"
+}
+"romero_yousuck"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_yousuck.wav"
+}
+"romero_youthinkyoucrashedyourcar"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_youthinkyoucrashedyourcar.wav"
+}
+"romero_youwontgetanycloser"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NONE"
+   "wave"          "nh2\speech\Romero\bossfight\romero_youwontgetanycloser.wav"
+}
+"romero_noahhhahhh2"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_noahhhahhh2.wav"
+}
+"romero_noahhhahhh3"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_noahhhahhh3.wav"
+}
+"romero_nonoahhhh1"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_nonoahhhh1.wav"
+}
+"romero_ohshitemily"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_ohshitemily.wav"
+}
+"romero_wellwhatdoyouknow"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\Romero\romero_wellwhatdoyouknow.wav"
+}
+"romero_announcertalk.wav"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\romero/romero_announcertalk.wav"
+}
+"romero_radioroomhint_getitopen.wav"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\romero/romero_radioroomhint_getitopen.wav"
+}
+"romero_radioroomhint_getthelidoff.wav"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\romero/romero_radioroomhint_getthelidoff.wav"
+}
+"romero_radioroomhint_sealed.wav"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\romero/romero_radioroomhint_sealed.wav"
+}
+"romero_announcertalk"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\romero/romero_announcertalk.wav"
+}
+"romero_radioroomhint_getitopen"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\romero/romero_radioroomhint_getitopen.wav"
+}
+"romero_radioroomhint_getthelidoff"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\romero/romero_radioroomhint_getthelidoff.wav"
+}
+"romero_radioroomhint_sealed"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\romero/romero_radioroomhint_sealed.wav"
+}
+"romero_zombies"
+{
+   "channel"       "CHAN_VOICE"
+   "volume"        "VOL_NORM"
+   "pitch"         "PITCH_NORM"
+   "soundlevel"    "SNDLVL_NORM"
+   "wave"          "nh2\speech\romero/romero_zombies.wav"
+}

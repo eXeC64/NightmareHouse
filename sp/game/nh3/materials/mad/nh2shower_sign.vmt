@@ -1,0 +1,8 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "mad/nh2shower_sign"
+	"$surfaceprop" "dirt"
+	"$decal" 1
+	"%keywords" "shower"
+}
+

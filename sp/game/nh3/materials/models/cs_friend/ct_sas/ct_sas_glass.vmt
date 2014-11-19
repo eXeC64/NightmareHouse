@@ -1,0 +1,16 @@
+"vertexlitgeneric"
+{
+	"$baseTexture" "models/cs_friend/ct_sas/ct_sas_glass"
+	
+
+// Specularity
+	"$envmap" 			"env_cubemap"
+	"$envmapmask" "models/cs_friend/ct_sas/ct_sas_glass_spec"
+
+
+// Transparency
+	"$translucent" 1
+	
+	
+}
+

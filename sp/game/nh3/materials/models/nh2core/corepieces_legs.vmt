@@ -1,0 +1,5 @@
+VertexlitGeneric
+{
+	$basetexture	models/nh2core/corepieces_legs
+	$model		1
+}

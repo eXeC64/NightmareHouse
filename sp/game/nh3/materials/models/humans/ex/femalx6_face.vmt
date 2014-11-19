@@ -1,0 +1,14 @@
+"VertexLitGeneric"
+{
+	// Original shader: VertexLitTexture
+	"$basetexture" "models/Humans/Female/Group01/femalx6_face"
+	"$model" "1"
+			"$bumpmap" "models/Humans/Female/Group01/femalx6_face_normal"
+	"$halflambert" 1
+"$phong" "1"
+"$phongexponent" "15"
+"$phongboost" "1"
+"$phongfresnelranges" "[0.3 2.3 5.3]"
+"$phongexponenttexture" "models/Humans/Female/Group01/femalx6_face_EXP"
+"$phongalbedotint" "1"
+}

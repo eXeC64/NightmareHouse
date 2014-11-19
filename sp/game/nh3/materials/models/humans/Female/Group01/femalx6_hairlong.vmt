@@ -1,0 +1,10 @@
+"VertexLitGeneric"
+{
+	// Original shader: VertexLitTranslucentTexture
+	"$translucent" "1"
+	"$basetexture" "models/Humans/Female/Group01/femalx6_hairlong"
+	"$halflambert" "1"
+	"$nodecal" "1"
+	"$nocull" "1"
+	"$model" "1"
+}

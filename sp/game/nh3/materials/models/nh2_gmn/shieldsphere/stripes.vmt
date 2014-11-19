@@ -1,0 +1,48 @@
+//It's called stripes.vmt because I'm a forgetful moron. - GMN
+
+"Refract"
+{
+	"$bluramount" "0.4"
+	"$model" 1
+
+	"%compileNoLight" 1
+	"%compilepassbullets" 1
+	"$nocull" 1
+	"$nodecal" 1
+
+	"$refractamount" ".4"
+	"$refracttint" "[0.8 1 1]"
+	"$normalmap" "dev/water_normal"
+	"$dudvmap" "dev/water_dudv"
+
+	"Proxies"
+	{
+		AnimatedTexture
+		{
+			animatedtexturevar $normalmap
+			animatedtextureframenumvar $bumpframe
+			animatedtextureframerate 21
+		}
+
+	}
+
+	"Refract_dx90"
+	{
+		"$refractamount" "0.150"
+	}
+   
+	"Refract_DX80"
+	{
+		"$refractamount" ".025"
+
+		"Proxies"
+		{
+			"TextureScroll"
+			{
+				"texturescrollvar" "$bumptransform"
+				"texturescrollrate" 0.1
+				"texturescrollangle" 0
+			}
+		}
+	}
+}

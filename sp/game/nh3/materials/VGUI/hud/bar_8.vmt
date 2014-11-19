@@ -1,0 +1,10 @@
+"UnlitGeneric"
+{
+	"$basetexture" "vgui/hud/bar_8"
+        "$translucent" "1"
+        "$ignorez" "1"
+	"$no_fullbright" 1
+	"$nolod" 1
+	"$vertexalpha" 1 
+	"$vertexcolor" 1
+}

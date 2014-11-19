@@ -1,0 +1,6 @@
+VertexLitGeneric
+{
+	$basetexture		models/hospitalprops/Bedcabinets
+	$basemapalphaenvmapmask	1
+	$model			1
+}

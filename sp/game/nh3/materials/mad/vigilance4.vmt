@@ -1,0 +1,30 @@
+"UnlitTwoTexture"
+{
+	"$basetexture" "mad/vigilance4"
+	"$surfaceprop" "glass"
+	"$selfillum" 1
+	"$texture2"	"dev/dev_scanline"
+	"$mod2x" "1"
+
+	"Proxies"
+	{
+
+
+
+		"AnimatedTexture"
+		{
+			"animatedtexturevar" "$basetexture"
+			"animatedtextureframenumvar" "$frame"
+			"animatedtextureframerate" 10
+		}
+
+
+		"TextureScroll"
+		{
+			"texturescrollvar" "$texture2transform"
+			"texturescrollrate" .53
+			"texturescrollangle" -90
+		}
+
+	}
+}

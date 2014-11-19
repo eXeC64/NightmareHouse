@@ -1,0 +1,6 @@
+VertexLitGeneric
+{
+	"$basetexture"	"models\weapons\mp5_m203\shell"
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ .16 .16 .16]"
+}

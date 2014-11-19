@@ -1,0 +1,8 @@
+VertexLitGeneric
+{
+	$baseTexture "models\NH2Zombies\Creeper\fast_zombie_sheet"
+	"$bumpmap" "models/zombie_fast/fast_zombie_sheet_normal"
+	$lightwarptexture models\NH2Zombies\Creeper\stealth_lightwarp_invert
+	$additive 1
+	$model 1
+}

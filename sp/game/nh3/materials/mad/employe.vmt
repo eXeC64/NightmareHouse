@@ -1,0 +1,9 @@
+"LightmappedGeneric"
+{
+	"$baseTexture" "mad/employe"
+	"$surfaceprop" "dirt"
+	"$decal" 1
+	"%keywords" "employe"
+	"$transparent" "1"
+	"$translucent" "1"
+}

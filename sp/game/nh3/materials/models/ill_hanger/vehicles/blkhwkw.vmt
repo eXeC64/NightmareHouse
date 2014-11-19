@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models/ill_hanger/vehicles/blkhwkw"
+	"$translucent" 1
+
+}

@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/atlantis/medical/MedFloorLightDark"
+	"$model" 1
+}

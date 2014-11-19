@@ -1,0 +1,16 @@
+"Unlitgeneric"
+{
+	"$basetexture" "effects/veins"
+	"$translucent" 1
+	"$vertexalpha" 1
+	"%keywords" "veins"
+   "Proxies"
+   {
+      "AnimatedTexture"
+      {
+         "animatedtexturevar" "$basetexture"
+         "animatedtextureframenumvar" "$frame"
+         "animatedtextureframerate" 30
+      }
+   }
+}

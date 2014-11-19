@@ -1,0 +1,9 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/props/vehicles/ambulance"
+	"$bumpmap" "models/props/vehicles/ambulance_normal"
+	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask" "1"	
+	"$surfaceprop" "Metal"
+	
+}

@@ -1,0 +1,11 @@
+VertexLitGeneric
+{
+	$basetexture		gmn_nh3/models/gmn_wallrail_DIFF
+	$surfaceprop		plastic
+	$model			1
+
+	$phong			1
+	$phongexponent		50
+	$phongboost		1
+	$phongfresnelranges	"[0 0.5 1]"
+}

@@ -1,0 +1,8 @@
+"LightmappedGeneric"
+{
+	"$baseTexture" "mad/Weegee"
+	"$surfaceprop" "dirt"
+	"%keywords" "weegee"
+	"$transparent" "1"
+	"$translucent" "1"
+}

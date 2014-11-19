@@ -1,0 +1,7 @@
+//"LightmappedGeneric"
+"UnlitGeneric"
+{
+	"$baseTexture" "vgui/resource/autosave"
+	"$vertexalpha" 1
+}
+

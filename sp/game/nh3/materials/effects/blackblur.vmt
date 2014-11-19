@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+	"$basetexture" "effects/blackblur"
+	"$translucent" 1
+	"%keywords" "blackblur"
+}

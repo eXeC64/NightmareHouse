@@ -1,0 +1,6 @@
+"DecalModulate"
+{
+	"$decal" 1
+	"$basetexture" "dd_atlantis/decals/blood_dragmark8"
+	"$decalscale" 0.25
+}

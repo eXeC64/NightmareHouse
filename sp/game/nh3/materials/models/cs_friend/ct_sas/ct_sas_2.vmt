@@ -1,0 +1,9 @@
+"vertexlitgeneric"
+{
+	"$baseTexture" "models\cs_friend\ct_sas\ct_sas_2"
+        "$envmap" 			"env_cubemap"
+	"$envmapmask"	"models\cs_friend\ct_sas\ct_sas_spec"
+	"$envmapcontrast" 0.3
+	"$envmapsaturation" 0.7
+	"$envmaptint" "[ 0.36 0.36 0.36 ]"
+}

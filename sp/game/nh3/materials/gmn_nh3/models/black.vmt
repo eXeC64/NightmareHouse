@@ -1,0 +1,5 @@
+VertexLitGeneric
+{
+	$color2 "[0.01 0.01 0.01]"
+	$model			1
+}

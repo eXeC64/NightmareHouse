@@ -1,0 +1,7 @@
+"LightmappedGeneric"
+{
+	"$baseTexture" "mad/surgery_sign"
+	"$surfaceprop" "dirt"
+	"$decal" 1
+	"%keywords" "surgery"
+}

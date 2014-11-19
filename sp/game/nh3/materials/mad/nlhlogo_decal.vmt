@@ -1,0 +1,9 @@
+"LightmappedGeneric"
+{
+	"$baseTexture" "mad/nlhlogo_decal"
+	"$surfaceprop" "dirt"
+	"%keywords" "nlhlogo"
+	"$transparent" "1"
+	"$translucent" "1"
+	"$decal" 1
+}

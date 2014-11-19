@@ -1,0 +1,7 @@
+VertexLitGeneric
+{
+	$basetexture		models/hospitalprops/elevator/button_up
+	$model			1
+	$selfillum		1
+	$selfillummask		models/hospitalprops/elevator/button_sillum
+}

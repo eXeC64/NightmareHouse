@@ -1312,6 +1312,9 @@ void CHL2_Player::ToggleZoom(void)
 //-----------------------------------------------------------------------------
 void CHL2_Player::StartZooming( void )
 {
+#ifdef NH3_DLL
+	return;
+#endif
 	int iFOV = 25;
 	if ( SetFOV( this, iFOV, 0.4f ) )
 	{
@@ -1598,6 +1601,9 @@ bool CHL2_Player::CommanderExecuteOne( CAI_BaseNPC *pNpc, const commandgoal_t &g
 //---------------------------------------------------------
 void CHL2_Player::CommanderExecute( CommanderCommand_t command )
 {
+#ifdef NH3
+	return;
+#endif
 	CAI_BaseNPC *pPlayerSquadLeader = GetSquadCommandRepresentative();
 
 	if ( !pPlayerSquadLeader )

@@ -1,0 +1,7 @@
+"LightmappedGeneric"
+{
+	"$baseTexture" "mad/fluorescent_decal"
+	"$surfaceprop" "glass"
+	"$decal" 1
+	"%keywords" "mad"
+}

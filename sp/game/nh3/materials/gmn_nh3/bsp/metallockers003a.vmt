@@ -1,0 +1,5 @@
+LightmappedGeneric
+{
+	$basetexture		gmn_nh3/bsp/metallockers003a
+	$surfaceprop		metal
+}

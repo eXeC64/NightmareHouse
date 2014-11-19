@@ -1,0 +1,15 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "mad/conveyor_belt"
+	"%keywords" "conveyor"
+	"$surfaceprop" "no_decal"
+"Proxies"
+	{	
+	"TextureScroll"
+		{
+		"texturescrollvar" "$baseTextureTransform"
+		"texturescrollrate" "0.80"
+		"texturescrollangle" "0"
+		}
+	}
+}

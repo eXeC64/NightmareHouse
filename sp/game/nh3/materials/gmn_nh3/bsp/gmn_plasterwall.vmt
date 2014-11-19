@@ -1,0 +1,6 @@
+LightmappedGeneric
+{
+	$basetexture		gmn_nh3/bsp/gmn_plasterwall_DIFF
+	$bumpmap		gmn_nh3/bsp/gmn_plasterwall_NRM
+	$surfaceprop		plaster
+}

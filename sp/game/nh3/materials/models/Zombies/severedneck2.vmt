@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zombies/severedneck2"
+	"$halflambert" 1
+	"$nodecal" "1"
+}

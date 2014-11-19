@@ -1,0 +1,18 @@
+UnlitGeneric
+{
+	$basetexture mad/standby
+	$surfaceprop glass
+	$receiveflashlight 0
+	%keywords standby
+	$color "{150 150 150}"
+
+	Proxies
+	{
+		AnimatedTexture
+		{
+		animatedtexturevar $basetexture
+		animatedtextureframenumvar $frame
+		animatedtextureframerate 30
+		}
+	}
+}

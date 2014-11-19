@@ -1,0 +1,8 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/solarthing/solarthing"
+	"$bumpmap" "models/solarthing/solarthing_normal"
+	"$model" 1
+	"$envmapmode" 1
+		
+}

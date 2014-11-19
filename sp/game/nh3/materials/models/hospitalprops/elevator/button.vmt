@@ -1,0 +1,6 @@
+VertexLitGeneric
+{
+	$basetexture		models/hospitalprops/elevator/button
+	$bumpmap		models/hospitalprops/elevator/button_bump
+	$model			1
+}

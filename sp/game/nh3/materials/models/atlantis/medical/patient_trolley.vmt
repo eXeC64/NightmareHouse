@@ -1,0 +1,7 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/atlantis/medical/patient_trolley"
+	"$model" 1
+	"$envmap" "env_cubemap"
+	"$basealphaenvmapmask" 1
+}

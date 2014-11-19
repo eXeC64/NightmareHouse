@@ -1,0 +1,7 @@
+VertexLitGeneric
+{
+	$basetexture models/NH2Zombies/mPatient/Patient_Extras
+	$envmap env_cubemap
+	$envmapmask models/NH2Zombies/mPatient/Patient_Extras_envmap
+	$halflambert 1
+}

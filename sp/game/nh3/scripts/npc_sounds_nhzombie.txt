@@ -1,0 +1,274 @@
+"NPC_Basenhzombie.PoundDoor"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"0.95"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/zombie/zombie_pound_door.wav"
+}
+
+"NPC_Basenhzombie.Swat"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"0.95"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/zombie/zombie_hit.wav"
+}
+
+"nhzombie.FootstepRight"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"0.95"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_65db"
+
+	"rndwave"
+	{
+		"wave"	"npc/zombie/foot1.wav"
+		"wave"	"npc/zombie/foot2.wav"
+		"wave"	"npc/zombie/foot3.wav"
+	}
+}
+
+"nhzombie.FootstepLeft"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"0.95"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_65db"
+
+	"rndwave"
+	{
+		"wave"	"npc/zombie/foot1.wav"
+		"wave"	"npc/zombie/foot2.wav"
+		"wave"	"npc/zombie/foot3.wav"
+	}
+}
+
+"nhzombie.ScuffRight"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"0.95"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_65db"
+
+	"rndwave"
+	{
+		"wave"	"npc/zombie/foot_slide1.wav"
+		"wave"	"npc/zombie/foot_slide2.wav"
+		"wave"	"npc/zombie/foot_slide3.wav"
+	}
+}
+
+"nhzombie.ScuffLeft"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"0.95"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_65db"
+
+	"rndwave"
+	{
+		"wave"	"npc/zombie/foot_slide1.wav"
+		"wave"	"npc/zombie/foot_slide2.wav"
+		"wave"	"npc/zombie/foot_slide3.wav"
+	}
+}
+
+"nhzombie.AttackHit"
+{
+	"channel"		"CHAN_WEAPON"
+	"volume"		"0.95"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/zombie/claw_strike1.wav"
+		"wave"	"npc/zombie/claw_strike2.wav"
+		"wave"	"npc/zombie/claw_strike3.wav"
+	}
+}
+
+"nhzombie.AttackMiss"
+{
+	"channel"		"CHAN_WEAPON"
+	"volume"		"0.95"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/zombie/claw_miss1.wav"
+		"wave"	"npc/zombie/claw_miss2.wav"
+	}
+}
+
+"nhzombie.Pain"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.95"
+	"pitch"			"95, 104"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/nhzombie/nhzombie_pain1.wav"
+		"wave"	"npc/nhzombie/nhzombie_pain2.wav"
+		"wave"	"npc/nhzombie/nhzombie_pain3.wav"
+		"wave"	"npc/nhzombie/nhzombie_pain4.wav"
+		"wave"	"npc/nhzombie/nhzombie_pain5.wav"
+		"wave"	"npc/nhzombie/nhzombie_pain6.wav"
+	}
+}
+
+"nhzombie.Alert"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.95"
+	"pitch"			"95, 104"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/nhzombie/nhzombie_alert1.wav"
+		"wave"	"npc/nhzombie/nhzombie_alert2.wav"
+		"wave"	"npc/nhzombie/nhzombie_alert3.wav"
+	}
+}
+
+"nhzombie.Idle"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.75"
+	"pitch"		"92, 105"
+
+	"soundlevel"	"SNDLVL_65db"
+
+	"rndwave"
+	{
+		"wave"	"npc/nhzombie/nhzombie_voice_idle1.wav"
+		"wave"	"npc/nhzombie/nhzombie_voice_idle2.wav"
+		"wave"	"npc/nhzombie/nhzombie_voice_idle3.wav"
+		"wave"	"npc/nhzombie/nhzombie_voice_idle4.wav"
+		"wave"	"npc/nhzombie/nhzombie_voice_idle5.wav"
+		"wave"	"npc/nhzombie/nhzombie_voice_idle6.wav"
+		"wave"	"npc/nhzombie/nhzombie_voice_idle7.wav"
+		"wave"	"npc/nhzombie/nhzombie_voice_idle8.wav"
+		"wave"	"npc/nhzombie/nhzombie_voice_idle9.wav"
+		"wave"	"npc/nhzombie/nhzombie_voice_idle10.wav"
+		"wave"	"npc/nhzombie/nhzombie_voice_idle11.wav"
+		"wave"	"npc/nhzombie/nhzombie_voice_idle12.wav"
+		"wave"	"npc/nhzombie/nhzombie_voice_idle13.wav"
+		"wave"	"npc/nhzombie/nhzombie_voice_idle14.wav"
+	}
+}
+
+"nhzombie.Die"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.95"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+	"rndwave"
+	{
+		"wave"	"npc/nhzombie/nhzombie_die1.wav"
+		"wave"	"npc/nhzombie/nhzombie_die2.wav"
+		"wave"	"npc/nhzombie/nhzombie_die3.wav"
+	}
+}
+
+"nhzombie.Attack"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.600"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/nhzombie/nhzo_attack1.wav"
+		"wave"	"npc/nhzombie/nhzo_attack2.wav"
+	}
+}
+
+"nhzombie.headexplode_jet"
+{
+	"channel"		"CHAN_STREAM"
+	"volume"		"0.95"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nhzombie/nhzombie_headexplode_jet.wav"
+}
+ 
+"nhzombie.headexplode"
+{
+	"channel"		"CHAN_STREAM"
+	"volume"		"0.95"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nhzombie/nhzombie_headexplode.wav"
+}
+
+ "NPC_Basenhzombie.Moan1"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.95"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nhzombie/nhmoan_loop1.wav"
+}
+
+ "NPC_Basenhzombie.Moan2"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.95"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nhzombie/nhmoan_loop2.wav"
+}
+
+ "NPC_Basenhzombie.Moan3"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.95"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nhzombie/nhmoan_loop3.wav"
+}
+
+ "NPC_Basenhzombie.Moan4"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"0.95"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nhzombie/nhmoan_loop4.wav"
+}

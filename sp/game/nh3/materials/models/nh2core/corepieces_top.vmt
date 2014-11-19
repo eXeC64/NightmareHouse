@@ -1,0 +1,5 @@
+VertexlitGeneric
+{
+	$basetexture	models/nh2core/corepieces_top
+	$model		1
+}

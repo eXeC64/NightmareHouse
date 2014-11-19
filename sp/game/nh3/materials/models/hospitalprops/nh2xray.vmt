@@ -1,0 +1,5 @@
+VertexLitGeneric
+{
+	$basetexture		models/hospitalprops/nh2xray
+	$model			1
+}

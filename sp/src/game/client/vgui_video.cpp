@@ -27,7 +27,7 @@ VideoPanel::VideoPanel( unsigned int nXPos, unsigned int nYPos, unsigned int nHe
 	vgui::VPANEL pParent = enginevgui->GetPanel( PANEL_GAMEUIDLL );
 	SetParent( pParent );
 	SetVisible( false );
-	
+
 	// Must be passed in, off by default
 	m_szExitCommand[0] = '\0';
 
@@ -40,7 +40,7 @@ VideoPanel::VideoPanel( unsigned int nXPos, unsigned int nYPos, unsigned int nHe
 	SetVisible( true );
 	SetPaintBackgroundEnabled( false );
 	SetPaintBorderEnabled( false );
-	
+
 	// Set us up
 	SetTall( nHeight );
 	SetWide( nWidth );
@@ -97,13 +97,15 @@ bool VideoPanel::BeginPlayback( const char *pFilename )
 	m_VideoMaterial = g_pVideo->CreateVideoMaterial( "VideoMaterial", pFilename, "GAME",
 													VideoPlaybackFlags::DEFAULT_MATERIAL_OPTIONS,
 													VideoSystem::DETERMINE_FROM_FILE_EXTENSION, m_bAllowAlternateMedia );
-	
+
 	if ( m_VideoMaterial == NULL )
 		return false;
 
 	// We want to be the sole audio source
 	// FIXME: This may not always be true!
+#ifndef NH3
 	enginesound->NotifyBeginMoviePlayback();
+#endif
 
 	int nWidth, nHeight;
 	m_VideoMaterial->GetVideoImageSize( &nWidth, &nHeight );
@@ -247,6 +249,9 @@ void VideoPanel::Paint( void )
 		// Issue a close command
 		OnVideoOver();
 		OnClose();
+#ifdef NH3
+		return;
+#endif
 	}
 
 	// Sit in the "center"
@@ -262,7 +267,7 @@ void VideoPanel::Paint( void )
 
 	// Draw the polys to draw this out
 	CMatRenderContextPtr pRenderContext( materials );
-	
+
 	pRenderContext->MatrixMode( MATERIAL_VIEW );
 	pRenderContext->PushMatrix();
 	pRenderContext->LoadIdentity();
@@ -314,7 +319,7 @@ void VideoPanel::Paint( void )
 		meshBuilder.Color4f( 1.0f, 1.0f, 1.0f, alpha );
 		meshBuilder.AdvanceVertex();
 	}
-	
+
 	meshBuilder.End();
 	pMesh->Draw();
 
@@ -370,18 +375,18 @@ CON_COMMAND( playvideo, "Plays a video: <filename> [width height]" )
 
 	unsigned int nScreenWidth = Q_atoi( args[2] );
 	unsigned int nScreenHeight = Q_atoi( args[3] );
-	
+
 	char strFullpath[MAX_PATH];
 	Q_strncpy( strFullpath, "media/", MAX_PATH );	// Assume we must play out of the media directory
 	char strFilename[MAX_PATH];
 	Q_StripExtension( args[1], strFilename, MAX_PATH );
 	Q_strncat( strFullpath, args[1], MAX_PATH );
-	
+
 	if ( nScreenWidth == 0 )
 	{
 		nScreenWidth = ScreenWidth();
 	}
-	
+
 	if ( nScreenHeight == 0 )
 	{
 		nScreenHeight = ScreenHeight();

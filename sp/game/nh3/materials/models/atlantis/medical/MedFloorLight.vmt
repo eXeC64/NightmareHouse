@@ -1,0 +1,7 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/atlantis/medical/MedFloorLight"
+	"$selfillum" 1
+	"$selfillummask" "models/atlantis/medical/MedFloorLight_illum"
+	"$model" 1
+}

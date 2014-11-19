@@ -1,0 +1,126 @@
+//Adrian: This file contains the credits info for both the Intro and outro.
+"credits.txt"
+{
+
+//========================================================
+//These are the names used in the intro (trainride)
+//========================================================
+"IntroCreditsNames"
+{
+	" "	"CreditsText"
+	" "	"CreditsText"
+	"Hen Mazolski"   "CreditsText"
+	"Harry '.eXeC!' Jeffery"    "CreditsText"
+	"Christopher 'Guessmyname' Jones"    "CreditsText"
+	"Pedro 'TigerboyPT' Calvo"   "CreditsText"
+	"David Kingery"    "CreditsText"
+	"Danielle McRae"   "CreditsText"
+	"Yoav 'Koolfox' Landau"   "CreditsText"
+	"Aidin Ashoori"   "CreditsText"
+	"Ido Tal"    "CreditsText"
+}
+
+"CreditsParams"
+{
+	"fadeintime"	"2.5"
+	"fadeouttime"	"1"
+	"fadeholdtime"	"1.0"
+	"nextfadetime"	"1.0"
+	"pausebetweenwaves" "1.0"
+	"logotime" "1.0"
+	"posx"	"96"
+	"posy"	"360"
+
+	"color" "255 255 255 128"
+
+//Outro Parameters
+	"scrolltime" "135"
+	"separation"  "10"
+}
+
+//========================================================
+//These are the names used in the outro (breen_01)
+//========================================================
+"OutroCreditsNames"
+{
+ 	"Nightmare House 2 team:"   "CreditsOutroText"
+	"Hen Mazolski - Mod leader, Mod designer, Ideas, Mapper, Writer"   "CreditsOutroText"
+	"Harry '.eXeC!' Jeffery - Coding"    "CreditsOutroText"
+	"Christopher 'Guessmyname' Jones - Modeling"    "CreditsOutroText"
+	"Pedro 'TigerboyPT' Calvo - Faceposer animator, Texture artist"   "CreditsOutroText"
+	"Yoav 'Koolfox' Landau - Music, Sound editing, Voices"   "CreditsOutroText"
+	"Aidin Ashoori  - Music"   "CreditsOutroText"
+	"David Kingery - Voice actor, Writer"    "CreditsOutroText"
+	"Danielle McRae - Voice actress"    "CreditsOutroText"
+	"Ido Tal - Design consultant, Web publishing"    "CreditsOutroText"
+	"The community - More stuff"    "CreditsOutroText"
+	" "	"CreditsOutroText"
+	" "	"CreditsOutroText"
+ 	"Extended credits:"   "CreditsOutroText"
+	"Generic models, Sounds and textures from Half Life 2 and Counter-strike: Source"	"CreditsOutroText"
+	"Hayri 'Barnz' Yurdakul - Helping us a lot with models in hard times"	"CreditsOutroText"
+	"Fakefactory - Emily model"	"CreditsOutroText"
+	"vincent074 - Ambulance model"	"CreditsOutroText"
+	"Colter Wehmeier - Nightmare House skybox texture"	"CreditsOutroText"
+	"slip777 - Axe model"	"CreditsOutroText"
+	"Orgun - Pistol model"	"CreditsOutroText"
+	"Surfa - Creating the basic bones of the code"	"CreditsOutroText"
+	"Riller - Basic reskin for Emily model"	"CreditsOutroText"
+	"Fakefactory - High res Zombie skins"	"CreditsOutroText"
+	"kosuke ueki - Magnum skin"	"CreditsOutroText"
+	"Firegold - SMG model"	"CreditsOutroText"
+	"ILLKID - Helicopter model"	"CreditsOutroText"
+	"FineCheeseLover - SWAT skins"	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	" "	"CreditsOutroText"
+ 	"Beta testers:"   "CreditsOutroText"
+	"Harry '.eXeC!' Jeffery"	"CreditsOutroText"
+	"Pedro 'TigerboyPT' Calvo"	"CreditsOutroText"
+	"Yoav 'Koolfox' Landau"	"CreditsOutroText"
+	"Christopher 'Guessmyname' Jones"	"CreditsOutroText"
+	"Nitai 'NeatNit' Sasson"	"CreditsOutroText"
+	"David 'Shaolindave' Kingery"	"CreditsOutroText"
+	"Or 'Orko' Cohen"	"CreditsOutroText"
+	"Erez 'Mastix' Vadmani"	"CreditsOutroText"
+	"Adi 'Adi42' Matshulski"	"CreditsOutroText"
+	"Erez 'FullMetalBoy' Efrat"	"CreditsOutroText"
+	"Ido 'Dragy' Tal"	"CreditsOutroText"
+	"Dana 'Alice' Feldman"	"CreditsOutroText"
+	"Orr 'Marax' Asher"	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	" "	"CreditsOutroText"
+ 	"Special thanks:"   "CreditsOutroText"
+	"VALVE"	"CreditsOutroText"
+	"The community"	"CreditsOutroText"
+	"The WCS community"	"CreditsOutroText"
+	"Everyone who posted in the NH2 ideas thread"	"CreditsOutroText"
+	"FPSBANANA.com"	"CreditsOutroText"
+	"HL2WORLD.com"	"CreditsOutroText"
+	"Interlopers.net"	"CreditsOutroText"
+	"turbosquid.com"	"CreditsOutroText"
+	"Valve Developer Community"	"CreditsOutroText"
+	"Weebl's Stuff"	"CreditsOutroText"
+	"Everyone listed here and above"	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	"And you!"	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	"  B"	"CreditsOutroLogos"
+	"Visit www.wecreatestuff.com"	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	" "	"CreditsOutroText"
+	"THE END"	"CreditsOutroText"
+
+}
+
+
+
+}

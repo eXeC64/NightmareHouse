@@ -1,0 +1,7 @@
+"LightmappedGeneric"
+{
+	"$baseTexture" "mad/cafe_sign2"
+	"$surfaceprop" "dirt"
+	"$decal" 1
+	"%keywords" "cafe_sign2"
+}

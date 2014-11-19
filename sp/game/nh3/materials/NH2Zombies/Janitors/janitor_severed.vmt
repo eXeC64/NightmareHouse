@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/NH2Zombies/Janitors/janitor_severed"
+	"$halflambert" 1
+}

@@ -1,0 +1,9 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "NH/foot_left"
+	"$decal" "1"
+	"$decalscale" 0.02
+	"$translucent" 1
+	"$transparent" "1"
+	"%keywords" "foot_left"
+}

@@ -1,0 +1,5 @@
+VertexLitGeneric
+{
+	$basetexture		models/hospitalprops/elevator/floor
+	$model			1
+}

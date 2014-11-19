@@ -1,0 +1,8 @@
+"LightmappedGeneric"
+{
+	"$baseTexture" "mad/nhr_house"
+	"$surfaceprop" "dirt"
+	"%keywords" "nhr_house"
+	"$transparent" "1"
+	"$translucent" "1"
+}

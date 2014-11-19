@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/NH2Zombies/Workers/worker_sheet2"
+	"$halflambert" 1
+}

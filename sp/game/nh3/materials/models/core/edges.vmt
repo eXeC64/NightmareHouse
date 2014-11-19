@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/core/edges"
+	"$halflambert" 1
+	"$nodecal" "1"
+}

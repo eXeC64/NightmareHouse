@@ -1,0 +1,8 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "mad/mad_wall"
+	"$surfaceprop" "Dirt"
+	"$bumpmap" "mad/mad_wall_normal"
+	"$translucent" 0
+	"$basealphaenvmapmask" 0
+}

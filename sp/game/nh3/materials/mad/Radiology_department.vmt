@@ -1,0 +1,7 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "mad/Radiology_department"
+	"$normalmap" "mad/Radiology_department_normal"
+	"$decal" 1
+	"%keywords" "rad"
+}

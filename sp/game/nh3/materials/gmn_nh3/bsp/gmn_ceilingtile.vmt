@@ -1,0 +1,11 @@
+LightmappedGeneric
+{
+	$basetexture		gmn_nh3/bsp/gmn_ceilingtile_DIFF
+	$bumpmap		gmn_nh3/bsp/gmn_ceilingtile_NRM
+	$surfaceprop		ceiling_tile
+
+	$detail			detail\noise_detail_01
+	$detailscale		7.74
+	$detailblendfactor	0.2
+	$detailblendmode	0
+}

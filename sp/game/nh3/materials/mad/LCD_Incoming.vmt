@@ -1,0 +1,16 @@
+"Unlitgeneric"
+{
+	"$basetexture" "mad\LCD_Incoming"
+	"$surfaceprop" "glass"
+	"$envmap" "env_cubemap"
+	"$basealphaenvmapmask" "1"
+   "Proxies"
+   {
+      "AnimatedTexture"
+      {
+         "animatedtexturevar" "$basetexture"
+         "animatedtextureframenumvar" "$frame"
+         "animatedtextureframerate" 0.5
+      }
+   }
+}

@@ -1,0 +1,239 @@
+"NPC_nhdemon.LeapAttacknhdemon_leap1"
+{
+	"channel"		"CHAN_WEAPON"
+	"volume"		"0.400"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nh_demon/nhdemon_leap1"
+}
+
+"NPC_nhdemon.FootstepRight"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_IDLE"
+
+	"rndwave"
+	{
+		"wave"	"npc/nh_demon/nhdemon_foot4.wav"
+	}
+}
+
+"NPC_nhdemon.FootstepLeft"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_IDLE"
+
+	"rndwave"
+	{
+		"wave"	"npc/nh_demon/nhdemon_foot1.wav"
+		"wave"	"npc/nh_demon/nhdemon_foot2.wav"
+		"wave"	"npc/nh_demon/nhdemon_foot3.wav"
+	}
+}
+
+"NPC_nhdemon.AttackHit"
+{
+	"channel"		"CHAN_WEAPON"
+	"volume"		"VOL_NORM"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/nh_demon/nhdemon_claw_strike1.wav"
+		"wave"	"npc/nh_demon/nhdemon_claw_strike2.wav"
+		"wave"	"npc/nh_demon/nhdemon_claw_strike3.wav"
+	}
+}
+
+"NPC_nhdemon.AttackMiss"
+{
+	"channel"		"CHAN_WEAPON"
+	"volume"		"VOL_NORM"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/nh_demon/nhdemon_claw_miss1.wav"
+		"wave"	"npc/nh_demon/nhdemon_claw_miss2.wav"
+	}
+}
+
+"NPC_nhdemon.Attack"
+{
+	"channel"		"CHAN_WEAPON"
+	"volume"		"0.600"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nh_demon/nhdemon_leap1.wav"
+}
+
+"NPC_nhdemon.Pain"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"0.600"
+	"pitch"			"95, 105"
+
+	"soundlevel"		"SNDLVL_NORM"
+
+	"wave"			"npc/nh_demon/nhdemon_leap1.wav"
+}
+
+"NPC_nhdemon.Die"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"0.600"
+	"pitch"			"95, 105"
+
+	"soundlevel"		"SNDLVL_NORM"
+
+	"wave"			"npc/nh_demon/nhdemon_wake1.wav"
+}
+
+"NPC_nhdemon.Idle"
+{
+	"channel"		"CHAN_WEAPON"
+	"volume"		"0.600"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/nh_demon/nhdemon_idle1.wav"
+		"wave"	"npc/nh_demon/nhdemon_idle2.wav"
+		"wave"	"npc/nh_demon/nhdemon_idle3.wav"
+	}
+}
+
+"NPC_nhdemon.AlertFar"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nh_demon/nhdemon_fz_alert_far1.wav"
+}
+
+"NPC_nhdemon.AlertNear"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nh_demon/nhdemon_fz_alert_close1.wav"
+}
+
+"NPC_nhdemon.GallopLeft"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/nh_demon/nhdemon_foot1.wav"
+		"wave"	"npc/nh_demon/nhdemon_foot2.wav"
+	}
+}
+
+"NPC_nhdemon.GallopRight"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/nh_demon/nhdemon_foot3.wav"
+		"wave"	"npc/nh_demon/nhdemon_foot4.wav"
+	}
+}
+
+"NPC_nhdemon.Scream"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nh_demon/nhdemon_fz_scream1.wav"
+}
+
+"NPC_nhdemon.RangeAttack"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"VOL_NORM"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nh_demon/nhdemon_leap1.wav"
+}
+
+"NPC_nhdemon.Frenzy"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nh_demon/nhdemon_fz_frenzy1.wav"
+}
+
+"NPC_nhdemon.Moan1"
+{
+	"channel"		"CHAN_STATIC"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nh_demon/nhdemon_breathe_loop1.wav"
+}
+
+
+"NPC_nhdemon.Gurgle"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/nh_demon/nhdemon_gurgle_loop1.wav"
+}
+
+"NPC_nhdemon.NoSound"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"common/null.wav"
+}

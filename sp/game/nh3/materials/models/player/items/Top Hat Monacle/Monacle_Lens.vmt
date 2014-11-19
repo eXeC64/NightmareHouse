@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models\player\items\Top Hat Monacle/Monacle_Lens"
+	"$translucent" 1
+}

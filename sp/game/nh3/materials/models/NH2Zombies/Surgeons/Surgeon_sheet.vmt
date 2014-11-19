@@ -1,0 +1,7 @@
+VertexLitGeneric
+{
+	$basetexture models/NH2Zombies/Surgeons/surgeon_sheet
+	$envmap env_cubemap
+	$envmapmask models/NH2Zombies/Surgeons/surgeon_envmap
+	$halflambert 1
+}

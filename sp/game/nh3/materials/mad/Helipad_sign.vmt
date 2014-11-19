@@ -1,0 +1,7 @@
+"LightmappedGeneric"
+{
+	"$baseTexture" "mad/Helipad_sign"
+	"$surfaceprop" "dirt"
+	"$decal" 1
+	"%keywords" "helipad"
+}

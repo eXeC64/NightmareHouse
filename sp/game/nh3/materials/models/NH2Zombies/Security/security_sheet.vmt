@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/NH2Zombies/Security/security_sheet"
+	$envmap env_cubemap
+	$envmapmask models/NH2Zombies/Security/security_envmap
+	"$halflambert" 1
+}
