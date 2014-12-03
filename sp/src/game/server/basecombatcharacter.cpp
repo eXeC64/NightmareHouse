@@ -107,7 +107,9 @@ BEGIN_DATADESC( CBaseCombatCharacter )
 	DEFINE_FIELD( m_bPreventWeaponPickup, FIELD_BOOLEAN ),
 
 	DEFINE_INPUTFUNC( FIELD_VOID, "KilledNPC", InputKilledNPC ),
-
+#ifdef NH3
+	DEFINE_INPUTFUNC(FIELD_BOOLEAN, "Glow", InputGlow),
+#endif
 END_DATADESC()
 
 
@@ -3323,6 +3325,19 @@ void CBaseCombatCharacter::InputKilledNPC( inputdata_t &inputdata )
 {
 	OnKilledNPC( inputdata.pActivator ? inputdata.pActivator->MyCombatCharacterPointer() : NULL );
 }
+
+#ifdef NH3
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+void CBaseCombatCharacter::InputGlow(inputdata_t &inputdata)
+{
+	if (inputdata.value.Bool())
+		AddGlowEffect();
+	else
+		RemoveGlowEffect();
+}
+
+#endif
 
 //-----------------------------------------------------------------------------
 // Purpose: Overload our muzzle flash and send it to any actively held weapon

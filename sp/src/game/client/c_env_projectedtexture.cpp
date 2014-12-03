@@ -153,6 +153,21 @@ void C_EnvProjectedTexture::UpdateLight( bool bForceUpdate )
 		}
 		else
 		{
+#ifdef NH3
+			// VXP: Fixing targeting
+			Vector vecToTarget;
+			QAngle vecAngles;
+			if ( m_hTargetEntity == NULL )
+			{
+				vecAngles = GetAbsAngles();
+			}
+			else
+			{
+				vecToTarget = m_hTargetEntity->GetAbsOrigin() - GetAbsOrigin();
+				VectorAngles( vecToTarget, vecAngles );
+			}
+			AngleVectors( vecAngles, &vForward, &vRight, &vUp );
+#else
 			vForward = m_hTargetEntity->GetAbsOrigin() - GetAbsOrigin();
 			VectorNormalize( vForward );
 
@@ -168,6 +183,7 @@ void C_EnvProjectedTexture::UpdateLight( bool bForceUpdate )
 
 //			VectorNormalize( vRight );
 //			VectorNormalize( vUp );
+#endif
 		}
 	}
 	else
@@ -220,17 +236,23 @@ void C_EnvProjectedTexture::UpdateLight( bool bForceUpdate )
 	}
 
 	g_pClientShadowMgr->SetFlashlightLightWorld( m_LightHandle, m_bLightWorld );
-
+#ifdef NH3
+		g_pClientShadowMgr->UpdateProjectedTexture( m_LightHandle, true );
+#else
 	if ( bForceUpdate == false )
 	{
 		g_pClientShadowMgr->UpdateProjectedTexture( m_LightHandle, true );
 	}
+#endif
 }
 
 void C_EnvProjectedTexture::Simulate( void )
 {
+#ifdef NH3
+	UpdateLight( GetMoveParent() != NULL );
+#else
 	UpdateLight( false );
-
+#endif
 	BaseClass::Simulate();
 }
 

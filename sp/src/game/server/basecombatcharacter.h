@@ -286,6 +286,9 @@ public:
 	// Character killed (only fired once)
 	virtual void			Event_Killed( const CTakeDamageInfo &info );
 
+#ifdef NH3
+	void InputGlow(inputdata_t &inputdata);
+#endif
 	// Killed a character
 	void InputKilledNPC( inputdata_t &inputdata );
 	virtual void OnKilledNPC( CBaseCombatCharacter *pKilled ) {}; 

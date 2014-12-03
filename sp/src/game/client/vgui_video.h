@@ -56,7 +56,7 @@ protected:
 
 protected:
 	IVideoMaterial *m_VideoMaterial;
-	
+
 	IMaterial		*m_pMaterial;
 	int				m_nPlaybackHeight;			// Calculated to address ratio changes
 	int				m_nPlaybackWidth;
