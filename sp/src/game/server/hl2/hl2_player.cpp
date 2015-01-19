@@ -1601,6 +1601,9 @@ bool CHL2_Player::CommanderExecuteOne( CAI_BaseNPC *pNpc, const commandgoal_t &g
 //---------------------------------------------------------
 void CHL2_Player::CommanderExecute( CommanderCommand_t command )
 {
+#ifdef NH2
+	return;
+#endif
 	CAI_BaseNPC *pPlayerSquadLeader = GetSquadCommandRepresentative();
 
 	if ( !pPlayerSquadLeader )
