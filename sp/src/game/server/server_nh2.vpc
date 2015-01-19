@@ -47,6 +47,16 @@ $Project "Server (NH2)"
 		$File	"vehicle_choreo_generic.cpp"
 		$File	"$SRCDIR\game\shared\vehicle_choreo_generic_shared.h"
 		$File	"$SRCDIR\game\shared\weapon_parse_default.cpp"
+		$Folder	"NH2"
+		{
+			$Folder	"NPC"
+			{
+				$File	"$SRCDIR\game\server\nh2\nh2_guard.cpp"
+				$File	"$SRCDIR\game\server\nh2\nh2_zombie.cpp"
+				$File	"$SRCDIR\game\server\nh2\npc_nh_creeper.cpp"
+				$File	"$SRCDIR\game\server\nh2\npc_nh_demon.cpp"
+			}
+		}
 		$Folder	"HL2 DLL"
 		{
 			$File	"$SRCDIR\game\shared\episodic\achievements_ep1.cpp"
