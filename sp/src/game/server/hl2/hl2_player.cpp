@@ -1312,6 +1312,9 @@ void CHL2_Player::ToggleZoom(void)
 //-----------------------------------------------------------------------------
 void CHL2_Player::StartZooming( void )
 {
+#ifdef NH2
+	return;
+#endif
 	int iFOV = 25;
 	if ( SetFOV( this, iFOV, 0.4f ) )
 	{
