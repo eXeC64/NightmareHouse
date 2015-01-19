@@ -129,6 +129,9 @@ enum SoundFlags_t
 	SND_IGNORE_NAME		= (1<<9),		// used to change all sounds emitted by an entity, regardless of scriptname
 
 	SND_DO_NOT_OVERWRITE_EXISTING_ON_CHANNEL = (1<<10),
+#ifdef NH2
+	SND_AMBIENT_SHOULDNOTPAUSE = (1<<11),
+#endif
 };
 
 #define SND_FLAG_BITS_ENCODE 11

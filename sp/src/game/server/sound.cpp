@@ -879,6 +879,35 @@ void CAmbientGeneric::SendSound( SoundFlags_t flags)
 {
 	char *szSoundFile = (char *)STRING( m_iszSound );
 	CBaseEntity* pSoundSource = m_hSoundSource;
+#ifdef NH2
+	int iFlags = flags | SND_SHOULDPAUSE;
+
+	if( HasSpawnFlags( SND_AMBIENT_SHOULDNOTPAUSE ) )
+		iFlags &= ~SND_SHOULDPAUSE;
+
+	if ( pSoundSource )
+	{
+		if ( iFlags == SND_STOP )
+		{
+			UTIL_EmitAmbientSound(pSoundSource->GetSoundSourceIndex(), pSoundSource->GetAbsOrigin(), szSoundFile,
+						0, SNDLVL_NONE, iFlags, 0);
+		}
+		else
+		{
+			UTIL_EmitAmbientSound(pSoundSource->GetSoundSourceIndex(), pSoundSource->GetAbsOrigin(), szSoundFile,
+				(m_dpv.vol * 0.01), m_iSoundLevel, iFlags, m_dpv.pitch);
+		}
+	}
+	else
+	{
+		if ( ( iFlags == SND_STOP ) &&
+			( m_nSoundSourceEntIndex != -1 ) )
+		{
+			UTIL_EmitAmbientSound(m_nSoundSourceEntIndex, GetAbsOrigin(), szSoundFile,
+					0, SNDLVL_NONE, iFlags, 0);
+		}
+	}
+#else
 	if ( pSoundSource )
 	{
 		if ( flags == SND_STOP )
@@ -901,6 +930,7 @@ void CAmbientGeneric::SendSound( SoundFlags_t flags)
 					0, SNDLVL_NONE, flags, 0);
 		}
 	}
+#endif
 }
 
 
