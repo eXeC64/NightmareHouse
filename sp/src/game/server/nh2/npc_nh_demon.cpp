@@ -1074,8 +1074,8 @@ void CNH2Demon::HandleAnimEvent( animevent_t *pEvent )
 		Vector right;
 		AngleVectors( GetLocalAngles(), NULL, &right, NULL );
 		right = right * -50;
-
-		ClawAttack( GetClawAttackRange(), 3, QAngle( -3, -5, -3 ), right, ZOMBIE_BLOOD_RIGHT_HAND );
+		QAngle angle(-3, 5, -3);
+		ClawAttack( GetClawAttackRange(), 3, angle, right, ZOMBIE_BLOOD_RIGHT_HAND );
 		return;
 	}
 
@@ -1084,7 +1084,8 @@ void CNH2Demon::HandleAnimEvent( animevent_t *pEvent )
 		Vector right;
 		AngleVectors( GetLocalAngles(), NULL, &right, NULL );
 		right = right * 50;
-		ClawAttack( GetClawAttackRange(), 3, QAngle( -3, 5, -3 ), right, ZOMBIE_BLOOD_LEFT_HAND );
+		QAngle angle(-3, 5, -3);
+		ClawAttack( GetClawAttackRange(), 3, angle, right, ZOMBIE_BLOOD_LEFT_HAND );
 		return;
 	}
 
@@ -1468,8 +1469,8 @@ void CNH2Demon::LeapAttackTouch( CBaseEntity *pOther )
 	Vector forward;
 	AngleVectors( GetLocalAngles(), &forward );
 	QAngle qaPunch( 15, random->RandomInt(-5,5), random->RandomInt(-5,5) );
-	
-	ClawAttack( GetClawAttackRange(), 5, qaPunch, forward * 500, ZOMBIE_BLOOD_BOTH_HANDS );
+	forward *= 500;
+	ClawAttack( GetClawAttackRange(), 5, qaPunch, forward, ZOMBIE_BLOOD_BOTH_HANDS );
 
 	SetTouch( NULL );
 }
