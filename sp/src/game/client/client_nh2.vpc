@@ -26,6 +26,13 @@ $Project "Client (NH2)"
 		$File	"hud_chat.cpp"
 		$File	"c_team_objectiveresource.cpp"
 		$File	"c_team_objectiveresource.h"
+		$Folder	"NH2"
+		{
+			$Folder	"Hud Elements"
+			{
+				$File	"nh2\hud_video.cpp"
+			}
+		}
 		$Folder	"HL2 DLL"
 		{
 			$File	"$SRCDIR\game\shared\hl2\basehlcombatweapon_shared.cpp"
