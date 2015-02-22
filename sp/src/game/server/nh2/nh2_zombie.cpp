@@ -138,7 +138,7 @@ public:
 	bool IsSquashed( const CTakeDamageInfo &info );
 	void BuildScheduleTestBits( void );
 	
-	HeadcrabRelease_t CNH_Zombie::ShouldReleaseHeadcrab( const CTakeDamageInfo &info, float flDamageThreshold );
+	HeadcrabRelease_t ShouldReleaseHeadcrab( const CTakeDamageInfo &info, float flDamageThreshold );
 
 
 	void PrescheduleThink( void );
