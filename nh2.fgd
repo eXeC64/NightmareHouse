@@ -430,3 +430,14 @@ submodelfive(choices) : "Submodel to use for bodygroup 4" : 0 =
 	output OnTrigger(void) : "Fired when the trigger is activated."
 	output OnTimeout(void) : "Fired after the timeout interval expires if the player never looked at the target."
 ]
+
+@SolidClass base(Targetname) = func_lod : "Brush-built model that fades out over a specified distance. Useful for creating world detail that doesn't need to be drawn far away, for performance reasons."
+[
+	DisappearDist(integer)    : "Disappear Distance" : 2000 : "Distance at which these brushes should fade out."
+	InvertAlpha(bool)         : "Inverts the calculated visibility."
+	Solid(choices) : "Solid" : 0 : "Set whether or not these brushes should collide with other entities." =
+	[
+		0: "Solid"
+		1: "Nonsolid"
+	]
+]
