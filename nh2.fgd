@@ -1,0 +1,432 @@
+//=============================================================================
+//
+// Nightmare House 2
+//
+//=============================================================================
+
+@include "halflife2.fgd"
+
+@NPCClass base(BaseNPC) studioprop("models/Zombie/fast.mdl") = npc_fastzombie_headcrabless : "Heacrabless Fast Zombie"
+[
+]
+
+@NPCClass base(BaseNPC) studioprop("models/Zombie/Classic.mdl") = npc_zombie_headcrabless : "Headcrabless Zombie"
+[
+]
+
+@NPCClass base(BaseNPC) studioprop("models/Zombie/Classic_torso.mdl") = npc_zombie_torso_headcrabless : "Headcrabless Zombie Torso"
+[
+]
+
+@NPCClass base(BaseNPC) studioprop("models/Zombie/Poison.mdl") = npc_poisonzombie_headcrabless : "Headcrabless Poison Zombie"
+[
+]
+
+@PointClass base(Targetname, Origin) studio("models/props_junk/flare.mdl") = item_flare : "A flare for the player to pickup"
+[
+	targetname(target_source) : "Name"
+	angles(angle) : "Pitch Yaw Roll (Y Z X)" : "0 0 0" : "This entity's orientation in the world. Pitch is rotation around the Y axis, " +
+		"yaw is the rotation around the Z axis, roll is the rotation around the X axis."
+	model(studio) : "World Model" : "models/props_junk/flare.mdl"
+	solid(choices) : "Collision Type" : 6 : "Collision Type" =
+	[
+		0 : "Not Solid"
+		2 : "Use Bounding Box"
+		6 : "Use VPhysics"
+	]
+	
+	spawnflags(flags) =
+	[
+		1 : "Start Constrained" : 0
+	]
+	
+	// Outputs
+	output OnPlayerTouch(void) : "Fired when a Player touches the flare."
+	output OnKilled(void) : "Fired when this entity gets removed."
+	output OnPlayerUse(void) : "Fires when the player +uses this flare"
+	output OnPlayerPickup(void) : "Fires when the player picks up this flare"
+]
+@PointClass base(Targetname, Angles) sphere(radius) sphere(inner_radius) = point_push: "Point Push"
+[
+	targetentityname(target_destination) : "Limit to Entity" : "" : "If specified, the push will only affect the matching entity."
+
+	spawnflags(Flags) = 
+	[
+		1 : "Test LOS before pushing" : 0
+		2 : "Use angles for push direction" : 0
+		4 : "No falloff (constant push at any distance)" : 0
+		8 : "Push players" : 1
+		16 : "Push physics" : 1
+	]
+	
+	enabled(choices) : "Start Enabled"	: 1 =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	
+	magnitude(float) : "Magnitude" : 100 : "How strongly to push away from the center."
+	radius(float) : "Radius" : 128 : "Radius to affect items in."
+	inner_radius(float) : "Inner radius" : "0" : "If not zero, the LOS is calculated from a point intersecting this sphere."
+	
+	input Enable(void) : "Enable the push."
+	input Disable(void): "Disable the push."
+]
+@NPCClass base(BaseNPC) studio("models/NH2Zombies/doctor01.mdl") = npc_nh_doctor : "NH2 Doctor"
+[
+	headmodel(choices) : "Head model to use" : 13 =
+	[
+		0 : "Half a head"
+		1 : "No head"
+		2 : "Black Head"
+		4 : "Bald Head"
+		5 : "Jaw-less Head"
+		6 : "Nose-less Head"
+		7 : "Cheek-less Head"
+		8 : "Old Head"
+		9 : "Squished Head"
+		3 : "Black Head + Hat"
+		10 : "Bald Head + Hat"
+		11 : "Jaw-less Head + Hat"
+		12 : "Nose-less Head + Hat"
+		13 : "Random Head"
+	]
+]
+
+@NPCClass base(BaseNPC) studio("models/NH2Zombies/patient01.mdl") = npc_nh_patient : "NH2 Patient"
+[
+	bodymodel(choices) : "Body model to use" : 0 =
+	[
+		0 : "Random Body"
+		1 : "Large Body"
+		2 : "Thin Body"
+		3 : "One Arm Body"
+	]
+
+	headmodel(choices) : "Head model to use" : 9 =
+	[
+		0 : "Half a head"
+		1 : "No head"
+		2 : "Black Head"
+		3 : "Bald Head"
+		4 : "Jaw-less Head"
+		5 : "Nose-less Head"
+		6 : "Cheek-less Head"
+		7 : "Old Head"
+		8 : "Squished Head"
+		9 : "Random Head"
+	]
+]
+
+@NPCClass base(BaseNPC) studio("models/NH2Zombies/surgeon01.mdl") = npc_nh_surgeon : "NH2 Surgeon"
+[
+	bodymodel(choices) : "Body model to use" : 0 =
+	[
+		0 : "Random Body"
+		1 : "Large Body"
+		2 : "Thin Body"
+	]
+
+	headmodel(choices) : "Head model to use" : 15 =
+	[
+		0 : "Half a head"
+		1 : "No head"
+		2 : "Black Head"
+		4 : "Bald Head"
+		5 : "Jaw-less Head"
+		6 : "Nose-less Head"
+		7 : "Cheek-less Head"
+		8 : "Old Head"
+		9 : "Squished Head"
+		3 : "Black Head + Hat"
+		10 : "Bald Head + Hat"
+		11 : "Jaw-less Head + Hat"
+		12 : "Nose-less Head + Hat"
+		13 : "Cheek-less Head + Hat"
+		14 : "Old Head + Hat"
+		15 : "Random Head"
+	]
+]
+@NPCClass base(BaseNPC) studio("models/NH2Zombies/janitor01.mdl") = npc_nh_janitor : "NH2 Janitor"
+[
+	bodymodel(choices) : "Body model to use" : 0 =
+	[
+		0 : "Random Body"
+		1 : "Large Body"
+		2 : "Thin Body"
+	]
+
+	headmodel(choices) : "Head model to use" : 15 =
+	[
+		0 : "Half a head"
+		1 : "No head"
+		2 : "Black Head"
+		4 : "Bald Head"
+		5 : "Jaw-less Head"
+		6 : "Nose-less Head"
+		7 : "Cheek-less Head"
+		8 : "Old Head"
+		9 : "Squished Head"
+		3 : "Black Head + Hat"
+		10 : "Bald Head + Hat"
+		11 : "Jaw-less Head + Hat"
+		12 : "Nose-less Head + Hat"
+		13 : "Cheek-less Head + Hat"
+		14 : "Old Head + Hat"
+		15 : "Random Head"
+	]
+]
+
+@NPCClass base(BaseNPC) studio("models/NH2Zombies/Worker01.mdl") = npc_nh_worker : "NH2 Worker"
+[
+	bodymodel(choices) : "Body model to use" : 0 =
+	[
+		0 : "Random Body"
+		1 : "Large Body"
+		2 : "Thin Body"
+	]
+
+	headmodel(choices) : "Head model to use" : 16 =
+	[
+		0 : "Half a head"
+		1 : "No head"
+		2 : "Black Head"
+		4 : "Bald Head"
+		5 : "Jaw-less Head"
+		6 : "Nose-less Head"
+		7 : "Cheek-less Head"
+		8 : "Old Head"
+		9 : "Squished Head"
+		3 : "Black Head + Hat"
+		10 : "Bald Head + Hat"
+		11 : "Jaw-less Head + Hat"
+		12 : "Nose-less Head + Hat"
+		13 : "Cheek-less Head + Hat"
+		14 : "Old Head + Hat"
+		15 : "Random Head"
+		16 : "Random Head"
+	]
+]
+@NPCClass base(BaseNPC) studio("models/NH2Zombies/security01.mdl") = npc_nh_guard : "NH2 Guard"
+[
+
+]
+@NPCClass base(BaseNPC) studio("models/NH2Zombies/Friendly.mdl") = npc_nh_demon : "Demon"
+[
+
+]
+@NPCClass base(BaseNPC) studio("models/NH2Zombies/Cook.mdl") = npc_nh_cook : "Cook"
+[
+	
+]
+@PointClass base(game_text) iconsprite("editor/game_text.vmt") = mm_game_text : 
+    "An entity that displays customized text on player's screens."
+[
+  input DisplayText(string) : "Display this message text."
+]
+
+@NPCClass base(BaseNPC) studio("models/NH2Zombies/gibs/doctor_torso.mdl") = npc_nh_doctor_torso : "NH2 Doctor Torso"
+[
+	headmodel(choices) : "Head model to use" : 13 =
+	[
+		0 : "Half a head"
+		1 : "No head"
+		2 : "Black Head"
+		4 : "Bald Head"
+		5 : "Jaw-less Head"
+		6 : "Nose-less Head"
+		7 : "Cheek-less Head"
+		8 : "Old Head"
+		9 : "Squished Head"
+		3 : "Black Head + Hat"
+		10 : "Bald Head + Hat"
+		11 : "Jaw-less Head + Hat"
+		12 : "Nose-less Head + Hat"
+		13 : "Random Head"
+	]
+]
+
+@NPCClass base(BaseNPC) studio("models/NH2Zombies/gibs/patient_torso.mdl") = npc_nh_patient_torso : "NH2 Patient Torso"
+[
+	headmodel(choices) : "Head model to use" : 9 =
+	[
+		0 : "Half a head"
+		1 : "No head"
+		2 : "Black Head"
+		3 : "Bald Head"
+		4 : "Jaw-less Head"
+		5 : "Nose-less Head"
+		6 : "Cheek-less Head"
+		7 : "Old Head"
+		8 : "Squished Head"
+		9 : "Random Head"
+	]
+]
+
+
+@NPCClass base(BaseNPC) studio("models/NH2Zombies/gibs/janitor_torso.mdl") = npc_nh_janitor_torso : "NH2 Janitor Torso"
+[
+	headmodel(choices) : "Head model to use" : 15 =
+	[
+		0 : "Half a head"
+		1 : "No head"
+		2 : "Black Head"
+		4 : "Bald Head"
+		5 : "Jaw-less Head"
+		6 : "Nose-less Head"
+		7 : "Cheek-less Head"
+		8 : "Old Head"
+		9 : "Squished Head"
+		3 : "Black Head + Hat"
+		10 : "Bald Head + Hat"
+		11 : "Jaw-less Head + Hat"
+		12 : "Nose-less Head + Hat"
+		13 : "Cheek-less Head + Hat"
+		14 : "Old Head + Hat"
+		15 : "Random Head"
+	]
+]
+
+@PointClass base(Angles, Targetname, Studiomodel, DXLevelChoice, BaseFadeProp, EnableDisable) sphere(fademindist) sphere(fademaxdist) studioprop() = physics_prop_ragdoll :
+	"A prop that physically simulates and can be articulated with internal joints. The joint constraints are part of the physics model."
+[
+	spawnflags(flags) = 
+	[
+		4 : "Debris - Don't collide with the player or other debris" : 1
+		8192 : "Allow Dissolve" : 0
+		16384 : "Motion Disabled" : 0
+		32768 : "Allow stretch" : 0
+		65536 : "Start asleep" : 0
+	]
+	angleOverride(string) : "Override Animation" : "" : "Filled in by the engine via wc_update_entity, do not edit by hand except to clear."
+
+	input StartRagdollBoogie(void) : "Begins ragdoll boogie effect. Parameter override = number of seconds to boogie."
+	input EnableMotion(void) : "Enable physics motion/collision response."
+	input DisableMotion(void) : "Disable physics motion/collision response."
+	input FadeAndRemove(float) : "Fade out then remove (kill) self. Parameter override = duration of fade"
+
+	submodelone(choices) : "Submodel to use for bodygroup 0" : 0 =
+	[
+		0 : "0"
+		1 : "1"
+		2 : "2"
+		3 : "3"
+		4 : "4"
+		5 : "5"
+		6 : "6"
+		7 : "7"
+		8 : "8"
+		9 : "9"
+		10 : "10"
+		11 : "11"
+		12 : "12"
+		13 : "13"
+		14 : "14"
+		15 : "15"
+	]
+
+	submodeltwo(choices) : "Submodel to use for bodygroup 1" : 0 =
+	[
+		0 : "0"
+		1 : "1"
+		2 : "2"
+		3 : "3"
+		4 : "4"
+		5 : "5"
+		6 : "6"
+		7 : "7"
+		8 : "8"
+		9 : "9"
+		10 : "10"
+		11 : "11"
+		12 : "12"
+		13 : "13"
+		14 : "14"
+		15 : "15"
+	]
+
+	submodelthree(choices) : "Submodel to use for bodygroup 2" : 0 =
+	[
+		0 : "0"
+		1 : "1"
+		2 : "2"
+		3 : "3"
+		4 : "4"
+		5 : "5"
+		6 : "6"
+		7 : "7"
+		8 : "8"
+		9 : "9"
+		10 : "10"
+		11 : "11"
+		12 : "12"
+		13 : "13"
+		14 : "14"
+		15 : "15"
+	]
+
+submodelfour(choices) : "Submodel to use for bodygroup 3" : 0 =
+	[
+		0 : "0"
+		1 : "1"
+		2 : "2"
+		3 : "3"
+		4 : "4"
+		5 : "5"
+		6 : "6"
+		7 : "7"
+		8 : "8"
+		9 : "9"
+		10 : "10"
+		11 : "11"
+		12 : "12"
+		13 : "13"
+		14 : "14"
+		15 : "15"
+	]
+
+submodelfive(choices) : "Submodel to use for bodygroup 4" : 0 =
+	[
+		0 : "0"
+		1 : "1"
+		2 : "2"
+		3 : "3"
+		4 : "4"
+		5 : "5"
+		6 : "6"
+		7 : "7"
+		8 : "8"
+		9 : "9"
+		10 : "10"
+		11 : "11"
+		12 : "12"
+		13 : "13"
+		14 : "14"
+		15 : "15"
+	]
+]
+
+@SolidClass base(Trigger) = trigger_look :
+	"An entity used to trigger something when the player looks at something. It fires 'OnTrigger' when the player "+
+	"looks at a target entity for the given amount of time, while within the trigger volume. If the player leaves "+
+	"the trigger or looks away from the target entity the clock resets. If the 'Use Velocity instead of facing' spawnflag " +
+	"is checked, the trigger uses the player's velocity instead of the player's view, so it determines whenever the player "+
+	"is moving toward the target entity. Useful for triggering when players are driving a vehicle at something."+
+	"NOTE: Only designed for single-player game. "
+[
+	spawnflags(flags) = 
+	[ 
+		128: "Fire Once" : 1 
+		256: "Use Velocity instead of facing" : 0
+		512: "Invert. aka trigger_not_look" : 0
+	]
+	
+	target(target_destination) : "Look Target" : : "The name of the entity to be looked at."
+	LookTime(string) : "LookTime" : "0.5" : "The time, in seconds, that the player must look the target before firing the output. Resets if player leaves trigger, or looks outside the Field of View threshold."
+	FieldOfView(string) : "FieldOfView" : "0.9" : "How close the player has to be looking at the target. 1.0 = straight ahead\n 0.0 = +/- 90 degrees\n -1.0 = all directions)."
+	Timeout(float) : "Timeout" : "0" : "The time, in seconds, to wait after player enters the trigger before firing the OnTimeout output, 0 = never."
+
+	// Output
+	output OnTrigger(void) : "Fired when the trigger is activated."
+	output OnTimeout(void) : "Fired after the timeout interval expires if the player never looked at the target."
+]
