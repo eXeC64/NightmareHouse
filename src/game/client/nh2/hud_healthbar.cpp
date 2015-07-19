@@ -44,7 +44,7 @@ DECLARE_HUDELEMENT (CHudHealthBar);
 // Purpose: Constructor
 //------------------------------------------------------------------------
 CHudHealthBar::CHudHealthBar (const char * pElementName) :
-	CHudElement(pElementName), BaseClass(NULL, "HudHealthBar")
+	CHudElement(pElementName), BaseClass(NULL, "NH2HealthBar")
 {
 	vgui::Panel* pParent = g_pClientMode->GetViewport();
 	SetParent(pParent);
