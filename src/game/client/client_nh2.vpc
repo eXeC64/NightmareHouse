@@ -34,6 +34,7 @@ $Project "Client (NH2)"
 				$File	"nh2\hud_veins.cpp"
 				$File	"nh2\hud_healthbar.cpp"
 				$File	"nh2\hud_lightbar.cpp"
+				$File	"nh2\hud_sprintbar.cpp"
 			}
 		}
 		$Folder	"HL2 DLL"
