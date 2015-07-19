@@ -32,7 +32,7 @@ protected:
 	vgui::IImage* m_pBackground;
 	float m_flHealth;
 	CPanelAnimationVar(vgui::HFont, m_hTextFont, "TextFont", "HUD_NH2_Health");
-	CPanelAnimationVar(float, m_flBarWidth, "BarWidth", "0.6");
+	CPanelAnimationVar(float, m_flBarWidth, "BarWidth", "0.7");
 	CPanelAnimationVar(float, m_flBarHeight, "BarHeight", "0.775");
 	CPanelAnimationVar(float, m_flBarInsetX, "BarInsetX", "0.15");
 	CPanelAnimationVar(float, m_flBarInsetY, "BarInsetY", "0.125");
