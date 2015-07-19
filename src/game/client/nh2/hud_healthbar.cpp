@@ -31,7 +31,10 @@ protected:
 	vgui::IImage* m_pBar;
 	vgui::IImage* m_pBackground;
 	float m_flHealth;
-	CPanelAnimationVar(vgui::HFont, m_hTextFont, "TextFont", "HUD_NH2_Health");
+	CPanelAnimationVar(vgui::HFont, m_hTextFont, "TextFont", "NH2HUDText");
+	CPanelAnimationVar(int, m_iTextAlpha, "TextAlpha", "150");
+	CPanelAnimationVar(float, m_flTextX, "TextX", "0.025");
+	CPanelAnimationVar(float, m_flTextY, "TextY", "0.10");
 	CPanelAnimationVar(float, m_flBarWidth, "BarWidth", "0.7");
 	CPanelAnimationVar(float, m_flBarHeight, "BarHeight", "0.775");
 	CPanelAnimationVar(float, m_flBarInsetX, "BarInsetX", "0.15");
@@ -95,7 +98,7 @@ void CHudHealthBar::Paint()
 	g_pVGuiLocalize->ConvertANSIToUnicode(sz, wsz, sizeof(wsz));
 
 	vgui::surface()->DrawSetTextFont(m_hTextFont);
-	vgui::surface()->DrawSetTextColor(Color(255,255,255,255));
-	vgui::surface()->DrawSetTextPos(0,0);
+	vgui::surface()->DrawSetTextColor(Color(255,m_flHealth > 21 ? 255 : 0, m_flHealth > 21 ? 255 : 0, m_iTextAlpha));
+	vgui::surface()->DrawSetTextPos(panelWidth*m_flTextX, panelHeight*m_flTextY);
 	vgui::surface()->DrawPrintText(wsz,wcslen(wsz));
 }
