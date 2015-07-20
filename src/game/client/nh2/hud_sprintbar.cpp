@@ -33,7 +33,7 @@ protected:
 	CPanelAnimationVar(vgui::HFont, m_hIconFont, "IconFont", "NH2HUDIcons");
 	CPanelAnimationVar(int, m_iIconAlpha, "IconAlpha", "150");
 	CPanelAnimationVar(float, m_flIconX, "IconX", "0.025");
-	CPanelAnimationVar(float, m_flIconY, "IconY", "0.10");
+	CPanelAnimationVar(float, m_flIconY, "IconY", "-0.6");
 	CPanelAnimationVar(float, m_flBarWidth, "BarWidth", "0.7");
 	CPanelAnimationVar(float, m_flBarHeight, "BarHeight", "0.775");
 	CPanelAnimationVar(float, m_flBarInsetX, "BarInsetX", "0.15");
