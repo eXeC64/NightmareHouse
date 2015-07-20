@@ -88,7 +88,7 @@ void CHudSprintBar::Paint()
 
 	m_pBar->SetSize(panelWidth*m_flBarWidth, panelHeight*m_flBarHeight);
 	m_pBar->SetPos(panelWidth*m_flBarInsetX, panelHeight*m_flBarInsetY);
-	m_pBar->SetFrame(static_cast<int>(flPower-1));
+	m_pBar->SetFrame(max(0,flPower));
 	m_pBar->Paint();
 
 	//Draw sprint icon

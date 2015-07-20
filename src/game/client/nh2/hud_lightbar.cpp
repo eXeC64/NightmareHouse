@@ -85,9 +85,10 @@ void CHudLightBar::Paint()
 	m_pBackground->SetPos(0,0);
 	m_pBackground->Paint();
 
+	m_pBar->SetColor(Color(255,flBattery > 21 ? 255 : 0, flBattery > 21 ? 255 : 0, 255));
 	m_pBar->SetSize(panelWidth*m_flBarWidth, panelHeight*m_flBarHeight);
 	m_pBar->SetPos(panelWidth*m_flBarInsetX, panelHeight*m_flBarInsetY);
-	m_pBar->SetFrame(static_cast<int>(flBattery-1));
+	m_pBar->SetFrame(static_cast<int>(flBattery));
 	m_pBar->Paint();
 
 	m_pIcon->SetSize(panelHeight * m_flIconSize, panelHeight * m_flIconSize);
