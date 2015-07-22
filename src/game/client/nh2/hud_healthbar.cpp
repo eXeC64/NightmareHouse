@@ -30,6 +30,7 @@ protected:
 
 	vgui::IImage* m_pBar;
 	vgui::IImage* m_pBackground;
+	vgui::IImage* m_pOverlay;
 	float m_flHealth;
 	CPanelAnimationVar(vgui::HFont, m_hTextFont, "TextFont", "NH2HUDText");
 	CPanelAnimationVar(int, m_iTextAlpha, "TextAlpha", "150");
@@ -39,6 +40,10 @@ protected:
 	CPanelAnimationVar(float, m_flBarHeight, "BarHeight", "0.775");
 	CPanelAnimationVar(float, m_flBarInsetX, "BarInsetX", "0.15");
 	CPanelAnimationVar(float, m_flBarInsetY, "BarInsetY", "0.125");
+	CPanelAnimationVar(float, m_flOverlayWidth, "OverlayWidth", "0.12");
+	CPanelAnimationVar(float, m_flOverlayHeight, "OverlayHeight", "0.6");
+	CPanelAnimationVar(float, m_flOverlayX, "OverlayX", "0.02");
+	CPanelAnimationVar(float, m_flOverlayY, "OverlayY", "0.2");
 };
 
 DECLARE_HUDELEMENT (CHudHealthBar);
@@ -53,6 +58,7 @@ CHudHealthBar::CHudHealthBar (const char * pElementName) :
 	SetParent(pParent);
 	m_pBar = vgui::scheme()->GetImage("hud/healthbar_fg", false);
 	m_pBackground = vgui::scheme()->GetImage("hud/healthbar_bg", false);
+	m_pOverlay = vgui::scheme()->GetImage("hud/healthbar_overlay", false);
 	SetHiddenBits (HIDEHUD_HEALTH | HIDEHUD_PLAYERDEAD | HIDEHUD_NEEDSUIT);
 }
 
@@ -101,4 +107,8 @@ void CHudHealthBar::Paint()
 	vgui::surface()->DrawSetTextColor(Color(255,m_flHealth > 21 ? 255 : 0, m_flHealth > 21 ? 255 : 0, m_iTextAlpha));
 	vgui::surface()->DrawSetTextPos(panelWidth*m_flTextX, panelHeight*m_flTextY);
 	vgui::surface()->DrawPrintText(wsz,wcslen(wsz));
+
+	m_pOverlay->SetSize(panelWidth * m_flOverlayWidth, panelHeight * m_flOverlayHeight);
+	m_pOverlay->SetPos(panelWidth*m_flOverlayX, panelHeight*m_flOverlayY);
+	m_pOverlay->Paint();
 }
