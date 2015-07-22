@@ -85,7 +85,6 @@ void CHudLightBar::Paint()
 	m_pBackground->SetPos(0,0);
 	m_pBackground->Paint();
 
-	m_pBar->SetColor(Color(255,flBattery > 21 ? 255 : 0, flBattery > 21 ? 255 : 0, 255));
 	m_pBar->SetSize(panelWidth*m_flBarWidth, panelHeight*m_flBarHeight);
 	m_pBar->SetPos(panelWidth*m_flBarInsetX, panelHeight*m_flBarInsetY);
 	m_pBar->SetFrame(static_cast<int>(flBattery));
@@ -93,8 +92,19 @@ void CHudLightBar::Paint()
 
 	m_pIcon->SetSize(panelHeight * m_flIconSize, panelHeight * m_flIconSize);
 	m_pIcon->SetPos(0.5 * panelHeight * (1.0 - m_flIconSize), 0.5 * panelHeight * (1.0 - m_flIconSize));
-	/* m_pBar->SetFrame(bIsOn ? 1 : 2); */
+
+	const bool bIsRed = flBattery < 21;
 	if (bIsOn)
+		if (bIsRed)
+			m_pIcon->SetFrame(2);
+		else
+			m_pIcon->SetFrame(1);
+	else
+		if (bIsRed)
+			m_pIcon->SetFrame(3);
+		else
+			m_pIcon->SetFrame(0);
+
 	m_pIcon->Paint();
 
 	//Draw icon
