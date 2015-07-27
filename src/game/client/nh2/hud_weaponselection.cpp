@@ -729,18 +729,6 @@ void CHudWeaponSelection::DrawBox(int x, int y, int wide, int tall, Color color,
 	surface()->DrawSetTexture( m_nBoxTextureId2 );
 	surface()->DrawSetColor( 255, 255, 255, 255 );
 	surface()->DrawTexturedRect( x, y, x + wide, y + tall );
-
-	// draw the number
-	if (number >= 0)
-	{
-		Color numberColor = m_NumberColor;
-		numberColor[3] *= normalizedAlpha / 255.0f;
-		surface()->DrawSetTextColor(numberColor);
-		surface()->DrawSetTextFont(m_hNumberFont);
-		wchar_t wch = '0' + number;
-		surface()->DrawSetTextPos(x + m_flSelectionNumberXPos, y + m_flSelectionNumberYPos);
-		surface()->DrawUnicodeChar(wch);
-	}
 }
 
 //-----------------------------------------------------------------------------
@@ -1063,9 +1051,8 @@ void CHudWeaponSelection::FastWeaponSwitch( int iWeaponSlot )
 		pPlayer->EmitSound( "Player.DenyWeaponSelection" );
 	}
 
-		// kill any fastswitch display
-		m_flSelectionTime = 0.0f;
-	}
+	// kill any fastswitch display
+	m_flSelectionTime = 0.0f;
 }
 
 //-----------------------------------------------------------------------------
