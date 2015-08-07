@@ -136,7 +136,7 @@ private:
 
 	CPanelAnimationVarAliasType( float, m_flWepXPos, "WepXPos", "20", "proportional_float" );
 	CPanelAnimationVarAliasType( float, m_flWepYPos, "WepYPos", "30", "proportional_float" );
-	CPanelAnimationVarAliasType( float, m_flWepXSize, "WepXSize", "30", "proportional_float" );
+	CPanelAnimationVarAliasType( float, m_flWepXSize, "WepXSize", "60", "proportional_float" );
 	CPanelAnimationVarAliasType( float, m_flWepYSize, "WepYSize", "30", "proportional_float" );
 
 	CPanelAnimationVarAliasType( float, m_flTextYPos, "TextYPos", "54", "proportional_float" );
