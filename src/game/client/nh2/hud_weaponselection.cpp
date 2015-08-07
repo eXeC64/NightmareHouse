@@ -532,14 +532,8 @@ void CHudWeaponSelection::Paint()
 				{
 					// draw has weapon in slot
 					DrawBox(xpos, ypos, m_flSmallBoxSize, m_flSmallBoxSize, m_BoxColor, m_flAlphaOverride, i + 1);
+					ypos += m_flSmallBoxSize;
 				}
-				else
-				{
-					// draw empty slot
-					DrawBox(xpos, ypos, m_flSmallBoxSize, m_flSmallBoxSize, m_EmptyBoxColor, m_flAlphaOverride, -1);
-				}
-
-				ypos += m_flSmallBoxSize;
 			}
 
 			// reset position
