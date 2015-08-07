@@ -24,8 +24,6 @@
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
-ConVar hud_showemptyweaponslots( "hud_showemptyweaponslots", "0", FCVAR_ARCHIVE, "Shows slots for missing weapons when recieving weapons out of order" );
-
 #define SELECTION_TIMEOUT_THRESHOLD		0.5f	// Seconds
 #define SELECTION_FADEOUT_TIME			0.75f
 
@@ -506,13 +504,7 @@ void CHudWeaponSelection::Paint()
 				for (int slotpos = 0; slotpos <= iLastPos; slotpos++)
 				{
 					C_BaseCombatWeapon *pWeapon = GetWeaponInSlot( i, slotpos );
-					if ( !pWeapon )
-					{
-						if ( !hud_showemptyweaponslots.GetBool() )
-							continue;
-						DrawBox( xpos, ypos, largeBoxWide, largeBoxTall, m_EmptyBoxColor, m_flAlphaOverride, bDrawBucketNumber ? i + 1 : -1 );
-					}
-					else
+					if ( pWeapon )
 					{
 						bool bSelected = (pWeapon == pSelectedWeapon);
 						DrawLargeWeaponBox( pWeapon, 
