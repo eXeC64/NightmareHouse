@@ -27,16 +27,8 @@
 #define SELECTION_TIMEOUT_THRESHOLD		0.5f	// Seconds
 #define SELECTION_FADEOUT_TIME			0.75f
 
-#define PLUS_DISPLAY_TIMEOUT			0.5f	// Seconds
-#define PLUS_FADEOUT_TIME				0.75f
-
 #define FASTSWITCH_DISPLAY_TIMEOUT		1.5f
 #define FASTSWITCH_FADEOUT_TIME			1.5f
-
-#define CAROUSEL_SMALL_DISPLAY_ALPHA	200.0f
-#define FASTSWITCH_SMALL_DISPLAY_ALPHA	160.0f
-
-#define MAX_CAROUSEL_SLOTS				5
 
 //-----------------------------------------------------------------------------
 // Purpose: hl2 weapon selection hud element
@@ -80,22 +72,12 @@ protected:
 		return false;
 	}
 
-	virtual void SetWeaponSelected()
-	{
-		CBaseHudWeaponSelection::SetWeaponSelected();
-
-		if (hud_fastswitch.GetInt())
-			ActivateFastswitchWeaponDisplay( GetSelectedWeapon() );
-	}
-
 private:
 	C_BaseCombatWeapon *FindNextWeaponInWeaponSelection(int iCurrentSlot, int iCurrentPosition);
 	C_BaseCombatWeapon *FindPrevWeaponInWeaponSelection(int iCurrentSlot, int iCurrentPosition);
 
-	void DrawLargeWeaponBox( C_BaseCombatWeapon *pWeapon, bool bSelected, int x, int y, int wide, int tall, Color color, float alpha, int number );
-	void ActivateFastswitchWeaponDisplay( C_BaseCombatWeapon *pWeapon );
+	void DrawWeaponBox( C_BaseCombatWeapon *pWeapon, bool bSelected, int x, int y);
 	void ActivateWeaponHighlight( C_BaseCombatWeapon *pWeapon );
-	float GetWeaponBoxAlpha( bool bSelected );
 	int GetLastPosInSlot( int iSlot ) const;
     
 	void FastWeaponSwitch( int iWeaponSlot );
@@ -116,45 +98,13 @@ private:
 		m_iSelectedSlideDir = dir;
 	}
 
-	void DrawBox(int x, int y, int wide, int tall, Color color, float normalizedAlpha, int number);
-
-	CPanelAnimationVar( vgui::HFont, m_hNumberFont, "NumberFont", "HudSelectionNumbers" );
-	CPanelAnimationVar( vgui::HFont, m_hTextFont, "TextFont", "HudSelectionText" );
-	CPanelAnimationVar( float, m_flBlur, "Blur", "0" );
-
-	CPanelAnimationVarAliasType( float, m_flSmallBoxSize, "SmallBoxSize", "32", "proportional_float" );
-	CPanelAnimationVarAliasType( float, m_flLargeBoxWide, "LargeBoxWide", "108", "proportional_float" );
-	CPanelAnimationVarAliasType( float, m_flLargeBoxTall, "LargeBoxTall", "72", "proportional_float" );
-
-	CPanelAnimationVarAliasType( float, m_flMediumBoxWide, "MediumBoxWide", "75", "proportional_float" );
-	CPanelAnimationVarAliasType( float, m_flMediumBoxTall, "MediumBoxTall", "50", "proportional_float" );
-
-	CPanelAnimationVarAliasType( float, m_flBoxGap, "BoxGap", "12", "proportional_float" );
-
-	CPanelAnimationVarAliasType( float, m_flSelectionNumberXPos, "SelectionNumberXPos", "4", "proportional_float" );
-	CPanelAnimationVarAliasType( float, m_flSelectionNumberYPos, "SelectionNumberYPos", "4", "proportional_float" );
-
-	CPanelAnimationVarAliasType( float, m_flWepXPos, "WepXPos", "20", "proportional_float" );
-	CPanelAnimationVarAliasType( float, m_flWepYPos, "WepYPos", "30", "proportional_float" );
-	CPanelAnimationVarAliasType( float, m_flWepXSize, "WepXSize", "60", "proportional_float" );
-	CPanelAnimationVarAliasType( float, m_flWepYSize, "WepYSize", "30", "proportional_float" );
-
-	CPanelAnimationVarAliasType( float, m_flTextYPos, "TextYPos", "54", "proportional_float" );
-
-	CPanelAnimationVar( float, m_flAlphaOverride, "Alpha", "0" );
-	CPanelAnimationVar( float, m_flSelectionAlphaOverride, "SelectionAlpha", "0" );
-
-	CPanelAnimationVar( Color, m_TextColor, "TextColor", "SelectionTextFg" );
-	CPanelAnimationVar( Color, m_NumberColor, "NumberColor", "SelectionNumberFg" );
-	CPanelAnimationVar( Color, m_EmptyBoxColor, "EmptyBoxColor", "SelectionEmptyBoxBg" );
-	CPanelAnimationVar( Color, m_BoxColor, "BoxColor", "SelectionBoxBg" );
-	CPanelAnimationVar( Color, m_SelectedBoxColor, "SelectedBoxColor", "SelectionSelectedBoxBg" );
-	CPanelAnimationVar( Color, m_SelectedFgColor, "SelectedFgColor", "FgColor" );
-	CPanelAnimationVar( Color, m_BrightBoxColor, "SelectedFgColor", "BgColor" );
-
-	CPanelAnimationVar( float, m_flWeaponPickupGrowTime, "SelectionGrowTime", "0.1" );
-
-	CPanelAnimationVar( float, m_flTextScan, "TextScan", "1.0" );
+	CPanelAnimationVarAliasType( float, m_flBoxWide, "BoxWide", "108", "proportional_float" );
+	CPanelAnimationVarAliasType( float, m_flBoxTall, "BoxTall", "72", "proportional_float" );
+	CPanelAnimationVarAliasType( float, m_flSelectedScale, "SelectedScale", "1.5", "float" );
+	CPanelAnimationVarAliasType( float, m_flWepXPos, "WepXPos", "0.2", "float" );
+	CPanelAnimationVarAliasType( float, m_flWepYPos, "WepYPos", "0.4", "float" );
+	CPanelAnimationVarAliasType( float, m_flWepXSize, "WepXSize", "0.55", "float" );
+	CPanelAnimationVarAliasType( float, m_flWepYSize, "WepYSize", "0.4", "float" );
 
 	bool m_bFadingOut;
 
@@ -189,7 +139,7 @@ using namespace vgui;
 //-----------------------------------------------------------------------------
 // Purpose: Constructor
 //-----------------------------------------------------------------------------
-CHudWeaponSelection::CHudWeaponSelection( const char *pElementName ) : CBaseHudWeaponSelection(pElementName), BaseClass(NULL, "HudWeaponSelection")
+CHudWeaponSelection::CHudWeaponSelection( const char *pElementName ) : CBaseHudWeaponSelection(pElementName), BaseClass(NULL, "NH2WeaponSelection")
 {
 	vgui::Panel *pParent = g_pClientMode->GetViewport();
 	SetParent( pParent );
@@ -306,105 +256,6 @@ void CHudWeaponSelection::LevelInit()
 
 
 //-----------------------------------------------------------------------------
-// Purpose: starts animating the center of the draw point to the newly selected weapon
-//-----------------------------------------------------------------------------
-void CHudWeaponSelection::ActivateFastswitchWeaponDisplay( C_BaseCombatWeapon *pSelectedWeapon )
-{
-	C_BasePlayer *pPlayer = C_BasePlayer::GetLocalPlayer();
-	if ( !pPlayer )
-		return;
-
-	// make sure all our configuration data is read
-	MakeReadyForUse();
-
-	m_WeaponBoxes.RemoveAll();
-	m_iSelectedWeaponBox = 0;
-
-	// find out where our selected weapon is in the full list
-	int cWeapons = 0;
-	int iLastSelectedWeaponBox = -1;
-	for ( int i = 0; i < MAX_WEAPON_SLOTS; i++ )
-	{
-		for (int slotpos = 0; slotpos < MAX_WEAPON_POSITIONS; slotpos++)
-		{
-			C_BaseCombatWeapon *pWeapon = GetWeaponInSlot( i, slotpos );
-			if ( !pWeapon )
-				continue;
-
-			WeaponBox_t box = { i, slotpos };
-			m_WeaponBoxes.AddToTail( box );
-
-			if ( pWeapon == pSelectedWeapon )
-			{
-				m_iSelectedWeaponBox = cWeapons;
-			}
-			if ( pWeapon == m_pLastWeapon )
-			{
-				iLastSelectedWeaponBox = cWeapons;
-			}
-			cWeapons++;
-		}
-	}
-
-	if ( iLastSelectedWeaponBox == -1 )
-	{
-		// unexpected failure, no last weapon to scroll from, default to snap behavior
-		m_pLastWeapon = NULL;
-	}
-
-	// calculate where we would have to start drawing for this weapon to slide into center
-	float flStart, flStop, flTime;
-	if ( !m_pLastWeapon || m_iSelectedSlideDir == 0 || m_flHorizWeaponSelectOffsetPoint != 0 )
-	{
-		// no previous weapon or weapon selected directly or selection during slide, snap to exact position
-		m_pLastWeapon = pSelectedWeapon;
-		flStart = flStop = flTime = 0;
-	}
-	else
-	{
-		// offset display for a scroll
-		// causing selected weapon to slide into position
-		// scroll direction based on user's "previous" or "next" selection
-		int numIcons = 0;
-		int start    = iLastSelectedWeaponBox;
-		for (int i=0; i<cWeapons; i++)
-		{
-			// count icons in direction of slide to destination
-			if ( start == m_iSelectedWeaponBox )
-				break;
-			if ( m_iSelectedSlideDir < 0 )
-			{
-				start--;
-			}
-			else
-			{
-				start++;
-			}
-			// handle wraparound in either direction
-			start = ( start + cWeapons ) % cWeapons;
-			numIcons++;
-		}
-
-		flStart = numIcons * (m_flLargeBoxWide + m_flBoxGap);
-		if ( m_iSelectedSlideDir < 0 )
-			flStart *= -1;
-		flStop = 0;
-
-		// shorten duration for scrolling when desired weapon is farther away
-		// otherwise a large skip in the same duration causes the scroll to fly too fast
-		flTime = numIcons * 0.20f;
-		if ( numIcons > 1 )
-			flTime *= 0.5f;
-	}
-	m_flHorizWeaponSelectOffsetPoint = flStart;
-	g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "WeaponBoxOffset", flStop, 0, flTime, AnimationController::INTERPOLATOR_LINEAR );
-
-	// start the highlight after the scroll completes
-	m_flBlur = 7.f;
-	g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "Blur", 0, flTime, 0.75f, AnimationController::INTERPOLATOR_DEACCEL );
-}
-
-//-----------------------------------------------------------------------------
 // Purpose: starts animating the highlight for the selected weapon
 //-----------------------------------------------------------------------------
 void CHudWeaponSelection::ActivateWeaponHighlight( C_BaseCombatWeapon *pSelectedWeapon )
@@ -424,25 +275,11 @@ void CHudWeaponSelection::ActivateWeaponHighlight( C_BaseCombatWeapon *pSelected
 	g_pClientMode->GetViewportAnimationController()->StartAnimationSequence( "WeaponHighlight" );
 }
 
-//-----------------------------------------------------------------------------
-// Purpose: returns an (per frame animating) alpha value for different weapon boxes
-//-----------------------------------------------------------------------------
-float CHudWeaponSelection::GetWeaponBoxAlpha( bool bSelected )
-{
-  return 255;
-}
-
-
 //-------------------------------------------------------------------------
 // Purpose: draws the selection area
 //-------------------------------------------------------------------------
 void CHudWeaponSelection::Paint()
 {
-	int width;
-	int height;
-	int xpos = 0;
-	int ypos = 16;
-
 	if (!ShouldDraw())
 		return;
 
@@ -471,74 +308,26 @@ void CHudWeaponSelection::Paint()
 		}
 	}
 
-	// interpolate the selected box size between the small box size and the large box size
-	// interpolation has been removed since there is no weapon pickup animation anymore, so it's all at the largest size
-	float percentageDone = 1.0f; //min(1.0f, (gpGlobals->curtime - m_flPickupStartTime) / m_flWeaponPickupGrowTime);
-	int largeBoxWide = m_flSmallBoxSize + ((m_flLargeBoxWide - m_flSmallBoxSize) * percentageDone);
-	int largeBoxTall = m_flSmallBoxSize + ((m_flLargeBoxTall - m_flSmallBoxSize) * percentageDone);
-	Color selectedColor;
-	for (int i = 0; i < 4; i++)
-	{
-		selectedColor[i] = m_BoxColor[i] + ((m_SelectedBoxColor[i] - m_BoxColor[i]) * percentageDone);
-	}
-
 	if (hud_fastswitch.GetInt() == 0)
 	{
-		// bucket style
-		width = (MAX_WEAPON_SLOTS - 1) * (m_flSmallBoxSize + m_flBoxGap) + largeBoxWide;
-		height = (MAX_WEAPON_SLOTS - 1) * (m_flSmallBoxSize + m_flBoxGap) + largeBoxTall;
-		xpos  = 16;
-		ypos  = (GetTall() - height)/2;
+		int xpos = 0;
+		int ypos = 0;
 
-		int iActiveSlot = (pSelectedWeapon ? pSelectedWeapon->GetSlot() : -1);
-
-		// draw the bucket set
-		// iterate over all the weapon slots
+		// draw the weapons list
 		for ( int i = 0; i < MAX_WEAPON_SLOTS; i++ )
+		for (int slotpos = 0, lastPos = GetLastPosInSlot(i); slotpos <= lastPos; slotpos++)
 		{
-			if ( i == iActiveSlot )
+			C_BaseCombatWeapon *pWeapon = GetWeaponInSlot( i, slotpos );
+			if ( pWeapon )
 			{
-				bool bDrawBucketNumber = true;
-				int iLastPos = GetLastPosInSlot( i );
+				bool bSelected = (pWeapon == pSelectedWeapon);
+				DrawWeaponBox(pWeapon, bSelected, xpos, ypos);
 
-				for (int slotpos = 0; slotpos <= iLastPos; slotpos++)
-				{
-					C_BaseCombatWeapon *pWeapon = GetWeaponInSlot( i, slotpos );
-					if ( pWeapon )
-					{
-						bool bSelected = (pWeapon == pSelectedWeapon);
-						DrawLargeWeaponBox( pWeapon, 
-											bSelected, 
-											xpos, 
-											ypos, 
-											largeBoxWide, 
-											largeBoxTall, 
-											bSelected ? selectedColor : m_BoxColor, 
-											GetWeaponBoxAlpha( bSelected ), 
-											bDrawBucketNumber ? i + 1 : -1 );
-					}
-
-					// move down to the next bucket
-					xpos += (largeBoxWide + m_flBoxGap);
-					bDrawBucketNumber = false;
-				}
-
-				ypos += largeBoxTall;
+				if (bSelected)
+					ypos += m_flBoxTall * m_flSelectedScale;
+				else
+					ypos += m_flBoxTall;
 			}
-			else
-			{
-				// check to see if there is a weapons in this bucket
-				if ( GetFirstPos( i ) )
-				{
-					// draw has weapon in slot
-					DrawBox(xpos, ypos, m_flSmallBoxSize, m_flSmallBoxSize, m_BoxColor, m_flAlphaOverride, i + 1);
-					ypos += m_flSmallBoxSize;
-				}
-			}
-
-			// reset position
-			xpos = 16;
-			ypos += m_flBoxGap;
 		}
 	}
 
@@ -552,78 +341,49 @@ void CHudWeaponSelection::Paint()
 //-----------------------------------------------------------------------------
 // Purpose: draws a single weapon selection box
 //-----------------------------------------------------------------------------
-void CHudWeaponSelection::DrawLargeWeaponBox( C_BaseCombatWeapon *pWeapon, bool bSelected, int xpos, int ypos, int boxWide, int boxTall, Color selectedColor, float alpha, int number )
+void CHudWeaponSelection::DrawWeaponBox( C_BaseCombatWeapon *pWeapon, bool bSelected, int xpos, int ypos)
 {
-	Color col = bSelected ? m_SelectedFgColor : GetFgColor();
-	
-	if (hud_fastswitch.GetInt() == 0)
+	float boxWide = m_flBoxWide;
+	float boxTall = m_flBoxTall;
+
+	if (bSelected)
 	{
-		// draw box for selected weapon
-		surface()->DrawSetTexture( m_nBoxTextureId );
-		surface()->DrawSetColor( 255, 255, 255, 255 );
-		surface()->DrawTexturedRect( xpos, ypos, xpos + boxWide, ypos + boxTall );
-
-		// draw icon
-		col[3] *= (alpha / 255.0f);
-		if ( pWeapon->GetSpriteActive() )
-		{
-			// find the center of the box to draw in
-			int iconHeight = pWeapon->GetSpriteActive()->Height();
-
-			int y_offs;
-			if ( bSelected && hud_fastswitch.GetInt() != 0 )
-			{
-				// place the icon aligned with the non-selected version
-				y_offs = (boxTall / 1.5f - iconHeight) / 2;
-			}
-			else
-			{
-				y_offs = (boxTall - iconHeight) / 2;
-			}
-
-			if (!pWeapon->CanBeSelected())
-			{
-				// unselectable weapon, display as such
-				col = Color(255, 0, 0, col[3]);
-			}
-			else if (bSelected)
-			{
-				// currently selected weapon, display brighter
-				col[3] = alpha;
-
-				// draw an active version over the top
-				if ( pWeapon->GetSlot() + 1 == 1 )
-					surface()->DrawSetTexture( m_nSlot1TextureId );
-
-				if ( pWeapon->GetSlot() + 1 == 2 )
-					surface()->DrawSetTexture( m_nSlot2TextureId );
-
-				if ( pWeapon->GetSlot() + 1 == 3 )
-					surface()->DrawSetTexture( m_nSlot3TextureId );
-
-				if ( pWeapon->GetSlot() + 1 == 4 )
-					surface()->DrawSetTexture( m_nSlot4TextureId );
-
-				if ( pWeapon->GetSlot() + 1 == 5 )
-					surface()->DrawSetTexture( m_nSlot5TextureId );
-				
-				surface()->DrawSetColor( 255, 255, 255, 160 );
-				surface()->DrawTexturedRect( xpos + m_flWepXPos , ypos + m_flWepYPos, xpos + m_flWepXPos + m_flWepXSize, ypos + m_flWepYPos + m_flWepYSize);
-			}
-		}
+		boxWide *= m_flSelectedScale;
+		boxTall *= m_flSelectedScale;
 	}
-}
 
+	int iconAlpha = bSelected ? 255 : 128;
+	float iconX = xpos + m_flWepXPos * boxWide;
+	float iconY = ypos + m_flWepYPos * boxTall;
+	float iconWide = m_flWepXSize * boxWide;
+	float iconTall = m_flWepYSize * boxTall;
 
-//-----------------------------------------------------------------------------
-// Purpose: draws a selection box
-//-----------------------------------------------------------------------------
-void CHudWeaponSelection::DrawBox(int x, int y, int wide, int tall, Color color, float normalizedAlpha, int number)
-{
-	surface()->DrawSetTexture( m_nBoxTextureId2 );
+	//Draw background
+	surface()->DrawSetTexture( m_nBoxTextureId );
 	surface()->DrawSetColor( 255, 255, 255, 255 );
-	surface()->DrawTexturedRect( x, y, x + wide, y + tall );
+	surface()->DrawTexturedRect(xpos, ypos, xpos + boxWide, ypos + boxTall);
+
+	// draw icon
+	// draw an active version over the top
+	if ( pWeapon->GetSlot() + 1 == 1 )
+		surface()->DrawSetTexture( m_nSlot1TextureId );
+
+	if ( pWeapon->GetSlot() + 1 == 2 )
+		surface()->DrawSetTexture( m_nSlot2TextureId );
+
+	if ( pWeapon->GetSlot() + 1 == 3 )
+		surface()->DrawSetTexture( m_nSlot3TextureId );
+
+	if ( pWeapon->GetSlot() + 1 == 4 )
+		surface()->DrawSetTexture( m_nSlot4TextureId );
+
+	if ( pWeapon->GetSlot() + 1 == 5 )
+		surface()->DrawSetTexture( m_nSlot5TextureId );
+
+	surface()->DrawSetColor( 255, 255, 255, iconAlpha);
+	surface()->DrawTexturedRect(iconX, iconY, iconX + iconWide, iconY + iconTall);
 }
+
 
 //-----------------------------------------------------------------------------
 // Purpose: hud scheme settings
