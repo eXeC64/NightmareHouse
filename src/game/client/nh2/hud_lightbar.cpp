@@ -24,10 +24,12 @@ public:
 
 	virtual void Init (void);
 	virtual void Reset (void);
+	virtual void OnThink (void);
 
 protected:
 	virtual void Paint();
 
+	float m_flBattery;
 	vgui::IImage* m_pBar;
 	vgui::IImage* m_pBackground;
 	vgui::IImage* m_pIcon;
@@ -63,6 +65,26 @@ void CHudLightBar::Reset (void)
 {
 	SetFgColor(Color(255,255,255,255));
 	SetBgColor(Color(0,0,0,0));
+	SetAlpha(0);
+	m_flBattery = 100;
+}
+
+void CHudLightBar::OnThink()
+{
+	C_BaseHLPlayer *pPlayer = (C_BaseHLPlayer *)C_BasePlayer::GetLocalPlayer();
+	if ( !pPlayer )
+		return;
+
+	const double flBattery = pPlayer->m_HL2Local.m_flFlashBattery;
+
+	if (m_flBattery != flBattery)
+	{
+		if (flBattery >= 100 && m_flBattery < 100)
+			g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "alpha", 0.0f, 0.0f, 0.4f, vgui::AnimationController::INTERPOLATOR_LINEAR);
+		else if(flBattery < 100 && m_flBattery >= 100)
+			g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "alpha", 255.0f, 0.0f, 0.4f, vgui::AnimationController::INTERPOLATOR_LINEAR);
+		m_flBattery = flBattery;
+	}
 }
 
 void CHudLightBar::Paint()
@@ -74,10 +96,6 @@ void CHudLightBar::Paint()
 	const bool bIsOn = pPlayer->IsEffectActive( EF_DIMLIGHT );
 	const double flBattery = pPlayer->m_HL2Local.m_flFlashBattery;
 
-	// Don't draw a full bar
-	if (flBattery >= 100.0)
-	  return;
-
 	int panelWidth, panelHeight;
 	GetSize(panelWidth, panelHeight);
 
@@ -87,7 +105,7 @@ void CHudLightBar::Paint()
 
 	m_pBar->SetSize(panelWidth*m_flBarWidth, panelHeight*m_flBarHeight);
 	m_pBar->SetPos(panelWidth*m_flBarInsetX, panelHeight*m_flBarInsetY);
-	m_pBar->SetFrame(static_cast<int>(flBattery));
+	m_pBar->SetFrame(min(max(0,flBattery),99));
 	m_pBar->Paint();
 
 	m_pIcon->SetSize(panelHeight * m_flIconSize, panelHeight * m_flIconSize);
