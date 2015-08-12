@@ -24,11 +24,8 @@
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
-#define SELECTION_TIMEOUT_THRESHOLD		0.5f	// Seconds
-#define SELECTION_FADEOUT_TIME			0.75f
-
-#define FASTSWITCH_DISPLAY_TIMEOUT		1.5f
-#define FASTSWITCH_FADEOUT_TIME			1.5f
+#define SELECTION_TIMEOUT_THRESHOLD		1.5f	// Seconds
+#define SELECTION_FADEOUT_TIME			1.0f
 
 //-----------------------------------------------------------------------------
 // Purpose: hl2 weapon selection hud element
@@ -76,27 +73,68 @@ private:
 	C_BaseCombatWeapon *FindNextWeaponInWeaponSelection(int iCurrentSlot, int iCurrentPosition);
 	C_BaseCombatWeapon *FindPrevWeaponInWeaponSelection(int iCurrentSlot, int iCurrentPosition);
 
-	void DrawWeaponBox( C_BaseCombatWeapon *pWeapon, bool bSelected, int x, int y);
-	void ActivateWeaponHighlight( C_BaseCombatWeapon *pWeapon );
+	void DrawWeaponBox( C_BaseCombatWeapon *pWeapon, float scale, int x, int y);
 	int GetLastPosInSlot( int iSlot ) const;
     
 	void FastWeaponSwitch( int iWeaponSlot );
-	void PlusTypeFastWeaponSwitch( int iWeaponSlot );
+
+	void ResetSlotScales()
+	{
+		m_flSlot1Size = 1;
+		m_flSlot2Size = 1;
+		m_flSlot3Size = 1;
+		m_flSlot4Size = 1;
+		m_flSlot5Size = 1;
+	}
+
+	float GetSlotScale(int i)
+	{
+		switch(i)
+		{
+			case 0: return m_flSlot1Size;
+			case 1: return m_flSlot2Size;
+			case 2: return m_flSlot3Size;
+			case 3: return m_flSlot4Size;
+			case 4: return m_flSlot5Size;
+		};
+		return 1;
+	}
+
+	void AnimateSlotScale(int i, float to, float duration)
+	{
+		switch(i)
+		{
+			case 0:
+				g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "Slot1Size", to, 0.0f, duration, vgui::AnimationController::INTERPOLATOR_LINEAR);
+				break;
+			case 1:
+				g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "Slot2Size", to, 0.0f, duration, vgui::AnimationController::INTERPOLATOR_LINEAR);
+				break;
+			case 2:
+				g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "Slot3Size", to, 0.0f, duration, vgui::AnimationController::INTERPOLATOR_LINEAR);
+				break;
+			case 3:
+				g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "Slot4Size", to, 0.0f, duration, vgui::AnimationController::INTERPOLATOR_LINEAR);
+				break;
+			case 4:
+				g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "Slot5Size", to, 0.0f, duration, vgui::AnimationController::INTERPOLATOR_LINEAR);
+				break;
+		}
+	}
 
 	virtual	void SetSelectedWeapon( C_BaseCombatWeapon *pWeapon ) 
 	{ 
+		int lastSlot = m_hSelectedWeapon ? m_hSelectedWeapon->GetSlot(): -1;
+		int thisSlot = pWeapon ? pWeapon->GetSlot(): -1;
+
+		if (lastSlot >= 0)
+			AnimateSlotScale(lastSlot, 1.0, m_flAnimDuration);
+		AnimateSlotScale(thisSlot, m_flSelectedScale, m_flAnimDuration);
+
 		m_hSelectedWeapon = pWeapon;
 	}
 
-	virtual	void SetSelectedSlot( int slot ) 
-	{ 
-		m_iSelectedSlot = slot;
-	}
-
-	void SetSelectedSlideDir( int dir )
-	{
-		m_iSelectedSlideDir = dir;
-	}
+	bool m_bFadingOut;
 
 	CPanelAnimationVarAliasType( float, m_flBoxWide, "BoxWide", "108", "proportional_float" );
 	CPanelAnimationVarAliasType( float, m_flBoxTall, "BoxTall", "72", "proportional_float" );
@@ -105,8 +143,7 @@ private:
 	CPanelAnimationVarAliasType( float, m_flWepYPos, "WepYPos", "0.4", "float" );
 	CPanelAnimationVarAliasType( float, m_flWepXSize, "WepXSize", "0.55", "float" );
 	CPanelAnimationVarAliasType( float, m_flWepYSize, "WepYSize", "0.4", "float" );
-
-	bool m_bFadingOut;
+	CPanelAnimationVarAliasType( float, m_flAnimDuration, "AnimDuration", "0.1", "float" );
 
 	// fastswitch weapon display
 	struct WeaponBox_t
@@ -116,13 +153,9 @@ private:
    	};
 	CUtlVector<WeaponBox_t>	m_WeaponBoxes;
 	int						m_iSelectedWeaponBox;
-	int						m_iSelectedSlideDir;
-	int						m_iSelectedBoxPosition;
-	int						m_iSelectedSlot;
 	C_BaseCombatWeapon		*m_pLastWeapon;
 	CPanelAnimationVar( float, m_flHorizWeaponSelectOffsetPoint, "WeaponBoxOffset", "0" );
 
-	//NH2
 	int	m_nBoxTextureId;
 	int	m_nBoxTextureId2;
 	int	m_nSlot1TextureId;
@@ -130,6 +163,14 @@ private:
 	int	m_nSlot3TextureId;
 	int	m_nSlot4TextureId;
 	int	m_nSlot5TextureId;
+
+
+	// interp from 1-n to animate the size of each slot's box
+	CPanelAnimationVarAliasType( float, m_flSlot1Size, "Slot1Size", "1.0", "float" );
+	CPanelAnimationVarAliasType( float, m_flSlot2Size, "Slot2Size", "1.0", "float" );
+	CPanelAnimationVarAliasType( float, m_flSlot3Size, "Slot3Size", "1.0", "float" );
+	CPanelAnimationVarAliasType( float, m_flSlot4Size, "Slot4Size", "1.0", "float" );
+	CPanelAnimationVarAliasType( float, m_flSlot5Size, "Slot5Size", "1.0", "float" );
 };
 
 DECLARE_HUDELEMENT( CHudWeaponSelection );
@@ -143,6 +184,7 @@ CHudWeaponSelection::CHudWeaponSelection( const char *pElementName ) : CBaseHudW
 {
 	vgui::Panel *pParent = g_pClientMode->GetViewport();
 	SetParent( pParent );
+	SetAlpha(0);
 	m_bFadingOut = false;
 }
 
@@ -166,11 +208,6 @@ void CHudWeaponSelection::OnThink( void )
 {
 	float flSelectionTimeout = SELECTION_TIMEOUT_THRESHOLD;
 	float flSelectionFadeoutTime = SELECTION_FADEOUT_TIME;
-	if ( hud_fastswitch.GetBool() )
-	{
-		flSelectionTimeout = FASTSWITCH_DISPLAY_TIMEOUT;
-		flSelectionFadeoutTime = FASTSWITCH_FADEOUT_TIME;
-	}
 
 	// Time out after awhile of inactivity
 	if ( ( gpGlobals->curtime - m_flSelectionTime ) > flSelectionTimeout )
@@ -178,7 +215,7 @@ void CHudWeaponSelection::OnThink( void )
 		if (!m_bFadingOut)
 		{
 			// start fading out
-			g_pClientMode->GetViewportAnimationController()->StartAnimationSequence( "FadeOutWeaponSelectionMenu" );
+			g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "alpha", 0.0f, 0.0f, 0.4f, vgui::AnimationController::INTERPOLATOR_LINEAR);
 			m_bFadingOut = true;
 		}
 		else if ( gpGlobals->curtime - m_flSelectionTime > flSelectionTimeout + flSelectionFadeoutTime )
@@ -190,7 +227,7 @@ void CHudWeaponSelection::OnThink( void )
 	else if (m_bFadingOut)
 	{
 		// stop us fading out, show the animation again
-		g_pClientMode->GetViewportAnimationController()->StartAnimationSequence( "OpenWeaponSelectionMenu" );
+		g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "alpha", 255.0f, 0.0f, 0.4f, vgui::AnimationController::INTERPOLATOR_LINEAR);
 		m_bFadingOut = false;
 	}
 }
@@ -214,10 +251,6 @@ bool CHudWeaponSelection::ShouldDraw()
 	if ( !bret )
 		return false;
 
-	// draw weapon selection a little longer if in fastswitch so we can see what we've selected
-	if ( hud_fastswitch.GetBool() && ( gpGlobals->curtime - m_flSelectionTime ) < (FASTSWITCH_DISPLAY_TIMEOUT + FASTSWITCH_FADEOUT_TIME) )
-		return true;
-
 	return ( m_bSelectionVisible ) ? true : false;
 }
 
@@ -229,7 +262,6 @@ void CHudWeaponSelection::LevelInit()
 	CHudElement::LevelInit();
 
 	m_iSelectedWeaponBox = -1;
-	m_iSelectedSlideDir  = 0;
 	m_pLastWeapon        = NULL;
 
 	m_nBoxTextureId = surface()->CreateNewTextureID();
@@ -254,27 +286,6 @@ void CHudWeaponSelection::LevelInit()
 	surface()->DrawSetTextureFile( m_nSlot5TextureId, "vgui/hud/slot5_icon", true, false );
 }
 
-
-//-----------------------------------------------------------------------------
-// Purpose: starts animating the highlight for the selected weapon
-//-----------------------------------------------------------------------------
-void CHudWeaponSelection::ActivateWeaponHighlight( C_BaseCombatWeapon *pSelectedWeapon )
-{
-	C_BasePlayer *pPlayer = C_BasePlayer::GetLocalPlayer();
-	if ( !pPlayer )
-		return;
-
-	// make sure all our configuration data is read
-	MakeReadyForUse();
-
-	C_BaseCombatWeapon *pWeapon = GetWeaponInSlot( m_iSelectedSlot, m_iSelectedBoxPosition );
-	if ( !pWeapon )
-		return;
-
-	// start the highlight after the scroll completes
-	g_pClientMode->GetViewportAnimationController()->StartAnimationSequence( "WeaponHighlight" );
-}
-
 //-------------------------------------------------------------------------
 // Purpose: draws the selection area
 //-------------------------------------------------------------------------
@@ -297,17 +308,6 @@ void CHudWeaponSelection::Paint()
 	if ( !pSelectedWeapon )
 		return;
 
-	bool bPushedViewport = false;
-	if(hud_fastswitch.GetInt())
-	{
-		CMatRenderContextPtr pRenderContext( materials );
-		if( pRenderContext->GetRenderTarget() )
-		{
-			surface()->PushFullscreenViewport();
-			bPushedViewport = true;
-		}
-	}
-
 	if (hud_fastswitch.GetInt() == 0)
 	{
 		int xpos = 0;
@@ -320,20 +320,11 @@ void CHudWeaponSelection::Paint()
 			C_BaseCombatWeapon *pWeapon = GetWeaponInSlot( i, slotpos );
 			if ( pWeapon )
 			{
-				bool bSelected = (pWeapon == pSelectedWeapon);
-				DrawWeaponBox(pWeapon, bSelected, xpos, ypos);
-
-				if (bSelected)
-					ypos += m_flBoxTall * m_flSelectedScale;
-				else
-					ypos += m_flBoxTall;
+				float scale = GetSlotScale(i);
+				DrawWeaponBox(pWeapon, scale, xpos, ypos);
+				ypos += m_flBoxTall * scale;
 			}
 		}
-	}
-
-	if( bPushedViewport )
-	{
-		surface()->PopFullscreenViewport();
 	}
 }
 
@@ -341,18 +332,11 @@ void CHudWeaponSelection::Paint()
 //-----------------------------------------------------------------------------
 // Purpose: draws a single weapon selection box
 //-----------------------------------------------------------------------------
-void CHudWeaponSelection::DrawWeaponBox( C_BaseCombatWeapon *pWeapon, bool bSelected, int xpos, int ypos)
+void CHudWeaponSelection::DrawWeaponBox( C_BaseCombatWeapon *pWeapon, float scale, int xpos, int ypos)
 {
-	float boxWide = m_flBoxWide;
-	float boxTall = m_flBoxTall;
+	float boxWide = m_flBoxWide * scale;
+	float boxTall = m_flBoxTall * scale;
 
-	if (bSelected)
-	{
-		boxWide *= m_flSelectedScale;
-		boxTall *= m_flSelectedScale;
-	}
-
-	int iconAlpha = bSelected ? 255 : 128;
 	float iconX = xpos + m_flWepXPos * boxWide;
 	float iconY = ypos + m_flWepYPos * boxTall;
 	float iconWide = m_flWepXSize * boxWide;
@@ -380,7 +364,7 @@ void CHudWeaponSelection::DrawWeaponBox( C_BaseCombatWeapon *pWeapon, bool bSele
 	if ( pWeapon->GetSlot() + 1 == 5 )
 		surface()->DrawSetTexture( m_nSlot5TextureId );
 
-	surface()->DrawSetColor( 255, 255, 255, iconAlpha);
+	surface()->DrawSetColor( 255, 255, 255, 255);
 	surface()->DrawTexturedRect(iconX, iconY, iconX + iconWide, iconY + iconTall);
 }
 
@@ -409,9 +393,8 @@ void CHudWeaponSelection::OpenSelection( void )
 	Assert(!IsInSelectionMode());
 
 	CBaseHudWeaponSelection::OpenSelection();
-	g_pClientMode->GetViewportAnimationController()->StartAnimationSequence("OpenWeaponSelectionMenu");
-	m_iSelectedBoxPosition = 0;
-	m_iSelectedSlot = -1;
+	g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "alpha", 255.0f, 0.0f, 0.4f, vgui::AnimationController::INTERPOLATOR_LINEAR);
+	ResetSlotScales();
 }
 
 //-----------------------------------------------------------------------------
@@ -420,8 +403,7 @@ void CHudWeaponSelection::OpenSelection( void )
 void CHudWeaponSelection::HideSelection( void )
 {
 	CBaseHudWeaponSelection::HideSelection();
-	g_pClientMode->GetViewportAnimationController()->StartAnimationSequence("CloseWeaponSelectionMenu");
-	m_bFadingOut = false;
+	g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "alpha", 0.0f, 0.0f, 0.4f, vgui::AnimationController::INTERPOLATOR_LINEAR);
 }
 
 //-----------------------------------------------------------------------------
@@ -547,7 +529,6 @@ void CHudWeaponSelection::CycleToNextWeapon( void )
 	if ( pNextWeapon )
 	{
 		SetSelectedWeapon( pNextWeapon );
-		SetSelectedSlideDir( 1 );
 
 		if ( !IsInSelectionMode() )
 		{
@@ -600,7 +581,6 @@ void CHudWeaponSelection::CycleToPrevWeapon( void )
 	if ( pNextWeapon )
 	{
 		SetSelectedWeapon( pNextWeapon );
-		SetSelectedSlideDir( -1 );
 
 		if ( !IsInSelectionMode() )
 		{
@@ -710,91 +690,6 @@ void CHudWeaponSelection::FastWeaponSwitch( int iWeaponSlot )
 }
 
 //-----------------------------------------------------------------------------
-// Purpose: Opens the next weapon in the slot
-//-----------------------------------------------------------------------------
-void CHudWeaponSelection::PlusTypeFastWeaponSwitch( int iWeaponSlot )
-{
-	// get the slot the player's weapon is in
-	C_BasePlayer *pPlayer = C_BasePlayer::GetLocalPlayer();
-	if ( !pPlayer )
-		return;
-
-	m_pLastWeapon = NULL;
-	int newSlot = m_iSelectedSlot;
-
-	// Changing slot number does not necessarily mean we need to change the slot - the player could be
-	// scrolling through the same slot but in the opposite direction. Slot pairs are 0,2 and 1,3 - so
-	// compare the 0 bits to see if we're within a pair. Otherwise, reset the box to the zero position.
-	if ( -1 == m_iSelectedSlot || ( ( m_iSelectedSlot ^ iWeaponSlot ) & 1 ) )
-	{
-		// Changing vertical/horizontal direction. Reset the selected box position to zero.
-		m_iSelectedBoxPosition = 0;
-		m_iSelectedSlot = iWeaponSlot;
-	}
-	else
-	{
-		// Still in the same horizontal/vertical direction. Determine which way we're moving in the slot.
-		int increment = 1;
-		if ( m_iSelectedSlot != iWeaponSlot )
-		{
-			// Decrementing within the slot. If we're at the zero position in this slot, 
-			// jump to the zero position of the opposite slot. This also counts as our increment.
-			increment = -1;
-			if ( 0 == m_iSelectedBoxPosition )
-			{
-				newSlot = ( m_iSelectedSlot + 2 ) % 4;
-				increment = 0;
-			}
-		}
-
-		// Find out of the box position is at the end of the slot
-		int lastSlotPos = -1;
-		for ( int slotPos = 0; slotPos < MAX_WEAPON_POSITIONS; ++slotPos )
-		{
-			C_BaseCombatWeapon *pWeapon = GetWeaponInSlot( newSlot, slotPos );
-			if ( pWeapon )
-			{
-				lastSlotPos = slotPos;
-			}
-		}
-
-		// Increment/Decrement the selected box position
-		if ( m_iSelectedBoxPosition + increment <= lastSlotPos )
-		{
-			m_iSelectedBoxPosition += increment;
-			m_iSelectedSlot = newSlot;
-		}
-		else
-		{
-			// error sound
-			pPlayer->EmitSound( "Player.DenyWeaponSelection" );
-			return;
-		}
-	}
-
-	// Select the weapon in this position
-	bool bWeaponSelected = false;
-	C_BaseCombatWeapon *pActiveWeapon = pPlayer->GetActiveWeapon();
-	C_BaseCombatWeapon *pWeapon = GetWeaponInSlot( m_iSelectedSlot, m_iSelectedBoxPosition );
-	if ( pWeapon )
-	{
-		if ( pWeapon != pActiveWeapon )
-		{
-			// Select the new weapon
-			::input->MakeWeaponSelection( pWeapon );
-			SetSelectedWeapon( pWeapon );
-			bWeaponSelected = true;
-		}
-	}
-
-	if ( !bWeaponSelected )
-	{
-		// Still need to set this to make hud display appear
-		SetSelectedWeapon( pPlayer->GetActiveWeapon() );
-	}
-}
-
-//-----------------------------------------------------------------------------
 // Purpose: Moves selection to the specified slot
 //-----------------------------------------------------------------------------
 void CHudWeaponSelection::SelectWeaponSlot( int iSlot )
@@ -848,7 +743,6 @@ void CHudWeaponSelection::SelectWeaponSlot( int iSlot )
 
 			// Mark the change
 			SetSelectedWeapon( pActiveWeapon );
-			SetSelectedSlideDir( 0 );
 		}
 	}
 
