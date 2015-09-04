@@ -56,6 +56,10 @@ $Project "Server (NH2)"
 				$File	"$SRCDIR\game\server\nh2\npc_nh_creeper.cpp"
 				$File	"$SRCDIR\game\server\nh2\npc_nh_demon.cpp"
 			}
+			$Folder	"Weapons"
+			{
+				$File	"$SRCDIR\game\server\nh2\weapon_nh_hatchet.cpp"
+			}
 		}
 		$Folder	"HL2 DLL"
 		{

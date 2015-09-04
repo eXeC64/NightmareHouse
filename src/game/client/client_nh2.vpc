@@ -38,6 +38,7 @@ $Project "Client (NH2)"
 				$File	"nh2\hud_weaponselection.cpp"
 				$File	"nh2\hud_squadstatus.cpp"
 			}
+			$File	"nh2\c_weapon__stubs_nh2.cpp"
 		}
 		$Folder	"HL2 DLL"
 		{
