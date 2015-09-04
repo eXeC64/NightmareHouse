@@ -315,15 +315,20 @@ void CHudWeaponSelection::Paint()
 
 		// draw the weapons list
 		for ( int i = 0; i < MAX_WEAPON_SLOTS; i++ )
-		for (int slotpos = 0, lastPos = GetLastPosInSlot(i); slotpos <= lastPos; slotpos++)
 		{
-			C_BaseCombatWeapon *pWeapon = GetWeaponInSlot( i, slotpos );
-			if ( pWeapon )
+			float scale = GetSlotScale(i);
+			for (int slotpos = 0, lastPos = GetLastPosInSlot(i); slotpos <= lastPos; slotpos++)
 			{
-				float scale = GetSlotScale(i);
-				DrawWeaponBox(pWeapon, scale, xpos, ypos);
-				ypos += m_flBoxTall * scale;
+				C_BaseCombatWeapon *pWeapon = GetWeaponInSlot( i, slotpos );
+				float xscale = (pWeapon == GetSelectedWeapon()) ? scale : 1.0;
+				if ( pWeapon )
+				{
+					DrawWeaponBox(pWeapon, xscale, xpos, ypos);
+					xpos += m_flBoxWide * xscale;
+				}
 			}
+			ypos += m_flBoxTall * scale;
+			xpos = 0;
 		}
 	}
 }
