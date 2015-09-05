@@ -127,8 +127,8 @@ void CWeaponNHRevolver::PrimaryAttack( void )
 	SendWeaponAnim( ACT_VM_PRIMARYATTACK );
 	pPlayer->SetAnimation( PLAYER_ATTACK1 );
 
-	m_flNextPrimaryAttack = gpGlobals->curtime + 0.75;
-	m_flNextSecondaryAttack = gpGlobals->curtime + 0.75;
+	m_flNextPrimaryAttack = gpGlobals->curtime + 0.5;
+	m_flNextSecondaryAttack = gpGlobals->curtime + 0.5;
 
 	m_iClip1--;
 

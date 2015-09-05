@@ -21,11 +21,11 @@
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
-#define	PISTOL_FASTEST_REFIRE_TIME		0.1f
-#define	PISTOL_FASTEST_DRY_REFIRE_TIME	0.2f
+#define	PISTOL_FASTEST_REFIRE_TIME		0.2f
+#define	PISTOL_FASTEST_DRY_REFIRE_TIME	0.4f
 
-#define	PISTOL_ACCURACY_SHOT_PENALTY_TIME		0.2f	// Applied amount of time each shot adds to the time we must recover from
-#define	PISTOL_ACCURACY_MAXIMUM_PENALTY_TIME	1.5f	// Maximum penalty to deal out
+#define	PISTOL_ACCURACY_SHOT_PENALTY_TIME		0.4f	// Applied amount of time each shot adds to the time we must recover from
+#define	PISTOL_ACCURACY_MAXIMUM_PENALTY_TIME	3.0f	// Maximum penalty to deal out
 
 //-----------------------------------------------------------------------------
 // CWeaponNHPistol
@@ -86,12 +86,12 @@ public:
 
 	virtual int	GetMaxBurst() 
 	{ 
-		return 3; 
+		return 1;
 	}
 
 	virtual float GetFireRate( void ) 
 	{
-		return 0.5f; 
+		return 1.0f;
 	}
 
 	DECLARE_ACTTABLE();

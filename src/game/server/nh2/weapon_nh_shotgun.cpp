@@ -259,12 +259,7 @@ float CWeaponNHShotgun::GetMaxRestTime()
 //-----------------------------------------------------------------------------
 float CWeaponNHShotgun::GetFireRate()
 {
-	if( hl2_episodic.GetBool() && GetOwner() && GetOwner()->Classify() == CLASS_COMBINE )
-	{
-		return 0.8f;
-	}
-
-	return 0.7;
+	return 0.35;
 }
 
 //-----------------------------------------------------------------------------
