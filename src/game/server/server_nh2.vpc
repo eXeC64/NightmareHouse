@@ -62,6 +62,7 @@ $Project "Server (NH2)"
 				$File	"$SRCDIR\game\server\nh2\weapon_nh_pistol.cpp"
 				$File	"$SRCDIR\game\server\nh2\weapon_nh_revolver.cpp"
 				$File	"$SRCDIR\game\server\nh2\weapon_nh_smg.cpp"
+				$File	"$SRCDIR\game\server\nh2\weapon_nh_shotgun.cpp"
 			}
 		}
 		$Folder	"HL2 DLL"
