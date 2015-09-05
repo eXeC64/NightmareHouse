@@ -15,3 +15,4 @@
 STUB_WEAPON_CLASS( weapon_nh_hatchet, WeaponNHHatchet, C_BaseHLBludgeonWeapon );
 STUB_WEAPON_CLASS( weapon_nh_pistol, WeaponNHPistol, C_BaseHLCombatWeapon );
 STUB_WEAPON_CLASS( weapon_nh_revolver, WeaponNHRevolver, C_BaseHLCombatWeapon );
+STUB_WEAPON_CLASS( weapon_nh_smg, WeaponNHSMG, C_HLSelectFireMachineGun );
