@@ -12,4 +12,5 @@
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
+STUB_WEAPON_CLASS( weapon_nh_pistol, WeaponNHPistol, C_BaseHLCombatWeapon );
 STUB_WEAPON_CLASS( weapon_nh_hatchet, WeaponNHHatchet, C_BaseHLBludgeonWeapon );
