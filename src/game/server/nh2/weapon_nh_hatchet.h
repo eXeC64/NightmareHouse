@@ -36,10 +36,17 @@ public:
 	void		AddViewKick( void );
 	float		GetDamageForActivity( Activity hitActivity );
 
+	bool CanHolster() { return !bIsSwinging; }
+	void PrimaryAttack();
+	void SecondaryAttack();
+	void ItemPostFrame();
+
 	// Animation event
 	virtual void Operator_HandleAnimEvent( animevent_t *pEvent, CBaseCombatCharacter *pOperator );
 
 private:
+	bool bIsSwinging; //are we in a secondary attack swing?
+	float m_flSwingTime; //when to swing
 	// Animation event handlers
 	void HandleAnimEventMeleeHit( animevent_t *pEvent, CBaseCombatCharacter *pOperator );
 };

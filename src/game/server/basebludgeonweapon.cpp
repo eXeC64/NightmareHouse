@@ -373,11 +373,20 @@ void CBaseHLBludgeonWeapon::Swing( int bIsSecondary )
 	}
 
 	// Send the anim
-	SendWeaponAnim( nHitActivity );
+	//NH2 fuckery because I'm very lazy and just want this over with
+	if(!bIsSecondary || strcmp(GetClassname(), "weapon_nh_hatchet") != 0)
+	{
+		SendWeaponAnim( nHitActivity );
+		m_flNextSecondaryAttack = gpGlobals->curtime + SequenceDuration();
+	}
+	else
+	{
+		m_flNextSecondaryAttack = gpGlobals->curtime + GetFireRate();
+	}
 
 	//Setup our next attack times
 	m_flNextPrimaryAttack = gpGlobals->curtime + GetFireRate();
-	m_flNextSecondaryAttack = gpGlobals->curtime + SequenceDuration();
+
 
 	//Play swing sound
 	WeaponSound( SINGLE );

@@ -48,6 +48,7 @@ IMPLEMENT_ACTTABLE(CWeaponNHHatchet);
 //-----------------------------------------------------------------------------
 CWeaponNHHatchet::CWeaponNHHatchet( void )
 {
+	bIsSwinging = false;
 }
 
 //-----------------------------------------------------------------------------
@@ -66,8 +67,6 @@ float CWeaponNHHatchet::GetDamageForActivity( Activity hitActivity )
 	if(hitActivity == ACT_VM_HITCENTER2)
 		dmg *= 3;
 
-	Msg("act: %i is maybe PRI:%i, or SEC:%i\n", hitActivity, ACT_VM_HITCENTER, ACT_VM_HITCENTER2);
-	Msg("asked for damage: %f\n", dmg);
 	return dmg;
 }
 
@@ -88,6 +87,34 @@ void CWeaponNHHatchet::AddViewKick( void )
 	punchAng.z = 0.0f;
 	
 	pPlayer->ViewPunch( punchAng ); 
+}
+
+void CWeaponNHHatchet::PrimaryAttack()
+{
+	if(bIsSwinging)
+		return;
+	BaseClass::PrimaryAttack();
+}
+
+void CWeaponNHHatchet::SecondaryAttack()
+{
+	if(bIsSwinging)
+		return;
+	m_flSwingTime = gpGlobals->curtime + 0.75;
+	bIsSwinging = true;
+	SendWeaponAnim(ACT_VM_HITCENTER2);
+}
+
+void CWeaponNHHatchet::ItemPostFrame()
+{
+	if(bIsSwinging && gpGlobals->curtime > m_flSwingTime)
+	{
+		bIsSwinging = false;
+		//Do the actual attack
+		BaseClass::SecondaryAttack();
+	}
+
+	BaseClass::ItemPostFrame();
 }
 
 //-----------------------------------------------------------------------------
