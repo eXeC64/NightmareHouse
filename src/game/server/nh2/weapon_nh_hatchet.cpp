@@ -1,6 +1,6 @@
 //========= Copyright Valve Corporation, All rights reserved. ============//
 //
-// Purpose:		NH Hatchet - an old favorite
+// Purpose: NH Hatchet
 //
 // $NoKeywords: $
 //=============================================================================//
@@ -28,14 +28,11 @@ ConVar    sk_npc_dmg_hatchet		( "sk_npc_dmg_hatchet","0");
 //-----------------------------------------------------------------------------
 // CWeaponNHHatchet
 //-----------------------------------------------------------------------------
-
 IMPLEMENT_SERVERCLASS_ST(CWeaponNHHatchet, DT_WeaponNHHatchet)
 END_SEND_TABLE()
 
-#ifndef HL2MP
 LINK_ENTITY_TO_CLASS( weapon_nh_hatchet, CWeaponNHHatchet );
 PRECACHE_WEAPON_REGISTER( weapon_nh_hatchet );
-#endif
 
 acttable_t CWeaponNHHatchet::m_acttable[] = 
 {
@@ -60,10 +57,18 @@ CWeaponNHHatchet::CWeaponNHHatchet( void )
 //-----------------------------------------------------------------------------
 float CWeaponNHHatchet::GetDamageForActivity( Activity hitActivity )
 {
+	float dmg;
 	if ( ( GetOwner() != NULL ) && ( GetOwner()->IsPlayer() ) )
-		return sk_plr_dmg_hatchet.GetFloat();
+		dmg = sk_plr_dmg_hatchet.GetFloat();
+	else
+		dmg = sk_npc_dmg_hatchet.GetFloat();
 
-	return sk_npc_dmg_hatchet.GetFloat();
+	if(hitActivity == ACT_VM_HITCENTER2)
+		dmg *= 3;
+
+	Msg("act: %i is maybe PRI:%i, or SEC:%i\n", hitActivity, ACT_VM_HITCENTER, ACT_VM_HITCENTER2);
+	Msg("asked for damage: %f\n", dmg);
+	return dmg;
 }
 
 //-----------------------------------------------------------------------------
@@ -84,58 +89,6 @@ void CWeaponNHHatchet::AddViewKick( void )
 	
 	pPlayer->ViewPunch( punchAng ); 
 }
-
-
-//-----------------------------------------------------------------------------
-// Attempt to lead the target (needed because citizens can't hit manhacks with the hatchet!)
-//-----------------------------------------------------------------------------
-ConVar sk_hatchet_lead_time( "sk_hatchet_lead_time", "0.9" );
-
-int CWeaponNHHatchet::WeaponMeleeAttack1Condition( float flDot, float flDist )
-{
-	// Attempt to lead the target (needed because citizens can't hit manhacks with the hatchet!)
-	CAI_BaseNPC *pNPC	= GetOwner()->MyNPCPointer();
-	CBaseEntity *pEnemy = pNPC->GetEnemy();
-	if (!pEnemy)
-		return COND_NONE;
-
-	Vector vecVelocity;
-	vecVelocity = pEnemy->GetSmoothedVelocity( );
-
-	// Project where the enemy will be in a little while
-	float dt = sk_hatchet_lead_time.GetFloat();
-	dt += random->RandomFloat( -0.3f, 0.2f );
-	if ( dt < 0.0f )
-		dt = 0.0f;
-
-	Vector vecExtrapolatedPos;
-	VectorMA( pEnemy->WorldSpaceCenter(), dt, vecVelocity, vecExtrapolatedPos );
-
-	Vector vecDelta;
-	VectorSubtract( vecExtrapolatedPos, pNPC->WorldSpaceCenter(), vecDelta );
-
-	if ( fabs( vecDelta.z ) > 70 )
-	{
-		return COND_TOO_FAR_TO_ATTACK;
-	}
-
-	Vector vecForward = pNPC->BodyDirection2D( );
-	vecDelta.z = 0.0f;
-	float flExtrapolatedDist = Vector2DNormalize( vecDelta.AsVector2D() );
-	if ((flDist > 64) && (flExtrapolatedDist > 64))
-	{
-		return COND_TOO_FAR_TO_ATTACK;
-	}
-
-	float flExtrapolatedDot = DotProduct2D( vecDelta.AsVector2D(), vecForward.AsVector2D() );
-	if ((flDot < 0.7) && (flExtrapolatedDot < 0.7))
-	{
-		return COND_NOT_FACING_ATTACK;
-	}
-
-	return COND_CAN_MELEE_ATTACK1;
-}
-
 
 //-----------------------------------------------------------------------------
 // Animation event handlers
@@ -165,8 +118,8 @@ void CWeaponNHHatchet::HandleAnimEventMeleeHit( animevent_t *pEvent, CBaseCombat
 	Vector vecEnd;
 	VectorMA( pOperator->Weapon_ShootPosition(), 50, vecDirection, vecEnd );
 	CBaseEntity *pHurt = pOperator->CheckTraceHullAttack( pOperator->Weapon_ShootPosition(), vecEnd, 
-		Vector(-16,-16,-16), Vector(36,36,36), sk_npc_dmg_hatchet.GetFloat(), DMG_CLUB, 0.75 );
-	
+		Vector(-16,-16,-16), Vector(36,36,36), GetDamageForActivity(GetActivity()), DMG_CLUB, 0.75 );
+
 	// did I hit someone?
 	if ( pHurt )
 	{
