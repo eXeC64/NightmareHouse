@@ -24,6 +24,7 @@
 
 ConVar    sk_plr_dmg_hatchet		( "sk_plr_dmg_hatchet","0");
 ConVar    sk_npc_dmg_hatchet		( "sk_npc_dmg_hatchet","0");
+ConVar sk_weapon_hatchet_swing_delay("sk_weapon_hatchet_swing_delay","1.0");
 
 //-----------------------------------------------------------------------------
 // CWeaponNHHatchet
@@ -100,7 +101,7 @@ void CWeaponNHHatchet::SecondaryAttack()
 {
 	if(bIsSwinging)
 		return;
-	m_flSwingTime = gpGlobals->curtime + 0.75;
+	m_flSwingTime = gpGlobals->curtime + sk_weapon_hatchet_swing_delay.GetFloat();
 	bIsSwinging = true;
 	SendWeaponAnim(ACT_VM_HITCENTER2);
 }
