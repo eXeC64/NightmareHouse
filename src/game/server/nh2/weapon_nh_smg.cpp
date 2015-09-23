@@ -43,6 +43,7 @@ public:
 	bool	Reload( void );
 
 	float	GetFireRate( void ) { return 0.116f; }	// 8.6hz
+	int		CapabilitiesGet( void ) { return bits_CAP_WEAPON_RANGE_ATTACK1; }
 	Activity	GetPrimaryAttackActivity( void );
 
 	virtual const Vector& GetBulletSpread( void )
@@ -224,33 +225,6 @@ void CWeaponNHSMG::Operator_HandleAnimEvent( animevent_t *pEvent, CBaseCombatCha
 			FireNPCPrimaryAttack( pOperator, vecShootOrigin, vecShootDir );
 		}
 		break;
-
-		/*//FIXME: Re-enable
-		case EVENT_WEAPON_AR2_GRENADE:
-		{
-		CAI_BaseNPC *npc = pOperator->MyNPCPointer();
-
-		Vector vecShootOrigin, vecShootDir;
-		vecShootOrigin = pOperator->Weapon_ShootPosition();
-		vecShootDir = npc->GetShootEnemyDir( vecShootOrigin );
-
-		Vector vecThrow = m_vecTossVelocity;
-
-		CGrenadeAR2 *pGrenade = (CGrenadeAR2*)Create( "grenade_ar2", vecShootOrigin, vec3_angle, npc );
-		pGrenade->SetAbsVelocity( vecThrow );
-		pGrenade->SetLocalAngularVelocity( QAngle( 0, 400, 0 ) );
-		pGrenade->SetMoveType( MOVETYPE_FLYGRAVITY ); 
-		pGrenade->m_hOwner			= npc;
-		pGrenade->m_pMyWeaponAR2	= this;
-		pGrenade->SetDamage(sk_npc_dmg_ar2_grenade.GetFloat());
-
-		// FIXME: arrgg ,this is hard coded into the weapon???
-		m_flNextGrenadeCheck = gpGlobals->curtime + 6;// wait six seconds before even looking again to see if a grenade can be thrown.
-
-		m_iClip2--;
-		}
-		break;
-		*/
 
 	default:
 		BaseClass::Operator_HandleAnimEvent( pEvent, pOperator );
