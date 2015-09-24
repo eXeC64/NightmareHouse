@@ -35,6 +35,7 @@ public:
 	CWeaponNHRevolver( void );
 
 	void	PrimaryAttack( void );
+	bool Reload( void );
 	void	Operator_HandleAnimEvent( animevent_t *pEvent, CBaseCombatCharacter *pOperator );
 
 	float	WeaponAutoAimScale()	{ return 0.6f; }
@@ -157,4 +158,14 @@ void CWeaponNHRevolver::PrimaryAttack( void )
 		// HEV suit - indicate out of ammo condition
 		pPlayer->SetSuitUpdate( "!HEV_AMO0", FALSE, 0 ); 
 	}
+}
+
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+bool CWeaponNHRevolver::Reload( void )
+{
+	bool fRet = DefaultReload( GetMaxClip1(), GetMaxClip2(), ACT_VM_RELOAD );
+	if ( fRet )
+		WeaponSound( RELOAD );
+	return fRet;
 }
