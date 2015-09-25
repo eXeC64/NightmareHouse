@@ -38,13 +38,13 @@ protected:
 	virtual void Paint();
 
 private:
-	CPanelAnimationVar( vgui::HFont, m_hIconFont, "IconFont", "NH2HUDIcons" );
 	CPanelAnimationVarAliasType( float, m_flIconInsetX, "IconInsetX", "8", "proportional_float" );
 	CPanelAnimationVarAliasType( float, m_flIconInsetY, "IconInsetY", "8", "proportional_float" );
 	CPanelAnimationVarAliasType( float, m_flIconGap, "IconGap", "20", "proportional_float" );
 
 	int m_iSquadMembers;
 	vgui::IImage* m_pBackground;
+	vgui::IImage* m_pIcon;
 };
 
 
@@ -58,7 +58,8 @@ CNH2SquadStatus::CNH2SquadStatus( const char *pElementName ) : CHudElement( pEle
 	vgui::Panel *pParent = g_pClientMode->GetViewport();
 	SetParent( pParent );
 
-	m_pBackground = vgui::scheme()->GetImage("hud/healthbar_bg", false);
+	m_pBackground = vgui::scheme()->GetImage("hud/bar_bg", false);
+	m_pIcon = vgui::scheme()->GetImage("hud/swat", false);
 
 	SetHiddenBits( HIDEHUD_HEALTH | HIDEHUD_PLAYERDEAD | HIDEHUD_NEEDSUIT );
 }
@@ -123,13 +124,12 @@ void CNH2SquadStatus::Paint()
 	m_pBackground->SetPos(0,0);
 	m_pBackground->Paint();
 
-	vgui::surface()->DrawSetTextFont( m_hIconFont );
-	vgui::surface()->DrawSetTextColor(255, 255, 255, 255);
+	m_pIcon->SetSize(panelHeight, panelHeight);
 	int xpos = m_flIconInsetX, ypos = m_flIconInsetY;
 	for (int i = 0; i < m_iSquadMembers; i++)
 	{
-		vgui::surface()->DrawSetTextPos(xpos, ypos);
-		vgui::surface()->DrawUnicodeChar('C');
+		m_pIcon->SetPos(xpos, ypos);
+		m_pIcon->Paint();
 		xpos += m_flIconGap;
 	}
 }
