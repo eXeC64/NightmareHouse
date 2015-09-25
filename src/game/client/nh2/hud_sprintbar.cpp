@@ -32,10 +32,8 @@ protected:
 	float m_flPower;
 	vgui::IImage* m_pBar;
 	vgui::IImage* m_pBackground;
-	CPanelAnimationVar(vgui::HFont, m_hIconFont, "IconFont", "NH2HUDIcons");
-	CPanelAnimationVar(int, m_iIconAlpha, "IconAlpha", "150");
-	CPanelAnimationVar(float, m_flIconX, "IconX", "0.025");
-	CPanelAnimationVar(float, m_flIconY, "IconY", "-0.6");
+	vgui::IImage* m_pIcon;
+	CPanelAnimationVar(float, m_flIconSize, "IconSize", "1.0");
 	CPanelAnimationVar(float, m_flBarWidth, "BarWidth", "0.7");
 	CPanelAnimationVar(float, m_flBarHeight, "BarHeight", "0.775");
 	CPanelAnimationVar(float, m_flBarInsetX, "BarInsetX", "0.15");
@@ -54,6 +52,7 @@ CHudSprintBar::CHudSprintBar (const char * pElementName) :
 	SetParent(pParent);
 	m_pBar = vgui::scheme()->GetImage("hud/bar_fg", false);
 	m_pBackground = vgui::scheme()->GetImage("hud/bar_bg", false);
+	m_pIcon = vgui::scheme()->GetImage("hud/sprint_icon", false);
 	SetHiddenBits (HIDEHUD_HEALTH | HIDEHUD_PLAYERDEAD | HIDEHUD_NEEDSUIT);
 }
 
@@ -97,15 +96,13 @@ void CHudSprintBar::Paint()
 	m_pBackground->SetPos(0,0);
 	m_pBackground->Paint();
 
-
 	m_pBar->SetSize(panelWidth*m_flBarWidth, panelHeight*m_flBarHeight);
 	m_pBar->SetPos(panelWidth*m_flBarInsetX, panelHeight*m_flBarInsetY);
 	m_pBar->SetFrame(min(max(0,m_flPower),99));
 	m_pBar->Paint();
 
 	//Draw sprint icon
-	vgui::surface()->DrawSetTextFont(m_hIconFont);
-	vgui::surface()->DrawSetTextColor(Color(255,m_flPower > 21 ? 255 : 0, m_flPower > 21 ? 255 : 0, m_iIconAlpha));
-	vgui::surface()->DrawSetTextPos(panelWidth*m_flIconX, panelHeight*m_flIconY);
-	vgui::surface()->DrawPrintText(L"D",1);
+	m_pIcon->SetSize(panelHeight * m_flIconSize, panelHeight * m_flIconSize);
+	m_pIcon->SetPos(0.5 * panelHeight * (1.0 - m_flIconSize), 0.5 * panelHeight * (1.0 - m_flIconSize));
+	m_pIcon->Paint();
 }
