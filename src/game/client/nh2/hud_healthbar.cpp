@@ -30,11 +30,10 @@ protected:
 
 	vgui::IImage* m_pBar;
 	vgui::IImage* m_pBackground;
+	vgui::IImage* m_pNumbers;
 	float m_flHealth;
-	CPanelAnimationVar(vgui::HFont, m_hTextFont, "TextFont", "NH2HUDText");
-	CPanelAnimationVar(int, m_iTextAlpha, "TextAlpha", "150");
-	CPanelAnimationVar(float, m_flTextX, "TextX", "0.025");
-	CPanelAnimationVar(float, m_flTextY, "TextY", "0.10");
+	CPanelAnimationVar(float, m_flTextSize, "TextSize", "1.0");
+	CPanelAnimationVar(float, m_flTextInset, "TextInset", "0.02");
 	CPanelAnimationVar(float, m_flBarWidth, "BarWidth", "0.7");
 	CPanelAnimationVar(float, m_flBarHeight, "BarHeight", "0.775");
 	CPanelAnimationVar(float, m_flBarInsetX, "BarInsetX", "0.15");
@@ -53,6 +52,7 @@ CHudHealthBar::CHudHealthBar (const char * pElementName) :
 	SetParent(pParent);
 	m_pBar = vgui::scheme()->GetImage("hud/bar_fg", false);
 	m_pBackground = vgui::scheme()->GetImage("hud/bar_bg", false);
+	m_pNumbers = vgui::scheme()->GetImage("hud/numbers", false);
 	SetHiddenBits (HIDEHUD_HEALTH | HIDEHUD_PLAYERDEAD | HIDEHUD_NEEDSUIT);
 }
 
@@ -91,14 +91,9 @@ void CHudHealthBar::Paint()
 	m_pBar->SetFrame(static_cast<int>(m_flHealth-1));
 	m_pBar->Paint();
 
-	//Draw text
-	char sz[16];
-	wchar_t wsz[16];
-	Q_snprintf(sz, sizeof( sz ), "%d", static_cast<int>(m_flHealth));
-	g_pVGuiLocalize->ConvertANSIToUnicode(sz, wsz, sizeof(wsz));
-
-	vgui::surface()->DrawSetTextFont(m_hTextFont);
-	vgui::surface()->DrawSetTextColor(Color(255,m_flHealth > 21 ? 255 : 0, m_flHealth > 21 ? 255 : 0, m_iTextAlpha));
-	vgui::surface()->DrawSetTextPos(panelWidth*m_flTextX, panelHeight*m_flTextY);
-	vgui::surface()->DrawPrintText(wsz,wcslen(wsz));
+	//Draw numbers
+	m_pNumbers->SetSize(panelHeight * m_flTextSize, panelHeight * m_flTextSize);
+	m_pNumbers->SetPos(panelWidth * m_flTextInset, 0.5 * panelHeight * (1.0 - m_flTextSize));
+	m_pNumbers->SetFrame(static_cast<int>(m_flHealth));
+	m_pNumbers->Paint();
 }
