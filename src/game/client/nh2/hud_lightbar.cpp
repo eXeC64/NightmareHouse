@@ -50,8 +50,8 @@ CHudLightBar::CHudLightBar (const char * pElementName) :
 {
 	vgui::Panel* pParent = g_pClientMode->GetViewport();
 	SetParent(pParent);
-	m_pBar = vgui::scheme()->GetImage("hud/healthbar_fg", false);
-	m_pBackground = vgui::scheme()->GetImage("hud/healthbar_bg", false);
+	m_pBar = vgui::scheme()->GetImage("hud/bar_fg", false);
+	m_pBackground = vgui::scheme()->GetImage("hud/bar_bg", false);
 	m_pIcon = vgui::scheme()->GetImage("hud/flashlight_icon", false);
 	SetHiddenBits (HIDEHUD_HEALTH | HIDEHUD_PLAYERDEAD | HIDEHUD_NEEDSUIT);
 }

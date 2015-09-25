@@ -52,8 +52,8 @@ CHudSprintBar::CHudSprintBar (const char * pElementName) :
 {
 	vgui::Panel* pParent = g_pClientMode->GetViewport();
 	SetParent(pParent);
-	m_pBar = vgui::scheme()->GetImage("hud/healthbar_fg", false);
-	m_pBackground = vgui::scheme()->GetImage("hud/healthbar_bg", false);
+	m_pBar = vgui::scheme()->GetImage("hud/bar_fg", false);
+	m_pBackground = vgui::scheme()->GetImage("hud/bar_bg", false);
 	SetHiddenBits (HIDEHUD_HEALTH | HIDEHUD_PLAYERDEAD | HIDEHUD_NEEDSUIT);
 }
 
@@ -66,8 +66,8 @@ void CHudSprintBar::Reset (void)
 {
 	SetFgColor(Color(255,255,255,255));
 	SetBgColor(Color(0,0,0,0));
-	m_flPower = 100;
 	SetAlpha(0);
+	m_flPower = 100;
 }
 
 void CHudSprintBar::OnThink()
@@ -77,6 +77,7 @@ void CHudSprintBar::OnThink()
 		return;
 
 	const float power = pPlayer->m_HL2Local.m_flSuitPower;
+
 	if (m_flPower != power)
 	{
 		if (power >= 100 && m_flPower < 100)
