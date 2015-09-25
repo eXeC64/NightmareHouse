@@ -34,6 +34,7 @@ protected:
 	vgui::IImage* m_pBackground;
 	vgui::IImage* m_pIcon;
 	CPanelAnimationVar(float, m_flIconSize, "IconSize", "1.0");
+	CPanelAnimationVar(float, m_flIconInset, "IconInset", "-0.008");
 	CPanelAnimationVar(float, m_flBarWidth, "BarWidth", "0.7");
 	CPanelAnimationVar(float, m_flBarHeight, "BarHeight", "0.775");
 	CPanelAnimationVar(float, m_flBarInsetX, "BarInsetX", "0.15");
@@ -103,6 +104,6 @@ void CHudSprintBar::Paint()
 
 	//Draw sprint icon
 	m_pIcon->SetSize(panelHeight * m_flIconSize, panelHeight * m_flIconSize);
-	m_pIcon->SetPos(0.5 * panelHeight * (1.0 - m_flIconSize), 0.5 * panelHeight * (1.0 - m_flIconSize));
+	m_pIcon->SetPos(panelWidth * m_flIconInset, 0.5 * panelHeight * (1.0 - m_flIconSize));
 	m_pIcon->Paint();
 }
