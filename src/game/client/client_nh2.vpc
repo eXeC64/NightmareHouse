@@ -38,6 +38,8 @@ $Project "Client (NH2)"
 				$File	"nh2\hud_weaponselection.cpp"
 				$File	"nh2\hud_squadstatus.cpp"
 				$File	"nh2\hud_ammo.cpp"
+				$File	"nh2\hud_pickups.cpp"
+				$File	"nh2\hud_pickups.h"
 			}
 			$File	"nh2\c_weapon__stubs_nh2.cpp"
 		}
