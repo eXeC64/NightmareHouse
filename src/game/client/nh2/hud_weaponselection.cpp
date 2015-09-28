@@ -7,7 +7,6 @@
 #include "cbase.h"
 #include "weapon_selection.h"
 #include "iclientmode.h"
-#include "history_resource.h"
 #include "input.h"
 #include "../hud_crosshair.h"
 
@@ -194,11 +193,11 @@ CHudWeaponSelection::CHudWeaponSelection( const char *pElementName ) : CBaseHudW
 void CHudWeaponSelection::OnWeaponPickup( C_BaseCombatWeapon *pWeapon )
 {
 	// add to pickup history
-	CHudHistoryResource *pHudHR = GET_HUDELEMENT( CHudHistoryResource );
-	if ( pHudHR )
-	{
-		pHudHR->AddToHistory( pWeapon );
-	}
+	/* CHudHistoryResource *pHudHR = GET_HUDELEMENT( CHudHistoryResource ); */
+	/* if ( pHudHR ) */
+	/* { */
+	/* 	pHudHR->AddToHistory( pWeapon ); */
+	/* } */
 }
 
 //-----------------------------------------------------------------------------
