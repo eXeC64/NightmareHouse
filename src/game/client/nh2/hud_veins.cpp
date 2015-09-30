@@ -15,6 +15,8 @@ using namespace vgui;
  
 #include "tier0/memdbgon.h" 
 
+ConVar r_bluroverlay("r_bluroverlay", "1");
+
 class CHudVeins : public CHudElement, public vgui::Panel
 {
 	DECLARE_CLASS_SIMPLE(CHudVeins, vgui::Panel);
@@ -28,6 +30,7 @@ public:
 
 private:
 	vgui::IImage* m_pVeins;
+	vgui::IImage* m_pBlur;
 };
  
 DECLARE_HUDELEMENT_DEPTH( CHudVeins, 100 );
@@ -38,6 +41,7 @@ CHudVeins:: CHudVeins (const char * pElementName) :
 	vgui::Panel * pParent = g_pClientMode->GetViewport();
 	SetParent (pParent);
 	m_pVeins = vgui::scheme()->GetImage("hud/veins", false);
+	m_pBlur = vgui::scheme()->GetImage("hud/blureffect", false);
 }
 
 void CHudVeins::Init()
@@ -53,6 +57,16 @@ void CHudVeins::Reset (void)
  
 void CHudVeins::Paint()
 {
+	int wide, tall;
+	GetHudSize(wide, tall);
+	SetBounds(0, 0, wide, tall);
+
+	m_pBlur->SetSize(wide, tall);
+	m_pBlur->SetPos(0,0);
+	m_pBlur->SetColor(Color(255,255,255,255));
+	if(r_bluroverlay.GetBool())
+		m_pBlur->Paint();
+
 	C_BaseHLPlayer *pPlayer = (C_BaseHLPlayer *)C_BasePlayer::GetLocalPlayer();
 	if ( !pPlayer )
 		return;
@@ -60,9 +74,6 @@ void CHudVeins::Paint()
 	if(pPlayer->GetHealth() > 25)
 		return;
 
-	int wide, tall;
-	GetHudSize(wide, tall);
-	SetBounds(0, 0, wide, tall);
 	m_pVeins->SetSize(wide, tall);
 	m_pVeins->SetPos(0,0);
 	m_pVeins->SetColor(Color(255,255,255,255 - pPlayer->GetHealth() * 10));
