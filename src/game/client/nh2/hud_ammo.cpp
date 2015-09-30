@@ -123,6 +123,7 @@ void CNH2Ammo::Paint( void )
 	m_pBackground->Paint();
 
 	//Draw clip ammo count
+	m_pNumbers->SetColor(Color(255,255,255,255));
 	m_pNumbers->SetSize(panelHeight * m_flClipSize, panelHeight * m_flClipSize);
 	m_pNumbers->SetPos(panelWidth * m_flClipInset, 0.5 * panelHeight * (1.0 - m_flClipSize));
 	m_pNumbers->SetFrame(static_cast<int>(m_iClip));
@@ -140,6 +141,7 @@ void CNH2Ammo::Paint( void )
 		int index = m_iSlot - 1;
 		m_pAmmoIcons[index]->SetSize(panelHeight * m_flIconSize, panelHeight * m_flIconSize);
 		m_pAmmoIcons[index]->SetPos(panelWidth * m_flIconInset, 0.5 * panelHeight * (1.0 - m_flIconSize));
+		m_pAmmoIcons[index]->SetColor(Color(255,255,255,255));
 		m_pAmmoIcons[index]->Paint();
 	}
 }

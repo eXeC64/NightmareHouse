@@ -37,6 +37,7 @@
 #include "datacache/imdlcache.h"
 #include "vgui/ISurface.h"
 #include "voice_status.h"
+#include "nh2/hud_pickups.h"
 #include "fx.h"
 #include "dt_utlvector_recv.h"
 #include "cam_thirdperson.h"
@@ -972,6 +973,26 @@ void C_BasePlayer::OnDataChanged( DataUpdateType_t updateType )
 	{
 		// Reset engine areabits pointer
 		render->SetAreaState( m_Local.m_chAreaBits, m_Local.m_chAreaPortalBits );
+
+		// Check for Ammo pickups.
+		for ( int i = 0; i < MAX_AMMO_TYPES; i++ )
+		{
+			if ( GetAmmoCount(i) > m_iOldAmmo[i] )
+			{
+				// Don't add to ammo pickup if the ammo doesn't do it
+				const FileWeaponInfo_t *pWeaponData = gWR.GetWeaponFromAmmo(i);
+
+				if ( !pWeaponData || !( pWeaponData->iFlags & ITEM_FLAG_NOAMMOPICKUPS ) )
+				{
+					// We got more ammo for this ammo index. Add it to the ammo history
+					CHudPickups *pHudPU = GET_HUDELEMENT( CHudPickups );
+					if( pHudPU )
+					{
+						pHudPU->ShowAmmo(i,abs(GetAmmoCount(i) - m_iOldAmmo[i]));
+					}
+				}
+			}
+		}
 
 		Soundscape_Update( m_Local.m_audio );
 

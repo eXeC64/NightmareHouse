@@ -94,6 +94,7 @@ void CHudHealthBar::Paint()
 	//Draw numbers
 	m_pNumbers->SetSize(panelHeight * m_flTextSize, panelHeight * m_flTextSize);
 	m_pNumbers->SetPos(panelWidth * m_flTextInset, 0.5 * panelHeight * (1.0 - m_flTextSize));
+	m_pNumbers->SetColor(Color(255,255,255,255));
 	m_pNumbers->SetFrame(static_cast<int>(m_flHealth));
 	m_pNumbers->Paint();
 }

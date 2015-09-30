@@ -9,6 +9,7 @@
 #include "iclientmode.h"
 #include "input.h"
 #include "../hud_crosshair.h"
+#include "hud_pickups.h"
 
 #include "VGuiMatSurface/IMatSystemSurface.h"
 #include <KeyValues.h>
@@ -192,12 +193,9 @@ CHudWeaponSelection::CHudWeaponSelection( const char *pElementName ) : CBaseHudW
 //-----------------------------------------------------------------------------
 void CHudWeaponSelection::OnWeaponPickup( C_BaseCombatWeapon *pWeapon )
 {
-	// add to pickup history
-	/* CHudHistoryResource *pHudHR = GET_HUDELEMENT( CHudHistoryResource ); */
-	/* if ( pHudHR ) */
-	/* { */
-	/* 	pHudHR->AddToHistory( pWeapon ); */
-	/* } */
+	CHudPickups *pHudPU = GET_HUDELEMENT( CHudPickups );
+	if(pHudPU)
+		pHudPU->ShowPickup(pWeapon);
 }
 
 //-----------------------------------------------------------------------------
