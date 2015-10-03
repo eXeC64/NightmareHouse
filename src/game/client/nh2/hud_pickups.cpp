@@ -148,38 +148,48 @@ void CHudPickups::MsgFunc_ItemPickup( bf_read &msg )
 	}
 }
 
+double calcPos(double pos, double scale, double max)
+{
+	return pos >= 0 ? scale * pos : scale * pos + max;
+}
+
 void CHudPickups::Paint()
 {
-	int panelWidth, panelHeight;
-	GetSize(panelWidth, panelHeight);
+	int wide, tall;
+	GetHudSize(wide, tall);
+	SetBounds(0, 0, wide, tall);
 
-	m_pHealthKit->SetSize(panelHeight * m_flKitScale, panelHeight * m_flKitScale);
-	m_pHealthKit->SetPos(panelWidth*m_flKitX, panelHeight*m_flKitY);
+	float scale = tall / 480.0;
+
+	m_pHealthKit->SetSize(scale * m_flKitScale, scale * m_flKitScale);
+	m_pHealthKit->SetPos(calcPos(m_flKitX, scale, wide), calcPos(m_flKitY, scale, tall));
 	m_pHealthKit->SetColor(Color(255,255,255,255 * m_flKitAlpha));
 	m_pHealthKit->Paint();
 
-	m_pHealthVial->SetSize(panelHeight * m_flVialScale, panelHeight * m_flVialScale);
-	m_pHealthVial->SetPos(panelWidth*m_flVialX, panelHeight*m_flVialY);
+	m_pHealthVial->SetSize(scale * m_flVialScale, scale * m_flVialScale);
+	m_pHealthVial->SetPos(calcPos(m_flVialX, scale, wide), calcPos(m_flVialY, scale, tall));
 	m_pHealthVial->SetColor(Color(255,255,255,255 * m_flVialAlpha));
 	m_pHealthVial->Paint();
 
 	if(m_iWep >= 0 && m_iWep < 5)
 	{
-		m_pWep[m_iWep]->SetSize(2*panelHeight*m_flWepScale, panelHeight*m_flWepScale);
-		m_pWep[m_iWep]->SetPos(panelWidth*m_flWepX, panelHeight*m_flWepY);
+		m_pWep[m_iWep]->SetSize(scale * 2*m_flWepScale, scale * m_flWepScale);
+		m_pWep[m_iWep]->SetPos(scale * m_flWepX + (m_flWepX > 0 ? 0 : scale * wide), scale * m_flWepY + (m_flWepY > 0 ? 0 : scale * tall));
+		m_pWep[m_iWep]->SetPos(calcPos(m_flWepX, scale, wide), calcPos(m_flWepY, scale, tall));
 		m_pWep[m_iWep]->SetColor(Color(255,255,255,255 * m_flWepAlpha));
 		m_pWep[m_iWep]->Paint();
 	}
 
 	if(m_iAmmo >= 0 && m_iAmmo < 4)
 	{
-		m_pAmmo[m_iAmmo]->SetSize(panelHeight*m_flAmmoScale, panelHeight*m_flAmmoScale);
-		m_pAmmo[m_iAmmo]->SetPos(panelWidth*m_flAmmoX, panelHeight*m_flAmmoY);
+		m_pAmmo[m_iAmmo]->SetSize(scale * m_flAmmoScale, scale * m_flAmmoScale);
+		m_pAmmo[m_iAmmo]->SetPos(scale * (m_flAmmoX + (m_flAmmoX > 0 ? 0 : scale * wide)), scale * (m_flAmmoY + (m_flAmmoY > 0 ? 0 : scale * tall)));
+		m_pAmmo[m_iAmmo]->SetPos(calcPos(m_flAmmoX, scale, wide), calcPos(m_flAmmoY, scale, tall));
 		m_pAmmo[m_iAmmo]->SetColor(Color(255,255,255,255 * m_flAmmoAlpha));
 		m_pAmmo[m_iAmmo]->Paint();
 
-		m_pNumbers->SetSize(panelHeight*m_flAmmoQuantityScale, panelHeight*m_flAmmoQuantityScale);
-		m_pNumbers->SetPos(panelWidth*m_flAmmoQuantityX, panelHeight*m_flAmmoQuantityY);
+		m_pNumbers->SetSize(scale * m_flAmmoQuantityScale, scale * m_flAmmoQuantityScale);
+		m_pNumbers->SetPos(calcPos(m_flAmmoQuantityX, scale, wide), calcPos(m_flAmmoQuantityY, scale, tall));
 		m_pNumbers->SetColor(Color(255,255,255,255 * m_flAmmoAlpha));
 		m_pNumbers->SetFrame(m_iAmmoQuantity);
 		m_pNumbers->Paint();
