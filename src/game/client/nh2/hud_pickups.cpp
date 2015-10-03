@@ -65,6 +65,10 @@ void CHudPickups::Reset()
 	m_bVialVisible = false;
 	m_bWepVisible = false;
 	m_bAmmoVisible = false;
+	m_flKitAlpha = 0;
+	m_flVialAlpha = 0;
+	m_flWepAlpha = 0;
+	m_flAmmoAlpha = 0;
 }
 
 void CHudPickups::Think()
@@ -90,7 +94,6 @@ void CHudPickups::Think()
 	{
 		m_bAmmoVisible = false;
 		g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "AmmoAlpha", 0.0f, 0.0f, m_flFadeTime, vgui::AnimationController::INTERPOLATOR_LINEAR);
-		g_pClientMode->GetViewportAnimationController()->RunAnimationCommand( this, "QtyAlpha", 0.0f, 0.0f, m_flFadeTime, vgui::AnimationController::INTERPOLATOR_LINEAR);
 	}
 }
 
