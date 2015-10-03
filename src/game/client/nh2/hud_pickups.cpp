@@ -16,6 +16,8 @@
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
+ConVar hud_pickups_debug("hud_pickups_debug", "0");
+
 using namespace vgui;
 
 DECLARE_HUDELEMENT( CHudPickups );
@@ -160,15 +162,16 @@ void CHudPickups::Paint()
 	SetBounds(0, 0, wide, tall);
 
 	float scale = tall / 480.0;
+	bool dbg = hud_pickups_debug.GetBool();
 
 	m_pHealthKit->SetSize(scale * m_flKitScale, scale * m_flKitScale);
 	m_pHealthKit->SetPos(calcPos(m_flKitX, scale, wide), calcPos(m_flKitY, scale, tall));
-	m_pHealthKit->SetColor(Color(255,255,255,255 * m_flKitAlpha));
+	m_pHealthKit->SetColor(Color(255,255,255,255 * (dbg ? 1.0 : m_flKitAlpha)));
 	m_pHealthKit->Paint();
 
 	m_pHealthVial->SetSize(scale * m_flVialScale, scale * m_flVialScale);
 	m_pHealthVial->SetPos(calcPos(m_flVialX, scale, wide), calcPos(m_flVialY, scale, tall));
-	m_pHealthVial->SetColor(Color(255,255,255,255 * m_flVialAlpha));
+	m_pHealthVial->SetColor(Color(255,255,255,255 * (dbg ? 1.0 : m_flVialAlpha)));
 	m_pHealthVial->Paint();
 
 	if(m_iWep >= 0 && m_iWep < 5)
@@ -176,7 +179,7 @@ void CHudPickups::Paint()
 		m_pWep[m_iWep]->SetSize(scale * 2*m_flWepScale, scale * m_flWepScale);
 		m_pWep[m_iWep]->SetPos(scale * m_flWepX + (m_flWepX > 0 ? 0 : scale * wide), scale * m_flWepY + (m_flWepY > 0 ? 0 : scale * tall));
 		m_pWep[m_iWep]->SetPos(calcPos(m_flWepX, scale, wide), calcPos(m_flWepY, scale, tall));
-		m_pWep[m_iWep]->SetColor(Color(255,255,255,255 * m_flWepAlpha));
+		m_pWep[m_iWep]->SetColor(Color(255,255,255,255 * (dbg ? 1.0 : m_flWepAlpha)));
 		m_pWep[m_iWep]->Paint();
 	}
 
@@ -185,12 +188,12 @@ void CHudPickups::Paint()
 		m_pAmmo[m_iAmmo]->SetSize(scale * m_flAmmoScale, scale * m_flAmmoScale);
 		m_pAmmo[m_iAmmo]->SetPos(scale * (m_flAmmoX + (m_flAmmoX > 0 ? 0 : scale * wide)), scale * (m_flAmmoY + (m_flAmmoY > 0 ? 0 : scale * tall)));
 		m_pAmmo[m_iAmmo]->SetPos(calcPos(m_flAmmoX, scale, wide), calcPos(m_flAmmoY, scale, tall));
-		m_pAmmo[m_iAmmo]->SetColor(Color(255,255,255,255 * m_flAmmoAlpha));
+		m_pAmmo[m_iAmmo]->SetColor(Color(255,255,255,255 * (dbg ? 1.0 : m_flAmmoAlpha)));
 		m_pAmmo[m_iAmmo]->Paint();
 
 		m_pNumbers->SetSize(scale * m_flAmmoQuantityScale, scale * m_flAmmoQuantityScale);
 		m_pNumbers->SetPos(calcPos(m_flAmmoQuantityX, scale, wide), calcPos(m_flAmmoQuantityY, scale, tall));
-		m_pNumbers->SetColor(Color(255,255,255,255 * m_flAmmoAlpha));
+		m_pNumbers->SetColor(Color(255,255,255,255 * (dbg ? 1.0 : m_flAmmoAlpha)));
 		m_pNumbers->SetFrame(m_iAmmoQuantity);
 		m_pNumbers->Paint();
 	}
