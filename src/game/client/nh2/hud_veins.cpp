@@ -16,6 +16,7 @@ using namespace vgui;
 #include "tier0/memdbgon.h" 
 
 ConVar r_bluroverlay("r_bluroverlay", "1");
+ConVar r_veinsoverlay("r_veinsoverlay", "1");
 
 class CHudVeins : public CHudElement, public vgui::Panel
 {
@@ -77,5 +78,6 @@ void CHudVeins::Paint()
 	m_pVeins->SetSize(wide, tall);
 	m_pVeins->SetPos(0,0);
 	m_pVeins->SetColor(Color(255,255,255,255 - pPlayer->GetHealth() * 10));
-	m_pVeins->Paint();
+	if(r_veinsoverlay.GetBool())
+		m_pVeins->Paint();
 }
