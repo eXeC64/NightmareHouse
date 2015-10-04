@@ -54,6 +54,8 @@ void CHudVeins::Reset (void)
 {
 	SetFgColor(Color(255,255,255,255));
 	SetBgColor(Color(255,255,255,0));
+	r_veinsoverlay.SetValue(true);
+	r_bluroverlay.SetValue(true);
 }
  
 void CHudVeins::Paint()
