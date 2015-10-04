@@ -25,13 +25,17 @@ class CHudVeins : public CHudElement, public vgui::Panel
 public:
 	CHudVeins(const char * pElementName);
  
-	virtual void Init (void);
-	virtual void Reset (void);
+	virtual void Init();
+	virtual void Reset();
+	virtual void Think();
 	virtual void Paint();
 
 private:
 	vgui::IImage* m_pVeins;
 	vgui::IImage* m_pBlur;
+	float m_flLastHeartbeat;
+	CPanelAnimationVar(float, m_flMinHeartbeatInterval, "MinHeartbeatInterval", "0.5");
+	CPanelAnimationVar(float, m_flMaxHeartbeatInterval, "MaxHeartbeatInterval", "1.0");
 };
  
 DECLARE_HUDELEMENT_DEPTH( CHudVeins, 100 );
@@ -56,6 +60,25 @@ void CHudVeins::Reset (void)
 	SetBgColor(Color(255,255,255,0));
 	r_veinsoverlay.SetValue(true);
 	r_bluroverlay.SetValue(true);
+	m_flLastHeartbeat = 0;
+}
+
+void CHudVeins::Think()
+{
+	C_BaseHLPlayer *pPlayer = (C_BaseHLPlayer *)C_BasePlayer::GetLocalPlayer();
+	if ( !pPlayer )
+		return;
+
+	if(pPlayer->GetHealth() > 25)
+		return;
+
+	const float health = pPlayer->GetHealth() / 25.0;
+	const float interval = m_flMinHeartbeatInterval + health * (m_flMaxHeartbeatInterval - m_flMinHeartbeatInterval);
+	if(m_flLastHeartbeat + interval < gpGlobals->curtime)
+	{
+		vgui::surface()->PlaySound("nh2/heartbeat.wav");
+		m_flLastHeartbeat = gpGlobals->curtime;
+	}
 }
  
 void CHudVeins::Paint()
