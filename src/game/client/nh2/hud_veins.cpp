@@ -15,8 +15,14 @@ using namespace vgui;
  
 #include "tier0/memdbgon.h" 
 
+static int veins_offuntil;
+void cb_veinsoverlay( IConVar *pConVar, const char *pOldString, float flOldValue )
+{
+	veins_offuntil = gpGlobals->curtime + 10.0;
+}
+
 ConVar r_bluroverlay("r_bluroverlay", "1");
-ConVar r_veinsoverlay("r_veinsoverlay", "1");
+ConVar r_veinsoverlay("r_veinsoverlay", "1", FCVAR_NONE, "Veins overlay", false, 0, true, 1, cb_veinsoverlay);
 
 class CHudVeins : public CHudElement, public vgui::Panel
 {
@@ -65,6 +71,9 @@ void CHudVeins::Reset (void)
 
 void CHudVeins::Think()
 {
+	if ( gpGlobals->curtime > veins_offuntil )
+		r_veinsoverlay.SetValue( 1 );
+
 	C_BaseHLPlayer *pPlayer = (C_BaseHLPlayer *)C_BasePlayer::GetLocalPlayer();
 	if ( !pPlayer )
 		return;
