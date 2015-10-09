@@ -511,13 +511,6 @@ void CWeaponNHShotgun::ItemPostFrame( void )
 			m_bNeedPump		= false;
 			m_bDelayedFire1 = true;
 		}
-		// If I'm secondary firing and have one round stop reloading and fire
-		else if ((pOwner->m_nButtons & IN_ATTACK2 ) && (m_iClip1 >=2))
-		{
-			m_bInReload		= false;
-			m_bNeedPump		= false;
-			m_bDelayedFire2 = true;
-		}
 		else if (m_flNextPrimaryAttack <= gpGlobals->curtime)
 		{
 			// If out of ammo end reload
