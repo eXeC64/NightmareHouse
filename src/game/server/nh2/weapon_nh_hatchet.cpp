@@ -49,7 +49,7 @@ IMPLEMENT_ACTTABLE(CWeaponNHHatchet);
 //-----------------------------------------------------------------------------
 CWeaponNHHatchet::CWeaponNHHatchet( void )
 {
-	bIsSwinging = false;
+	m_bIsSwinging = false;
 }
 
 //-----------------------------------------------------------------------------
@@ -65,8 +65,8 @@ float CWeaponNHHatchet::GetDamageForActivity( Activity hitActivity )
 	else
 		dmg = sk_npc_dmg_hatchet.GetFloat();
 
-	if(hitActivity == ACT_VM_HITCENTER2)
-		dmg *= 3;
+	if(hitActivity == ACT_VM_HITCENTER2 || hitActivity == ACT_VM_MISSCENTER)
+		dmg *= 3.0;
 
 	return dmg;
 }
@@ -92,27 +92,34 @@ void CWeaponNHHatchet::AddViewKick( void )
 
 void CWeaponNHHatchet::PrimaryAttack()
 {
-	if(bIsSwinging)
+	if(m_bIsSwinging)
 		return;
-	BaseClass::PrimaryAttack();
+	m_flSwingTime = gpGlobals->curtime + 0.20;
+	m_bIsSwinging = true;
+	m_iSwingType = 1;
+	SendWeaponAnim(random->RandomInt(1,2) == 1 ? ACT_VM_HITCENTER : ACT_VM_MISSCENTER);
 }
 
 void CWeaponNHHatchet::SecondaryAttack()
 {
-	if(bIsSwinging)
+	if(m_bIsSwinging)
 		return;
-	m_flSwingTime = gpGlobals->curtime + sk_weapon_hatchet_swing_delay.GetFloat();
-	bIsSwinging = true;
-	SendWeaponAnim(ACT_VM_HITCENTER2);
+	m_flSwingTime = gpGlobals->curtime + 0.95;
+	m_bIsSwinging = true;
+	m_iSwingType = 2;
+	SendWeaponAnim(random->RandomInt(1,2) == 1 ? ACT_VM_HITCENTER2 : ACT_VM_MISSCENTER2);
 }
 
 void CWeaponNHHatchet::ItemPostFrame()
 {
-	if(bIsSwinging && gpGlobals->curtime > m_flSwingTime)
+	if(m_bIsSwinging && gpGlobals->curtime > m_flSwingTime)
 	{
-		bIsSwinging = false;
+		m_bIsSwinging = false;
 		//Do the actual attack
-		BaseClass::SecondaryAttack();
+		if(m_iSwingType == 1)
+			BaseClass::PrimaryAttack();
+		else if (m_iSwingType == 2)
+			BaseClass::SecondaryAttack();
 	}
 
 	BaseClass::ItemPostFrame();

@@ -871,7 +871,9 @@ bool CNH_Zombie::ShouldBecomeTorso( const CTakeDamageInfo &info, float flDamageT
 	}
 
 	if ( !m_bHeadShot && info.GetDamage() >= sk_nh_torso_damage_threshold.GetFloat() )
-		return true;
+	{
+		return random->RandomInt( 1, 100 ) < 20;
+	}
 
 	return BaseClass::ShouldBecomeTorso( info, flDamageThreshold );
 }

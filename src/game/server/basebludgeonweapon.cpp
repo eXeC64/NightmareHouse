@@ -154,7 +154,11 @@ void CBaseHLBludgeonWeapon::Hit( trace_t &traceHit, Activity nHitActivity, bool 
 		pPlayer->EyeVectors( &hitDirection, NULL, NULL );
 		VectorNormalize( hitDirection );
 
-		CTakeDamageInfo info( GetOwner(), GetOwner(), GetDamageForActivity( nHitActivity ), DMG_CLUB );
+		//for secondary attack of hatchet we'll actually hit them to the side
+		if(bIsSecondary && strcmp(GetClassname(), "weapon_nh_hatchet") == 0)
+			VectorYawRotate(hitDirection, 90.0, hitDirection);
+
+		CTakeDamageInfo info( GetOwner(), GetOwner(), GetDamageForActivity( nHitActivity ), DMG_SLASH );
 
 		if( pPlayer && pHitEntity->IsNPC() )
 		{
@@ -369,23 +373,12 @@ void CBaseHLBludgeonWeapon::Swing( int bIsSecondary )
 	}
 	else
 	{
-		Hit( traceHit, nHitActivity, bIsSecondary ? true : false );
-	}
-
-	// Send the anim
-	//NH2 fuckery because I'm very lazy and just want this over with
-	if(!bIsSecondary || strcmp(GetClassname(), "weapon_nh_hatchet") != 0)
-	{
-		SendWeaponAnim( nHitActivity );
-		m_flNextSecondaryAttack = gpGlobals->curtime + SequenceDuration();
-	}
-	else
-	{
-		m_flNextSecondaryAttack = gpGlobals->curtime + GetFireRate();
+		Hit( traceHit, nHitActivity, bIsSecondary);
 	}
 
 	//Setup our next attack times
 	m_flNextPrimaryAttack = gpGlobals->curtime + GetFireRate();
+	m_flNextSecondaryAttack = gpGlobals->curtime + SequenceDuration();
 
 
 	//Play swing sound
