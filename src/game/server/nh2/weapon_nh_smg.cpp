@@ -23,11 +23,11 @@
 
 extern ConVar    sk_plr_dmg_smg1_grenade;	
 
-class CWeaponNHSMG : public CHLSelectFireMachineGun
+class CWeaponNHSMG : public CHLMachineGun
 {
 	DECLARE_DATADESC();
 public:
-	DECLARE_CLASS( CWeaponNHSMG, CHLSelectFireMachineGun );
+	DECLARE_CLASS( CWeaponNHSMG, CHLMachineGun );
 
 	CWeaponNHSMG();
 
@@ -50,6 +50,17 @@ public:
 	{
 		static const Vector cone = VECTOR_CONE_5DEGREES;
 		return cone;
+	}
+
+	//Clear out the attack2 button
+	void ItemPostFrame( void )
+	{
+		CBasePlayer *pOwner = ToBasePlayer( GetOwner() );
+		if ( pOwner == NULL )
+			return;
+
+		pOwner->m_nButtons &= ~IN_ATTACK2;
+		BaseClass::ItemPostFrame();
 	}
 
 	const WeaponProficiencyInfo_t *GetProficiencyValues();
