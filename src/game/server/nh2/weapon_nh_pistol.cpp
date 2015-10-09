@@ -21,8 +21,8 @@
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
-#define	PISTOL_FASTEST_REFIRE_TIME		0.2f
-#define	PISTOL_FASTEST_DRY_REFIRE_TIME	0.4f
+#define	PISTOL_FASTEST_REFIRE_TIME		0.15f
+#define	PISTOL_FASTEST_DRY_REFIRE_TIME	0.3f
 
 #define	PISTOL_ACCURACY_SHOT_PENALTY_TIME		0.4f	// Applied amount of time each shot adds to the time we must recover from
 #define	PISTOL_ACCURACY_MAXIMUM_PENALTY_TIME	3.0f	// Maximum penalty to deal out
