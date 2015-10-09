@@ -69,8 +69,11 @@ void CHudVeins::Think()
 	if ( !pPlayer )
 		return;
 
-	if(pPlayer->GetHealth() > 25)
+	if(pPlayer->GetHealth() > 25 || pPlayer->GetHealth() <= 0)
 		return;
+
+	if(!r_veinsoverlay.GetBool())
+	  return;
 
 	const float health = pPlayer->GetHealth() / 25.0;
 	const float interval = m_flMinHeartbeatInterval + health * (m_flMaxHeartbeatInterval - m_flMinHeartbeatInterval);
