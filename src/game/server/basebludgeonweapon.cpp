@@ -373,7 +373,7 @@ void CBaseHLBludgeonWeapon::Swing( int bIsSecondary )
 	}
 	else
 	{
-		Hit( traceHit, nHitActivity, bIsSecondary);
+		Hit( traceHit, nHitActivity, bIsSecondary ? true : false);
 	}
 
 	//Setup our next attack times
