@@ -356,6 +356,10 @@ void CBaseHLBludgeonWeapon::Swing( int bIsSecondary )
 		m_iSecondaryAttacks++;
 	}
 
+	//Only send if we're not the hatchet (I know, hacky)
+	if(strcmp(GetClassname(), "weapon_nh_hatchet") != 0)
+		SendWeaponAnim( nHitActivity );
+
 	gamestats->Event_WeaponFired( pOwner, !bIsSecondary, GetClassname() );
 
 	// -------------------------
