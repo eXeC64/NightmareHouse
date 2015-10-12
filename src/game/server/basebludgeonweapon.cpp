@@ -284,8 +284,10 @@ void CBaseHLBludgeonWeapon::ImpactEffect( trace_t &traceHit )
 	if ( ImpactWater( traceHit.startpos, traceHit.endpos ) )
 		return;
 
-	//FIXME: need new decals
-	UTIL_ImpactTrace( &traceHit, DMG_CLUB );
+	if(strcmp(GetClassname(), "weapon_nh_hatchet") == 0)
+		UTIL_ImpactTrace( &traceHit, DMG_SLASH );
+	else
+		UTIL_ImpactTrace( &traceHit, DMG_CLUB );
 }
 
 
