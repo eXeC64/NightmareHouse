@@ -108,7 +108,7 @@ void CWeaponNHHatchet::SecondaryAttack()
 	m_flSwingTime = gpGlobals->curtime + sk_weapon_hatchet_secondary_delay.GetFloat();
 	m_bIsSwinging = true;
 	m_iSwingType = 2;
-	SendWeaponAnim(random->RandomInt(1,2) == 1 ? ACT_VM_HITCENTER2 : ACT_VM_MISSCENTER2);
+	SendWeaponAnim(ACT_VM_MISSCENTER2);
 }
 
 void CWeaponNHHatchet::ItemPostFrame()
