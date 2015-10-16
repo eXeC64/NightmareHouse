@@ -328,7 +328,7 @@ void CBaseHLBludgeonWeapon::Swing( int bIsSecondary )
 	forward = pOwner->GetAutoaimVector( AUTOAIM_SCALE_DEFAULT, GetRange() );
 
 	Vector swingEnd = swingStart + forward * GetRange();
-	UTIL_TraceLine( swingStart, swingEnd, MASK_SHOT, pOwner, COLLISION_GROUP_NONE, &traceHit );
+	UTIL_TraceLine( swingStart, swingEnd, MASK_SHOT|CONTENTS_GRATE, pOwner, COLLISION_GROUP_NONE, &traceHit );
 	Activity nHitActivity = !bIsSecondary ? ACT_VM_HITCENTER : ACT_VM_HITCENTER2;
 
 	// Like bullets, bludgeon traces have to trace against triggers.
