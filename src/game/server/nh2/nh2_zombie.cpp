@@ -27,7 +27,7 @@
 #define RANDOM_BODYGROUP -1
 
 ConVar	sk_nh_zombie_health( "sk_nh_zombie_health","50");
-ConVar	sk_nh_torso_damage_threshold("sk_nh_torso_damage_threshold","20");
+ConVar	sk_nh_torso_damage_threshold("sk_nh_torso_damage_threshold","15");
 ConVar	sk_nh_zombie_head_height("sk_nh_zombie_head_height","50");
 
 envelopePoint_t envNHZombieMoanVolumeFast[] =
