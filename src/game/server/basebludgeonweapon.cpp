@@ -344,7 +344,7 @@ void CBaseHLBludgeonWeapon::Swing( int bIsSecondary )
 		// Back off by hull "radius"
 		swingEnd -= forward * bludgeonHullRadius;
 
-		UTIL_TraceHull( swingStart, swingEnd, g_bludgeonMins, g_bludgeonMaxs, MASK_SHOT_HULL, pOwner, COLLISION_GROUP_NONE, &traceHit );
+		UTIL_TraceHull( swingStart, swingEnd, g_bludgeonMins, g_bludgeonMaxs, MASK_SHOT|CONTENTS_GRATE, pOwner, COLLISION_GROUP_NONE, &traceHit );
 		if ( traceHit.fraction < 1.0 && traceHit.m_pEnt )
 		{
 			Vector vecToTarget = traceHit.m_pEnt->GetAbsOrigin() - swingStart;
