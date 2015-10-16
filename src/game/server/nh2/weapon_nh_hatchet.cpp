@@ -26,6 +26,7 @@ ConVar    sk_plr_dmg_hatchet		( "sk_plr_dmg_hatchet","0");
 ConVar    sk_npc_dmg_hatchet		( "sk_npc_dmg_hatchet","0");
 ConVar sk_weapon_hatchet_primary_delay("sk_weapon_hatchet_primary_delay","0.2");
 ConVar sk_weapon_hatchet_secondary_delay("sk_weapon_hatchet_secondary_delay","0.95");
+ConVar sk_weapon_hatchet_secondary_mult("sk_weapon_hatchet_secondary_mult", "3.0");
 
 //-----------------------------------------------------------------------------
 // CWeaponNHHatchet
@@ -66,8 +67,8 @@ float CWeaponNHHatchet::GetDamageForActivity( Activity hitActivity )
 	else
 		dmg = sk_npc_dmg_hatchet.GetFloat();
 
-	if(hitActivity == ACT_VM_HITCENTER2 || hitActivity == ACT_VM_MISSCENTER)
-		dmg *= 3.0;
+	if(hitActivity == ACT_VM_HITCENTER2 || hitActivity == ACT_VM_MISSCENTER2)
+		dmg *= sk_weapon_hatchet_secondary_mult.GetFloat();
 
 	return dmg;
 }

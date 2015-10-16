@@ -29,6 +29,7 @@
 ConVar	sk_nh_zombie_health( "sk_nh_zombie_health","50");
 ConVar	sk_nh_torso_damage_threshold("sk_nh_torso_damage_threshold","15");
 ConVar	sk_nh_zombie_head_height("sk_nh_zombie_head_height","50");
+extern ConVar sk_plr_dmg_hatchet;
 
 envelopePoint_t envNHZombieMoanVolumeFast[] =
 {
@@ -872,7 +873,7 @@ bool CNH_Zombie::ShouldBecomeTorso( const CTakeDamageInfo &info, float flDamageT
 		return false;
 	}
 
-	if (info.GetDamageType() == DMG_SLASH && info.GetDamage() > 30 && random->RandomInt(1,3) == 1)
+	if (info.GetDamageType() == DMG_SLASH && info.GetDamage() > sk_plr_dmg_hatchet.GetFloat() && random->RandomInt(1,3) == 1)
 		return true;
 
 	if ( !m_bHeadShot && info.GetDamage() >= sk_nh_torso_damage_threshold.GetFloat() )
@@ -1192,7 +1193,7 @@ int CNH_Zombie::OnTakeDamage_Alive( const CTakeDamageInfo &inputInfo )
 				|| ( inputInfo.GetDamage() >= 10 && random->RandomInt( 1, 8 ) == 1 )
 				|| ( inputInfo.GetDamage() > 30 && random->RandomInt( 1, 3 ) == 1 ) )
 				bShouldExplode = true;
-			else if ( inputInfo.GetDamageType() == DMG_SLASH && inputInfo.GetDamage() > 30)
+			else if ( inputInfo.GetDamageType() == DMG_SLASH && inputInfo.GetDamage() > sk_plr_dmg_hatchet.GetFloat())
 				bShouldExplode = (random->RandomInt(1,2) == 1);
 		}
 		
