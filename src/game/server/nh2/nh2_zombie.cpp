@@ -141,6 +141,7 @@ public:
 	
 	HeadcrabRelease_t ShouldReleaseHeadcrab( const CTakeDamageInfo &info, float flDamageThreshold );
 
+	float GetHitgroupDamageMultiplier( int iHitGroup, const CTakeDamageInfo &info );
 
 	void PrescheduleThink( void );
 	int SelectSchedule ( void );
@@ -1323,6 +1324,11 @@ void CNH_Zombie::BuildScheduleTestBits( void )
 HeadcrabRelease_t CNH_Zombie::ShouldReleaseHeadcrab( const CTakeDamageInfo &info, float flDamageThreshold )
 {
 	return RELEASE_NO;
+}
+
+float CNH_Zombie::GetHitgroupDamageMultiplier( int iHitGroup, const CTakeDamageInfo &info )
+{
+	return 1;
 }
 
 //=============================================================================
