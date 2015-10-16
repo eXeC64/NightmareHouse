@@ -59,6 +59,7 @@ public:
 protected:
 	virtual void OnThink();
 	virtual void Paint();
+	virtual void PaintBackground() {};
 	virtual void ApplySchemeSettings(vgui::IScheme *pScheme);
 
 	virtual bool IsWeaponSelectable()

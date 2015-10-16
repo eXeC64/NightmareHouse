@@ -27,6 +27,7 @@ public:
 
 protected:
 	virtual void Paint();
+	virtual void PaintBackground() {};
 
 	vgui::IImage* m_pBar;
 	vgui::IImage* m_pBackground;

@@ -36,6 +36,7 @@ public:
 
 protected:
 	virtual void Paint();
+	virtual void PaintBackground() {};
 
 private:
 	CPanelAnimationVarAliasType( float, m_flIconInsetX, "IconInsetX", "8", "proportional_float" );
