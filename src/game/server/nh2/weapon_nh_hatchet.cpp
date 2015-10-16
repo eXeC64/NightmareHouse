@@ -93,11 +93,28 @@ void CWeaponNHHatchet::AddViewKick( void )
 
 void CWeaponNHHatchet::PrimaryAttack()
 {
+	CBasePlayer *pPlayer  = ToBasePlayer( GetOwner() );
+	if ( pPlayer == NULL )
+		return;
+
 	if(m_bIsSwinging)
 		return;
 	m_flSwingTime = gpGlobals->curtime + sk_weapon_hatchet_primary_delay.GetFloat();
 	m_bIsSwinging = true;
-	m_iSwingType = random->RandomInt(0,1);
+
+	//Quickly check for something infront and use that to decide which swing type to use
+	trace_t traceHit;
+	Vector traceStart = pPlayer->Weapon_ShootPosition();
+	Vector forward = pPlayer->GetAutoaimVector(AUTOAIM_SCALE_DEFAULT, GetRange());
+	Vector traceEnd = traceStart + forward * GetRange();
+	UTIL_TraceLine(
+			traceStart,
+			traceEnd,
+			MASK_SHOT|CONTENTS_GRATE,
+			pPlayer,
+			COLLISION_GROUP_NONE,
+			&traceHit);
+	m_iSwingType = traceHit.fraction < 1.0 ? 0 : 1;
 	if(m_iSwingType == 0)
 		SendWeaponAnim(ACT_VM_HITCENTER);
 	else
