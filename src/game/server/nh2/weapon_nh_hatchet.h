@@ -13,8 +13,8 @@
 #pragma once
 #endif
 
-#define	HATCHET_RANGE	75.0f
-#define	HATCHET_REFIRE	0.4f
+#define	HATCHET_RANGE	85.0f
+#define	HATCHET_REFIRE	0.5f
 
 //-----------------------------------------------------------------------------
 // CWeaponNHHatchet
@@ -41,10 +41,12 @@ public:
 	void SecondaryAttack();
 	void ItemPostFrame();
 
+	virtual void EmitImpactSound();
+
 private:
 	bool m_bIsSwinging; //are we in a secondary attack swing?
 	float m_flSwingTime; //when to swing
-	int m_iSwingType; //1 = pri, 2 = sec
+	int m_iSwingType; //0,1 = pri, 2 = sec
 };
 
 #endif // WEAPON_NH_HATCHET_H

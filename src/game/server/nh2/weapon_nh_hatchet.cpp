@@ -97,8 +97,12 @@ void CWeaponNHHatchet::PrimaryAttack()
 		return;
 	m_flSwingTime = gpGlobals->curtime + sk_weapon_hatchet_primary_delay.GetFloat();
 	m_bIsSwinging = true;
-	m_iSwingType = 1;
-	SendWeaponAnim(random->RandomInt(1,2) == 1 ? ACT_VM_HITCENTER : ACT_VM_MISSCENTER);
+	m_iSwingType = random->RandomInt(0,1);
+	if(m_iSwingType == 0)
+		SendWeaponAnim(ACT_VM_HITCENTER);
+	else
+		SendWeaponAnim(ACT_VM_MISSCENTER);
+	WeaponSound(SINGLE);
 }
 
 void CWeaponNHHatchet::SecondaryAttack()
@@ -109,6 +113,7 @@ void CWeaponNHHatchet::SecondaryAttack()
 	m_bIsSwinging = true;
 	m_iSwingType = 2;
 	SendWeaponAnim(ACT_VM_MISSCENTER2);
+	WeaponSound(WPN_DOUBLE);
 }
 
 void CWeaponNHHatchet::ItemPostFrame()
@@ -116,12 +121,21 @@ void CWeaponNHHatchet::ItemPostFrame()
 	if(m_bIsSwinging && gpGlobals->curtime > m_flSwingTime)
 	{
 		m_bIsSwinging = false;
-		//Do the actual attack
-		if(m_iSwingType == 1)
-			BaseClass::PrimaryAttack();
-		else if (m_iSwingType == 2)
+		if (m_iSwingType == 2)
 			BaseClass::SecondaryAttack();
+		else
+			BaseClass::PrimaryAttack();
 	}
 
 	BaseClass::ItemPostFrame();
+}
+
+void CWeaponNHHatchet::EmitImpactSound()
+{
+	if(m_iSwingType == 0)
+		WeaponSound(SPECIAL1);
+	else if(m_iSwingType == 1)
+		WeaponSound(SPECIAL2);
+	else if(m_iSwingType == 2)
+		WeaponSound(SPECIAL3);
 }

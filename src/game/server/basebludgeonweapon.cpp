@@ -180,24 +180,10 @@ void CBaseHLBludgeonWeapon::Hit( trace_t &traceHit, Activity nHitActivity, bool 
 		}
 	}
 
-	if(strcmp(GetClassname(), "weapon_nh_hatchet") == 0)
-	{
-		if(nHitActivity == ACT_VM_HITCENTER)
-		{
-			WeaponSound(SPECIAL1);
-		}
-		else if(nHitActivity == ACT_VM_MISSCENTER)
-		{
-			WeaponSound(SPECIAL2);
-		}
-		else if(nHitActivity == ACT_VM_MISSCENTER2)
-		{
-			WeaponSound(SPECIAL3);
-		}
-	}
-
 	// Apply an impact effect
 	ImpactEffect( traceHit );
+
+	EmitImpactSound();
 }
 
 Activity CBaseHLBludgeonWeapon::ChooseIntersectionPointAndActivity( trace_t &hitTrace, const Vector &mins, const Vector &maxs, CBasePlayer *pOwner )
@@ -376,7 +362,12 @@ void CBaseHLBludgeonWeapon::Swing( int bIsSecondary )
 
 	//Only send if we're not the hatchet (I know, hacky)
 	if(strcmp(GetClassname(), "weapon_nh_hatchet") != 0)
+	{
 		SendWeaponAnim( nHitActivity );
+		//Play swing sound
+		WeaponSound( SINGLE );
+	}
+
 
 	gamestats->Event_WeaponFired( pOwner, !bIsSecondary, GetClassname() );
 
@@ -399,10 +390,14 @@ void CBaseHLBludgeonWeapon::Swing( int bIsSecondary )
 	}
 
 	//Setup our next attack times
-	m_flNextPrimaryAttack = gpGlobals->curtime + GetFireRate();
-	m_flNextSecondaryAttack = gpGlobals->curtime + GetFireRate();
-
-
-	//Play swing sound
-	WeaponSound( SINGLE );
+	if(strcmp(GetClassname(), "weapon_nh_hatchet") == 0 && bIsSecondary)
+	{
+		m_flNextPrimaryAttack = gpGlobals->curtime + GetFireRate() * 2;
+		m_flNextSecondaryAttack = gpGlobals->curtime + GetFireRate() * 2;
+	}
+	else
+	{
+		m_flNextPrimaryAttack = gpGlobals->curtime + GetFireRate();
+		m_flNextSecondaryAttack = gpGlobals->curtime + GetFireRate();
+	}
 }
