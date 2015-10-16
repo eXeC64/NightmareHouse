@@ -31,6 +31,7 @@ public:
 	virtual void Reset();
 	virtual void Think();
 	virtual void Paint();
+	virtual void PaintBackground() {};
 
 	void ShowPickup( C_BaseCombatWeapon *weapon );
 	void ShowAmmo(int type, int quantity);

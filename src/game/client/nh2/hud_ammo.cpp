@@ -26,6 +26,7 @@ public:
 	void Reset();
 
 	virtual void Paint( void );
+	virtual void PaintBackground() {};
 
 protected:
 	virtual void OnThink();
