@@ -871,6 +871,9 @@ bool CNH_Zombie::ShouldBecomeTorso( const CTakeDamageInfo &info, float flDamageT
 		return false;
 	}
 
+	if (info.GetDamageType() == DMG_SLASH && info.GetDamage() > 30 && random->RandomInt(1,3) == 1)
+		return true;
+
 	if ( !m_bHeadShot && info.GetDamage() >= sk_nh_torso_damage_threshold.GetFloat() )
 	{
 		return random->RandomInt( 1, 100 ) < 20;
@@ -1177,18 +1180,29 @@ int CNH_Zombie::OnTakeDamage_Alive( const CTakeDamageInfo &inputInfo )
 	}
 #endif // HL2_EPISODIC
 
-	//if (inputInfo.GetDamagePosition() 
-
 	if (m_bHeadShot)
 	{
+		bool bShouldExplode = false;
 
+		if (GetBodygroup(1) > 1 && inputInfo.GetDamage() < GetHealth())
+		{
+			if ( (inputInfo.GetDamage() < 10 && random->RandomInt( 1, 10 ) == 1)
+				|| ( inputInfo.GetDamage() >= 10 && random->RandomInt( 1, 8 ) == 1 )
+				|| ( inputInfo.GetDamage() > 30 && random->RandomInt( 1, 3 ) == 1 ) )
+				bShouldExplode = true;
+
+			if ( inputInfo.GetDamageType() == DMG_SLASH )
+			{
+				if (inputInfo.GetDamage() > 30 && random->RandomInt(1,3) != 1)
+				{
+					bShouldExplode = true;
+				}
+				else if (inputInfo.GetDamage() < 30 && random->RandomInt(1,3) == 1)
+					bShouldExplode = true;
+			}
+		}
 		
-		
-		if ( ( ( inputInfo.GetDamage() < 10 && random->RandomInt( 1, 10 ) == 1 )
-			|| ( inputInfo.GetDamage() >= 10 && random->RandomInt( 1, 8 ) == 1 )
-			|| ( inputInfo.GetDamage() > 30 && random->RandomInt( 1, 3 ) == 1 ) )
-			&& GetBodygroup( 1 ) > 1
-			&& inputInfo.GetDamage() < GetHealth() )
+		if(bShouldExplode)
 		{
 			SetBodygroup( 1, random->RandomInt( 0, 1 ) ); // half a head left
 			
