@@ -41,15 +41,10 @@ public:
 	void SecondaryAttack();
 	void ItemPostFrame();
 
-	// Animation event
-	virtual void Operator_HandleAnimEvent( animevent_t *pEvent, CBaseCombatCharacter *pOperator );
-
 private:
 	bool m_bIsSwinging; //are we in a secondary attack swing?
 	float m_flSwingTime; //when to swing
 	int m_iSwingType; //1 = pri, 2 = sec
-	// Animation event handlers
-	void HandleAnimEventMeleeHit( animevent_t *pEvent, CBaseCombatCharacter *pOperator );
 };
 
 #endif // WEAPON_NH_HATCHET_H
