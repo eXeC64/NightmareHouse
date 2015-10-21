@@ -115,7 +115,13 @@ void CWeaponNHHatchet::PrimaryAttack()
 			pPlayer,
 			COLLISION_GROUP_NONE,
 			&traceHit);
-	m_iSwingType = traceHit.fraction < 1.0 ? 0 : 1;
+
+	//If we find something, random anim, otherwise miss anim
+	if (traceHit.fraction < 1.0)
+		m_iSwingType = random->RandomInt(0,1);
+	else
+		m_iSwingType = 1;
+
 	if(m_iSwingType == 0)
 		SendWeaponAnim(ACT_VM_HITCENTER);
 	else
