@@ -14,7 +14,7 @@
 #endif
 
 #define	HATCHET_RANGE	85.0f
-#define	HATCHET_REFIRE	0.5f
+#define	HATCHET_REFIRE	0.55f
 
 //-----------------------------------------------------------------------------
 // CWeaponNHHatchet
