@@ -23,6 +23,7 @@ void cb_veinsoverlay( IConVar *pConVar, const char *pOldString, float flOldValue
 
 ConVar r_bluroverlay("r_bluroverlay", "1");
 ConVar r_veinsoverlay("r_veinsoverlay", "1", FCVAR_NONE, "Veins overlay", false, 0, true, 1, cb_veinsoverlay);
+extern ConVar r_flashlightforceflicker;
 
 class CHudVeins : public CHudElement, public vgui::Panel
 {
@@ -66,6 +67,7 @@ void CHudVeins::Reset (void)
 	SetBgColor(Color(255,255,255,0));
 	r_veinsoverlay.SetValue(true);
 	r_bluroverlay.SetValue(true);
+	r_flashlightforceflicker.SetValue(0);
 	m_flLastHeartbeat = 0;
 }
 

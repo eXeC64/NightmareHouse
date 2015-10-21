@@ -52,8 +52,8 @@ static ConVar mat_slopescaledepthbias_shadowmap( "mat_slopescaledepthbias_shadow
 static ConVar mat_depthbias_shadowmap(	"mat_depthbias_shadowmap", "0.0005", FCVAR_CHEAT  );
 #ifdef NH2
 void cb_flashlightflicker( IConVar *pConVar, const char *pOldString, float flOldValue );
-static ConVar r_flashlightforceflicker( "r_flashlightforceflicker","0", FCVAR_NONE, "Force flashlight flicker", false, 0, true, 1, cb_flashlightflicker);
-static int flashlight_lastactive;
+ConVar r_flashlightforceflicker( "r_flashlightforceflicker","0", FCVAR_NONE, "Force flashlight flicker", false, 0, true, 1, cb_flashlightflicker);
+int flashlight_lastactive;
 
 void cb_flashlightflicker( IConVar *pConVar, const char *pOldString, float flOldValue )
 {
