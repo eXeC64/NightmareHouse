@@ -59,8 +59,10 @@ public:
 		if ( pOwner == NULL )
 			return;
 
+		int oldButtons = pOwner->m_nButtons;
 		pOwner->m_nButtons &= ~IN_ATTACK2;
 		BaseClass::ItemPostFrame();
+		pOwner->m_nButtons = oldButtons;
 	}
 
 	const WeaponProficiencyInfo_t *GetProficiencyValues();
