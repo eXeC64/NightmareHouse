@@ -1194,7 +1194,7 @@ int CNH_Zombie::OnTakeDamage_Alive( const CTakeDamageInfo &inputInfo )
 				|| ( inputInfo.GetDamage() > 30 && random->RandomInt( 1, 3 ) == 1 ) )
 				bShouldExplode = true;
 			else if ( inputInfo.GetDamageType() == DMG_SLASH && inputInfo.GetDamage() > sk_plr_dmg_hatchet.GetFloat())
-				bShouldExplode = (random->RandomInt(1,2) == 1);
+				bShouldExplode = (random->RandomInt(1,4) == 1);
 		}
 		
 		if(bShouldExplode)
