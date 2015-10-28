@@ -1337,7 +1337,7 @@ HeadcrabRelease_t CNH_Zombie::ShouldReleaseHeadcrab( const CTakeDamageInfo &info
 
 float CNH_Zombie::GetHitgroupDamageMultiplier( int iHitGroup, const CTakeDamageInfo &info )
 {
-	return 1;
+	return BaseClass::GetHitgroupDamageMultiplier(iHitGroup, info);
 }
 
 //=============================================================================
