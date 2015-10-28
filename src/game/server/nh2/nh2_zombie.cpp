@@ -842,8 +842,6 @@ void CNH_Zombie::MoanSound( envelopePoint_t *pEnvelope, int iEnvelopeSize )
 //---------------------------------------------------------
 bool CNH_Zombie::ShouldBecomeTorso( const CTakeDamageInfo &info, float flDamageThreshold )
 {
-	//return false;
-	//m_nBodyModel
 	 if ( FClassnameIs( this, "npc_nh_surgeon" ) )
 		 return false;
 
@@ -876,7 +874,7 @@ bool CNH_Zombie::ShouldBecomeTorso( const CTakeDamageInfo &info, float flDamageT
 	if (!m_bHeadShot)
 	{
 		if(info.GetDamage() < sk_nh_torso_damage_threshold.GetFloat() )
-			return random->RandomInt(1, 100) <= 15;
+			return random->RandomInt(1, 100) <= 25;
 		else
 			return random->RandomInt(1, 100) <= 35;
 	}
@@ -1189,7 +1187,14 @@ int CNH_Zombie::OnTakeDamage_Alive( const CTakeDamageInfo &inputInfo )
 
 		if (GetBodygroup(1) > 1 && inputInfo.GetDamage() < GetHealth())
 		{
-			if( inputInfo.GetDamageType() != DMG_SLASH)
+			if( inputInfo.GetDamageType() == DMG_SLASH)
+			{
+				if (inputInfo.GetDamage() < 40)
+					bShouldExplode = random->RandomInt( 1, 10 ) == 9;
+				else
+					bShouldExplode = random->RandomInt( 1, 2 ) == 1;
+			}
+			else
 			{
 				if (inputInfo.GetDamage() < 10)
 					bShouldExplode = random->RandomInt( 1, 10 ) == 1;
@@ -1197,13 +1202,6 @@ int CNH_Zombie::OnTakeDamage_Alive( const CTakeDamageInfo &inputInfo )
 					bShouldExplode = random->RandomInt( 1, 8 ) == 1;
 				else
 					bShouldExplode = random->RandomInt( 1, 3 ) == 1;
-			}
-			else
-			{
-				if (inputInfo.GetDamage() < 20)
-					bShouldExplode = random->RandomInt( 1, 5 ) == 1;
-				else
-					bShouldExplode = random->RandomInt( 1, 2 ) == 1;
 			}
 		}
 		
@@ -1254,11 +1252,9 @@ int CNH_Zombie::OnTakeDamage_Alive( const CTakeDamageInfo &inputInfo )
 
 int CNH_Zombie::OnTakeDamage_Dead( const CTakeDamageInfo &inputInfo )
 {
-	//Msg( "Dying :<\n");
 	if ( m_bHeadShot )
 	{
-		//Msg( "from a headshot too :<\n");
-		if ( random->RandomInt( 1, 5 ) == 5 )
+		if ( random->RandomInt( 1, 15 ) == 9 )
 			{
 				if (GetBodygroup( 1 ) <= 1) //has lost the head
 					SetBodygroup( 1, 1 ); //no head left
