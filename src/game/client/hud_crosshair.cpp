@@ -27,7 +27,7 @@
 #include "tier0/memdbgon.h"
 
 ConVar crosshair( "crosshair", "1", FCVAR_ARCHIVE );
-ConVar cl_crosshair_scale( "cl_crosshair_scale", "1", FCVAR_ARCHIVE );
+ConVar cl_crosshair_scale( "cl_crosshair_scale", "0.1", FCVAR_ARCHIVE );
 ConVar cl_observercrosshair( "cl_observercrosshair", "1", FCVAR_ARCHIVE );
 
 using namespace vgui;
@@ -97,12 +97,16 @@ bool CHudCrosshair::ShouldDraw( void )
 
 	bool isHatchet = false;
 	C_BaseCombatWeapon *pWeapon = pPlayer->GetActiveWeapon();
+
 	if ( pWeapon && Q_strcmp(pWeapon->GetClassname(),"weapon_nh_hatchet") == 0)
 		isHatchet = true;
 
 	bool bIsVisible = false;
 	bIsVisible |= !isHatchet && pPlayer->m_nButtons & IN_ATTACK2;
-	bIsVisible |= m_flLastUse > 0 && m_flLastUse >= gpGlobals->curtime - 3;
+	bIsVisible |= m_flLastUse > 0 && m_flLastUse >= gpGlobals->curtime - 1.5;
+
+	if(!pWeapon)
+		bIsVisible = false;
 
 	if(bIsVisible)
 		m_iAlpha += 700 * dt;
