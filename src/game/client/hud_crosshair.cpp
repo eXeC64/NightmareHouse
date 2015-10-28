@@ -12,6 +12,7 @@
 #include "view.h"
 #include "vgui_controls/Controls.h"
 #include "vgui/ISurface.h"
+#include "in_buttons.h"
 #include "ivrenderview.h"
 #include "materialsystem/imaterialsystem.h"
 #include "VGuiMatSurface/IMatSystemSurface.h"
@@ -79,8 +80,11 @@ bool CHudCrosshair::ShouldDraw( void )
 	if ( !pPlayer )
 		return false;
 
+	if((pPlayer->m_nButtons & IN_ATTACK2) == false)
+		return false;
+
 	C_BaseCombatWeapon *pWeapon = pPlayer->GetActiveWeapon();
-	if ( pWeapon && !pWeapon->ShouldDrawCrosshair() )
+	if ( pWeapon && Q_strcmp(pWeapon->GetClassname(),"weapon_nh_hatchet") == 0)
 		return false;
 
 	/* disabled to avoid assuming it's an HL2 player.
@@ -226,12 +230,6 @@ void CHudCrosshair::Paint( void )
 		return;
 
 	float flWeaponScale = 1.f;
-	C_BaseCombatWeapon *pWeapon = pPlayer->GetActiveWeapon();
-	if ( pWeapon )
-	{
-		pWeapon->GetWeaponCrosshairScale( flWeaponScale );
-	}
-
 	float flPlayerScale = cl_crosshair_scale.GetFloat();
 	float flWidth = flWeaponScale * flPlayerScale * 32.0;
 	float flHeight = flWeaponScale * flPlayerScale * 32.0;
