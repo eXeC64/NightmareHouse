@@ -102,11 +102,8 @@ bool CHudCrosshair::ShouldDraw( void )
 		isHatchet = true;
 
 	bool bIsVisible = false;
-	bIsVisible |= !isHatchet && pPlayer->m_nButtons & IN_ATTACK2;
+	bIsVisible |= pWeapon && !isHatchet && pPlayer->m_nButtons & IN_ATTACK2;
 	bIsVisible |= m_flLastUse > 0 && m_flLastUse >= gpGlobals->curtime - 1.5;
-
-	if(!pWeapon)
-		bIsVisible = false;
 
 	if(bIsVisible)
 		m_iAlpha += 700 * dt;
