@@ -1194,7 +1194,7 @@ int CNH_Zombie::OnTakeDamage_Alive( const CTakeDamageInfo &inputInfo )
 				else
 					bShouldExplode = random->RandomInt( 1, 2 ) == 1;
 			}
-			else
+			else if (inputInfo.GetDamageType() & (DMG_BULLET|DMG_BUCKSHOT))
 			{
 				if (inputInfo.GetDamage() < 10)
 					bShouldExplode = random->RandomInt( 1, 10 ) == 1;
