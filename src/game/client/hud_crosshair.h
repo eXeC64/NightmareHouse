@@ -31,6 +31,7 @@ public:
 
 	virtual void	SetCrosshairAngle( const QAngle& angle );
 	virtual void	SetCrosshair( CHudTexture *texture, const Color& clr );
+	virtual void	Reset();
 	virtual void	ResetCrosshair();
 	virtual void	DrawCrosshair( void ) {}
   	virtual bool	HasCrosshair( void ) { return ( m_pCrosshair != NULL ); }
@@ -46,6 +47,9 @@ protected:
 	vgui::IImage *m_pCrosshair;
 	QAngle			m_vecCrossHairOffsetAngle;
 	CPanelAnimationVar( bool, m_bHideCrosshair, "never_draw", "false" );
+	float m_flLastUse;
+	float m_flLastThink;
+	int m_iAlpha;
 };
 
 

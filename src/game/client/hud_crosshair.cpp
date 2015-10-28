@@ -45,12 +45,22 @@ CHudCrosshair::CHudCrosshair( const char *pElementName ) :
 	m_pCrosshair = vgui::scheme()->GetImage("hud/crosshair", false);
 
 	m_vecCrossHairOffsetAngle.Init();
+	m_flLastUse = 0;
+	m_flLastThink = gpGlobals->curtime;
+	m_iAlpha = 0;
 
 	SetHiddenBits( HIDEHUD_PLAYERDEAD | HIDEHUD_CROSSHAIR );
 }
 
 CHudCrosshair::~CHudCrosshair()
 {
+}
+
+void CHudCrosshair::Reset()
+{
+	m_flLastUse = 0;
+	m_flLastThink = gpGlobals->curtime;
+	m_iAlpha = 0;
 }
 
 void CHudCrosshair::ApplySchemeSettings( IScheme *scheme )
@@ -71,6 +81,8 @@ void CHudCrosshair::ApplySchemeSettings( IScheme *scheme )
 //-----------------------------------------------------------------------------
 bool CHudCrosshair::ShouldDraw( void )
 {
+	float dt = gpGlobals->curtime - m_flLastThink;
+	m_flLastThink = gpGlobals->curtime;
 	bool bNeedsDraw;
 
 	if ( m_bHideCrosshair )
@@ -80,18 +92,27 @@ bool CHudCrosshair::ShouldDraw( void )
 	if ( !pPlayer )
 		return false;
 
-	if((pPlayer->m_nButtons & IN_ATTACK2) == false)
-		return false;
+	if(pPlayer->m_nButtons & IN_USE)
+		m_flLastUse = gpGlobals->curtime;
 
+	bool isHatchet = false;
 	C_BaseCombatWeapon *pWeapon = pPlayer->GetActiveWeapon();
 	if ( pWeapon && Q_strcmp(pWeapon->GetClassname(),"weapon_nh_hatchet") == 0)
-		return false;
+		isHatchet = true;
 
-	/* disabled to avoid assuming it's an HL2 player.
-	// suppress crosshair in zoom.
-	if ( pPlayer->m_HL2Local.m_bZooming )
+	bool bIsVisible = false;
+	bIsVisible |= !isHatchet && pPlayer->m_nButtons & IN_ATTACK2;
+	bIsVisible |= m_flLastUse > 0 && m_flLastUse >= gpGlobals->curtime - 3;
+
+	if(bIsVisible)
+		m_iAlpha += 700 * dt;
+	else
+		m_iAlpha -= 700 * dt;
+
+	m_iAlpha = clamp(m_iAlpha, 0, 255);
+
+	if(m_iAlpha < 1)
 		return false;
-	*/
 
 	// draw a crosshair only if alive or spectating in eye
 	if ( IsX360() )
@@ -240,7 +261,7 @@ void CHudCrosshair::Paint( void )
 
 	m_pCrosshair->SetPos(iX-(iWidth/2), iY-(iHeight/2));
 	m_pCrosshair->SetSize(iWidth, iHeight);
-	m_pCrosshair->SetColor(Color(255,255,255,255));
+	m_pCrosshair->SetColor(Color(255,255,255,m_iAlpha));
 	m_pCrosshair->Paint();
 }
 
